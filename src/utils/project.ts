@@ -3,6 +3,7 @@ export enum DevState {
   Developping,
   Planning,
   Done,
+  Dispose,
 }
 
 export default interface Project {
@@ -12,4 +13,5 @@ export default interface Project {
   githubUrl: string;
   description: string;
   startDate: any;
+  version: string;
 }

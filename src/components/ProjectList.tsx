@@ -1,23 +1,22 @@
 import React from "react";
+import Project from "../utils/project";
+import ProjectCard from "./ProjectCard";
+import { LangStorage, ProjectsStorage } from "../dataStorage/storage";
+import { Space } from "antd";
 
 interface P {
-  name: string;
-  url: string;
-  githubUrl: string;
+  update: boolean;
+  setUpdate: () => void;
 }
 
-export default class ProjectList extends React.Component<P> {
-  constructor(props: P) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <>
-        <p>{this.props.name}</p>
-        <p>{this.props.url}</p>
-        <p>{this.props.githubUrl}</p>
-      </>
-    );
-  }
+export default function ProjectList(props: P) {
+  return (
+    <>
+      <Space direction="vertical" style={{width: '-webkit-fill-available'}}>
+        {ProjectsStorage.value.map((project: Project) => {
+          return <ProjectCard project={project} />;
+        })}
+      </Space>
+    </>
+  );
 }

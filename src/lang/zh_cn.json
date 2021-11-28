@@ -1,0 +1,20 @@
+{
+  "header": {},
+  "home": {},
+  "projects": {},
+  "blogs": {},
+
+  "components": {
+    "project": {}
+  },
+
+  "utils": {
+    "devstates": {
+      "empty": "",
+      "planning": "计划中",
+      "developping": "开发中",
+      "done": "完成",
+      "dispose": "废弃"
+    }
+  }
+}

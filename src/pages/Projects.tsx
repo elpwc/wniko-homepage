@@ -1,24 +1,18 @@
 import { Button, Input } from "antd";
 import { useState } from "react";
-import Project from "../components/Project";
+import Project from "../components/ProjectCard";
+import ProjectList from "../components/ProjectList";
 
 export default function Projects() {
-  const [name, setName]: [string, any] = useState("114");
+  const [update, setUpdate]: [boolean, any] = useState(false);
   return (
     <>
-      <Input
-        onChange={(e) => {
-          setName(e.target.value);
+      <ProjectList
+        update={update}
+        setUpdate={() => {
+          setUpdate(!update);
         }}
-      ></Input>
-      <Button
-        onClick={() => {
-          alert();
-        }}
-      >
-        test
-      </Button>
-      <Project name={name} url="" githubUrl="" />
+      />
     </>
   );
 }
