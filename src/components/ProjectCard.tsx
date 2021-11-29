@@ -1,16 +1,19 @@
-import { Card, Space, Tooltip } from "antd";
+import { Card, Space, Tag, Tooltip } from "antd";
 import Project, { DevState } from "../utils/project";
 import { LangStorage, ProjectsStorage } from "../dataStorage/storage";
 import LangUtils from "../lang/langUtils";
 import { GithubOutlined, SendOutlined } from "@ant-design/icons";
+import Technology from "../utils/technology";
 
 interface P {
   project: Project;
 }
 
-const L = LangUtils.selectLang();
+
 
 export default function ProjectCard(props: P) {
+  const L = LangUtils.selectLang();
+  
   const getStateBox = (state: DevState) => {
     let bgcolor = "green";
     let forecolor = "white";
@@ -62,7 +65,7 @@ export default function ProjectCard(props: P) {
       <Card
         title={
           <>
-            <a target="_blank" href={props.project.url}>
+            <a target="_blank" href={props.project.url} rel="noreferrer">
               <span>{props.project.name}</span>
             </a>
           </>
@@ -74,7 +77,7 @@ export default function ProjectCard(props: P) {
                 <></>
               ) : (
                 <Tooltip placement="top" title="打开项目">
-                  <a target="_blank" href={props.project.url}>
+                  <a target="_blank" href={props.project.url} rel="noreferrer">
                     <span style={{ fontSize: "20px", color: "green" }}>
                       <SendOutlined />
                     </span>
@@ -85,7 +88,7 @@ export default function ProjectCard(props: P) {
                 <></>
               ) : (
                 <Tooltip placement="top" title="打开Github">
-                  <a target="_blank" href={props.project.githubUrl}>
+                  <a target="_blank" href={props.project.githubUrl} rel="noreferrer">
                     <span style={{ fontSize: "20px", color: "black" }}>
                       <GithubOutlined />
                     </span>
@@ -99,7 +102,16 @@ export default function ProjectCard(props: P) {
         }
         style={{}}
       >
+        <Space direction='vertical'>
+        <div>
+          {props.project.technologies.map((tech: Technology)=>{return <a target='_blank' href={tech.url} rel="noreferrer"><Tag style={{fontSize: '10px'}} color={tech.color}>{tech.name}</Tag></a>;})}
+        </div>
+        <div>
         <p>{props.project.description}</p>
+        </div>
+          </Space>
+
+        
       </Card>
     </>
   );

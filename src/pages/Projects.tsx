@@ -1,9 +1,19 @@
 import { Button, Input } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Project from "../components/ProjectCard";
 import ProjectList from "../components/ProjectList";
+import { CurrentPageStorage } from "../dataStorage/storage";
 
-export default function Projects() {
+interface P {
+  update: boolean;
+  setUpdate: () => void;
+}
+
+export default function Projects(props: P) {
+  useEffect(() => {
+    CurrentPageStorage.set('projects');
+props.setUpdate();
+}, []);
   const [update, setUpdate]: [boolean, any] = useState(false);
   return (
     <>
