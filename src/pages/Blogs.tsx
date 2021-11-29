@@ -1,17 +1,15 @@
-import { useEffect } from "react";
-import { CurrentPageStorage } from "../dataStorage/storage";
+import { useEffect } from 'react';
+import { CurrentPageStorage } from '../dataStorage/storage';
 
 interface P {
-    update: boolean;
-    setUpdate: () => void;
+  update: boolean;
+  setUpdate: () => void;
 }
 
 export default function Blogs(props: P) {
-    useEffect(() => {
-        CurrentPageStorage.set('blogs');
+  useEffect(() => {
+    CurrentPageStorage.set('blogs');
     props.setUpdate();
-    }, []);
-    return (<>
-    blog
-    </>);
+  }, []);
+  return <>blog</>;
 }

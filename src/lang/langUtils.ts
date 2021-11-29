@@ -1,6 +1,6 @@
-import * as ZhCn from "./zh_cn.json";
-import * as Ja from "./ja.json";
-import { LangStorage, ProjectsStorage } from "../dataStorage/storage";
+import * as ZhCn from './zh_cn.json';
+import * as Ja from './ja.json';
+import { LangStorage, ProjectsStorage } from '../dataStorage/storage';
 
 export enum Lang {
   zh_cn,
@@ -49,15 +49,15 @@ export default class LangUtils {
 
   static enumStrToLang(str: string): Lang {
     switch (str) {
-      case "zh_cn":
+      case 'zh_cn':
         return Lang.zh_cn;
-      case "zh_tw":
+      case 'zh_tw':
         return Lang.zh_tw;
-      case "ja":
+      case 'ja':
         return Lang.ja;
-      case "ko":
+      case 'ko':
         return Lang.ko;
-      case "en":
+      case 'en':
         return Lang.en;
       default:
         return Lang.zh_cn;
@@ -66,6 +66,6 @@ export default class LangUtils {
 
   // 获取包含所有enum值的字符串数组
   static getEnumStrings(): string[] {
-    return Object.keys(Lang).filter((k) => typeof Lang[k as any] === "number");
+    return Object.keys(Lang).filter((k) => typeof Lang[k as any] === 'number');
   }
 }

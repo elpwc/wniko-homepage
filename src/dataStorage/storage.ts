@@ -1,5 +1,5 @@
-import { Lang } from "../lang/langUtils";
-import Project from "../utils/project";
+import { Lang } from '../lang/langUtils';
+import Project from '../utils/project';
 
 class Storage<T> {
   constructor(defaultValue: T, functions?: {}) {

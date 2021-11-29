@@ -1,4 +1,4 @@
-import Technology from "./technology";
+import Technology from './technology';
 
 export enum DevState {
   Empty,
@@ -20,7 +20,16 @@ export default interface Project {
 }
 
 export class ProjectUtils {
-  static create(name: string, description: string = '',devState: DevState = DevState.Planning, technologies: Technology[] = [],  githubUrl: string = '', url: string = '', version: string = '', startDate: string = '202101011180000'): Project{
+  static create(
+    name: string,
+    description: string = '',
+    devState: DevState = DevState.Planning,
+    technologies: Technology[] = [],
+    githubUrl: string = '',
+    url: string = '',
+    version: string = '',
+    startDate: string = '202101011180000'
+  ): Project {
     return {
       name: name,
       description: description,

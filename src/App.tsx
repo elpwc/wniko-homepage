@@ -1,18 +1,18 @@
-import { Select } from "antd";
-import { useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Blogs from "./pages/Blogs";
-import Home from "./pages/Home";
-import Projects from "./pages/Projects";
-import { ProjectsStorage } from "./dataStorage/storage";
-import { DevState, ProjectUtils } from "./utils/project";
-import Illust from "./pages/Illust";
-import Contact from "./pages/Contact";
-import LangUtils from "./lang/langUtils";
-import { UsingTechs } from "./staticData/usingTechs";
-import Main from "./Main";
-import Page404 from "./pages/404";
+import { Select } from 'antd';
+import { useState } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Blogs from './pages/Blogs';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import { ProjectsStorage } from './dataStorage/storage';
+import { DevState, ProjectUtils } from './utils/project';
+import Illust from './pages/Illust';
+import Contact from './pages/Contact';
+import LangUtils from './lang/langUtils';
+import { UsingTechs } from './staticData/usingTechs';
+import Main from './Main';
+import Page404 from './pages/404';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -23,41 +23,31 @@ function App() {
 
   ProjectsStorage.set([
     ProjectUtils.create(
-      "Wotageipedia - ヲタ芸百科",
-      "御宅艺副歌技视频分类收录网站 (绝赞开发进行中♥)",
+      'Wotageipedia - ヲタ芸百科',
+      '御宅艺副歌技视频分类收录网站 (绝赞开发进行中♥)',
       DevState.Developping,
-      [
-        UsingTechs.reactjs,
-        UsingTechs.sequelize,
-        UsingTechs.nestjs,
-        UsingTechs.antd,
-        UsingTechs.typescript,
-      ],
-      "https://github.com/elpwc/wotageipedia"
+      [UsingTechs.reactjs, UsingTechs.sequelize, UsingTechs.nestjs, UsingTechs.antd, UsingTechs.typescript],
+      'https://github.com/elpwc/wotageipedia'
     ),
     ProjectUtils.create(
-      "アニメ整理 ANIMESEIRI",
-      "一目了然的追番进度管理",
+      'アニメ整理 ANIMESEIRI',
+      '一目了然的追番进度管理',
       DevState.Developping,
       [UsingTechs.php, UsingTechs.scss],
-      "https://github.com/elpwc/ANIME-SEIRI.web",
-      "http://www.elpwc.com/animeseiri"
+      'https://github.com/elpwc/ANIME-SEIRI.web',
+      'http://www.elpwc.com/animeseiri'
     ),
-    ProjectUtils.create(
-      "City Counter Game",
-      "猜城市名的web游戏 (待开发)",
-      DevState.Planning
-    ),
-    ProjectUtils.create("RUA", "az", DevState.Done),
-    ProjectUtils.create("RUA2", "az", DevState.Dispose),
+    ProjectUtils.create('City Counter Game', '猜城市名的web游戏 (待开发)', DevState.Planning),
+    ProjectUtils.create('RUA', 'az', DevState.Done),
+    ProjectUtils.create('RUA2', 'az', DevState.Dispose),
   ]);
 
   return (
-    <div className="App">
+    <div className='App'>
       <Routes>
-        <Route index element={<Navigate to="/zh-cn" />}></Route>
+        <Route index element={<Navigate to='/zh-cn' />}></Route>
         <Route
-          path=":lang"
+          path=':lang'
           element={
             <Main
               update={update}
@@ -79,7 +69,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="projects"
+            path='projects'
             element={
               <Projects
                 update={update}
@@ -90,7 +80,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="blog"
+            path='blog'
             element={
               <Blogs
                 update={update}
@@ -101,7 +91,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="illust"
+            path='illust'
             element={
               <Illust
                 update={update}
@@ -112,7 +102,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="contact"
+            path='contact'
             element={
               <Contact
                 update={update}
@@ -122,7 +112,7 @@ function App() {
               />
             }
           ></Route>
-          <Route path="*" element={<Page404 />}></Route>
+          <Route path='*' element={<Page404 />}></Route>
         </Route>
       </Routes>
     </div>
