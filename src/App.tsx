@@ -1,5 +1,5 @@
 import { Select } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Blogs from './pages/Blogs';
@@ -13,6 +13,7 @@ import LangUtils from './lang/langUtils';
 import { UsingTechs } from './staticData/usingTechs';
 import Main from './Main';
 import Page404 from './pages/404';
+import DBUtils from './db/dbutils';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -20,6 +21,14 @@ function App() {
   const updateNow = () => {
     setUpdate(!update);
   };
+
+  useEffect(() => {
+    // 初始化数据库
+    if (!DBUtils.Tables) {
+      DBUtils.initAllTables();
+      DBUtils.synchDB();
+    }
+  }, []);
 
   ProjectsStorage.set([
     ProjectUtils.create(
