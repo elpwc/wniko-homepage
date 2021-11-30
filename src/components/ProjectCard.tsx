@@ -4,6 +4,7 @@ import { LangStorage, ProjectsStorage } from '../dataStorage/storage';
 import LangUtils from '../lang/langUtils';
 import { GithubOutlined, SendOutlined } from '@ant-design/icons';
 import Technology from '../utils/technology';
+import React from 'react';
 
 interface P {
   project: Project;

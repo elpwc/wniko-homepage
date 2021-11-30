@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Project from '../components/ProjectCard';
 import ProjectList from '../components/ProjectList';
 import { CurrentPageStorage } from '../dataStorage/storage';
+import React from 'react';
 
 interface P {
   update: boolean;

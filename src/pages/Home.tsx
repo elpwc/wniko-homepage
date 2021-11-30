@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { CurrentPageStorage } from '../dataStorage/storage';
+import React from 'react';
 
 interface P {
   update: boolean;

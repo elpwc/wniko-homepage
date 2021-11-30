@@ -13,7 +13,8 @@ import LangUtils from './lang/langUtils';
 import { UsingTechs } from './staticData/usingTechs';
 import Main from './Main';
 import Page404 from './pages/404';
-import DBUtils from './db/dbutils';
+//import DBUtils from './db/dbutils';
+import React from 'react';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -22,6 +23,7 @@ function App() {
     setUpdate(!update);
   };
 
+  /*
   useEffect(() => {
     // 初始化数据库
     if (!DBUtils.Tables) {
@@ -29,7 +31,7 @@ function App() {
       DBUtils.synchDB();
     }
   }, []);
-
+*/
   ProjectsStorage.set([
     ProjectUtils.create(
       'Wotageipedia - ヲタ芸百科',
