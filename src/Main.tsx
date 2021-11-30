@@ -1,4 +1,4 @@
-import { Button, Col, Input, Layout, Menu, message, Modal, Row, Select, Space } from 'antd';
+import { Button, Checkbox, Col, Input, Layout, Menu, message, Modal, Row, Select, Space } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
 import React, { useState } from 'react';
 import { Link, Navigate, Outlet, useNavigate, useParams, useLocation } from 'react-router-dom';
@@ -17,6 +17,7 @@ interface P {
 function Main(props: P) {
   const [update, setUpdate]: [boolean, any] = useState(false);
   const [pw, setPw]: [string, any] = useState('');
+  const [rememberPw, setRememberPw]: [boolean, any] = useState(false);
 
   const updateNow = () => {
     setUpdate(!update);
@@ -125,6 +126,11 @@ function Main(props: P) {
                       }}
                       value={pw}
                     />
+                    <Checkbox
+                      onChange={(e) => {
+                        setRememberPw(e.target.checked);
+                      }}
+                    ></Checkbox>
                   </Modal>
                 </>
               )}
