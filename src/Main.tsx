@@ -2,7 +2,7 @@ import { Button, Checkbox, Col, Input, Layout, Menu, message, Modal, Row, Select
 import { Header } from 'antd/lib/layout/layout';
 import React, { useState } from 'react';
 import { Link, Navigate, Outlet, useNavigate, useParams, useLocation } from 'react-router-dom';
-import { CurrentPageStorage, LangStorage, ProjectsStorage, AdminModeStorage } from './dataStorage/storage';
+import { CurrentPageStorage, LangStorage, ProjectsStorage, AdminModeStorage, DeviceStorage } from './dataStorage/storage';
 import BackgroundImage from './resource/bg.jpg';
 import LangUtils from './lang/langUtils';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
@@ -85,7 +85,7 @@ function Main(props: P) {
                   onClick={() => {
                     message.success('再会~');
                     sessionStorage.setItem('admin', 'false');
-                    cookie.save('auto-admin', 'false', {path: '/'});
+                    cookie.save('auto-admin', 'false', { path: '/' });
                     AdminModeStorage.set(0);
                     props.setUpdate();
                   }}
@@ -110,7 +110,7 @@ function Main(props: P) {
                     onOk={() => {
                       if (pw === AdminPassword) {
                         if (rememberPw) {
-                          cookie.save('auto-admin', 'true', {path: '/'});
+                          cookie.save('auto-admin', 'true', { path: '/' });
                           console.log(1141514, cookie.load('auto-admin'));
                         }
                         sessionStorage.setItem('admin', 'true');
@@ -192,7 +192,7 @@ function Main(props: P) {
         }}
       >
         <Row>
-          <Col span={12} offset={6}>
+          <Col span={DeviceStorage.value === 1 ? 24 : 14} offset={DeviceStorage.value === 1 ? 0 : 5}>
             <Outlet />
           </Col>
         </Row>

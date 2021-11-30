@@ -5,7 +5,7 @@ import './App.css';
 import Blogs from './pages/Blogs';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import { ProjectsStorage, AdminModeStorage } from './dataStorage/storage';
+import { ProjectsStorage, AdminModeStorage, DeviceStorage } from './dataStorage/storage';
 import { DevState, ProjectUtils } from './utils/project';
 import Illust from './pages/Illust';
 import Contact from './pages/Contact';
@@ -37,12 +37,14 @@ function App() {
         AdminModeStorage.set(2);
       }
     } else {
-      cookie.save('auto-admin', 'false', {path: '/'});
-  
+      cookie.save('auto-admin', 'false', { path: '/' });
     }
   }
 
-
+  // 判断设备
+  const isMobile: boolean = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+  DeviceStorage.set(isMobile ? 1 : 0);
+  console.log('device: ', isMobile);
 
   useEffect(() => {
     // 初始化数据
