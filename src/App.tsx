@@ -13,7 +13,6 @@ import LangUtils from './lang/langUtils';
 import { UsingTechs } from './staticData/usingTechs';
 import Main from './Main';
 import Page404 from './pages/404';
-import DBUtils from './db/dbutils';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -23,11 +22,7 @@ function App() {
   };
 
   useEffect(() => {
-    // 初始化数据库
-    if (!DBUtils.Tables) {
-      DBUtils.initAllTables();
-      DBUtils.synchDB();
-    }
+    // 初始化数据
   }, []);
 
   ProjectsStorage.set([

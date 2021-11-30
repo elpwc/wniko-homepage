@@ -20,3 +20,5 @@ export const LangStorage: Storage<Lang> = new Storage<Lang>(0);
 export const ProjectsStorage: Storage<Project[]> = new Storage<Project[]>([]);
 
 export const CurrentPageStorage: Storage<string> = new Storage<string>('home');
+
+export const AdminModeStorage: Storage<number> = new Storage<number>(0); // 0 not admin, 1 open requireWin, 2 admin mode
