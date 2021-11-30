@@ -192,7 +192,7 @@ function Main(props: P) {
         }}
       >
         <Row>
-          <Col span={DeviceStorage.value === 1 ? 24 : 14} offset={DeviceStorage.value === 1 ? 0 : 5}>
+          <Col span={DeviceStorage.value === 1 ? 22 : 14} offset={DeviceStorage.value === 1 ? 1 : 5}>
             <Outlet />
           </Col>
         </Row>
