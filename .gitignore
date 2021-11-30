@@ -24,3 +24,6 @@ yarn-error.log*
 
 /src/db/dbconfigs/config/dbconfig.debug.json
 /src/db/dbconfigs/config/dbconfig.json
+
+db.old/
+ormconfig.json
