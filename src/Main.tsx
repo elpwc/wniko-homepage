@@ -7,6 +7,8 @@ import BackgroundImage from './resource/bg.jpg';
 import LangUtils from './lang/langUtils';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { AdminPassword } from './staticData/adminPassword';
+import cookie from 'react-cookies';
+
 const { Option } = Select;
 
 interface P {
@@ -82,6 +84,8 @@ function Main(props: P) {
                 <Button
                   onClick={() => {
                     message.success('再会~');
+                    sessionStorage.setItem('admin', 'false');
+                    cookie.save('auto-admin', 'false', {path: '/'});
                     AdminModeStorage.set(0);
                     props.setUpdate();
                   }}
@@ -102,8 +106,14 @@ function Main(props: P) {
                   <Modal
                     title='~里世界的入口~'
                     visible={AdminModeStorage.value === 1}
+                    // 登录
                     onOk={() => {
                       if (pw === AdminPassword) {
+                        if (rememberPw) {
+                          cookie.save('auto-admin', 'true', {path: '/'});
+                          console.log(1141514, cookie.load('auto-admin'));
+                        }
+                        sessionStorage.setItem('admin', 'true');
                         message.success('欢迎来到里世界~');
                         AdminModeStorage.set(2);
                       } else {
@@ -118,19 +128,23 @@ function Main(props: P) {
                     okText='进入里世界~'
                     cancelText='算了'
                   >
-                    <Input.Password
-                      placeholder='口令'
-                      iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                      onChange={(e) => {
-                        setPw(e.target.value);
-                      }}
-                      value={pw}
-                    />
-                    <Checkbox
-                      onChange={(e) => {
-                        setRememberPw(e.target.checked);
-                      }}
-                    ></Checkbox>
+                    <Space size='large'>
+                      <Input.Password
+                        placeholder='口令'
+                        iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                        onChange={(e) => {
+                          setPw(e.target.value);
+                        }}
+                        value={pw}
+                      />
+                      <Checkbox
+                        onChange={(e) => {
+                          setRememberPw(e.target.checked);
+                        }}
+                      >
+                        以后直接进入里世界~
+                      </Checkbox>
+                    </Space>
                   </Modal>
                 </>
               )}

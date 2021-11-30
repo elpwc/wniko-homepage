@@ -5,7 +5,7 @@ import './App.css';
 import Blogs from './pages/Blogs';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import { ProjectsStorage } from './dataStorage/storage';
+import { ProjectsStorage, AdminModeStorage } from './dataStorage/storage';
 import { DevState, ProjectUtils } from './utils/project';
 import Illust from './pages/Illust';
 import Contact from './pages/Contact';
@@ -13,6 +13,7 @@ import LangUtils from './lang/langUtils';
 import { UsingTechs } from './staticData/usingTechs';
 import Main from './Main';
 import Page404 from './pages/404';
+import cookie from 'react-cookies';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -20,6 +21,28 @@ function App() {
   const updateNow = () => {
     setUpdate(!update);
   };
+
+  // 判断刷新后是否是管理员模式
+  const isAdmin = sessionStorage.getItem('admin');
+  if (isAdmin) {
+    if (isAdmin === 'true') {
+      AdminModeStorage.set(2);
+    }
+  } else {
+    sessionStorage.setItem('admin', 'false');
+    const isAdminFromCookie = cookie.load('auto-admin');
+    console.log('cookie', isAdminFromCookie);
+    if (isAdminFromCookie) {
+      if (isAdminFromCookie === 'true') {
+        AdminModeStorage.set(2);
+      }
+    } else {
+      cookie.save('auto-admin', 'false', {path: '/'});
+  
+    }
+  }
+
+
 
   useEffect(() => {
     // 初始化数据
