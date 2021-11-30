@@ -64,6 +64,23 @@ export default class LangUtils {
     }
   }
 
+  static LangToEnumStr(lang: Lang): string {
+    switch (lang) {
+      case Lang.zh_cn:
+        return 'zh_cn';
+      case Lang.zh_tw:
+        return 'zh_tw';
+      case Lang.ja:
+        return 'ja';
+      case Lang.ko:
+        return 'ko';
+      case Lang.en:
+        return 'en';
+      default:
+        return 'zh_cn';
+    }
+  }
+
   // 获取包含所有enum值的字符串数组
   static getEnumStrings(): string[] {
     return Object.keys(Lang).filter((k) => typeof Lang[k as any] === 'number');
