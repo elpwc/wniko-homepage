@@ -27,7 +27,7 @@ function Main(props: P) {
 
   const params = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
+  const mylocation = useLocation();
 
   const currentLang: string = String(params.lang).toLowerCase().replace('-', '_');
 
@@ -155,7 +155,7 @@ function Main(props: P) {
                 defaultValue='zh_cn'
                 style={{ width: 120 }}
                 onChange={(value) => {
-                  navigate(`/${value.replace('_', '-')}/` + location.pathname.split('/').slice(2).join('/'));
+                  navigate(`/${value.replace('_', '-')}/` + mylocation.pathname.split('/').slice(2).join('/'));
                   props.setUpdate();
                 }}
               >

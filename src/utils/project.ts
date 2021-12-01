@@ -9,6 +9,7 @@ export enum DevState {
 }
 
 export default interface Project {
+  id: number;
   name: string;
   devState: DevState;
   url: string;
@@ -31,6 +32,7 @@ export class ProjectUtils {
     startDate: string = '202101011180000'
   ): Project {
     return {
+      id: 0,
       name: name,
       description: description,
       url: url,

@@ -1,4 +1,5 @@
 import { Lang } from '../lang/langUtils';
+import Blog from '../utils/blog';
 import Project from '../utils/project';
 
 class Storage<T> {
@@ -18,6 +19,8 @@ class Storage<T> {
 export const LangStorage: Storage<Lang> = new Storage<Lang>(0);
 
 export const ProjectsStorage: Storage<Project[]> = new Storage<Project[]>([]);
+
+export const BlogsStorage: Storage<Blog[]> = new Storage<Blog[]>([]);
 
 export const CurrentPageStorage: Storage<string> = new Storage<string>('home');
 

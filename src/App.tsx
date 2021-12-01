@@ -14,6 +14,7 @@ import { UsingTechs } from './staticData/usingTechs';
 import Main from './Main';
 import Page404 from './pages/404';
 import cookie from 'react-cookies';
+import BlogView from './pages/BlogView';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -120,6 +121,17 @@ function App() {
             }
           ></Route>
           <Route
+            path='blog/:blogid'
+            element={
+              <BlogView
+                update={update}
+                setUpdate={() => {
+                  updateNow();
+                }}
+              />
+            }
+          ></Route>
+          <Route
             path='illust'
             element={
               <Illust
@@ -132,6 +144,17 @@ function App() {
           ></Route>
           <Route
             path='contact'
+            element={
+              <Contact
+                update={update}
+                setUpdate={() => {
+                  updateNow();
+                }}
+              />
+            }
+          ></Route>
+          <Route
+            path='404'
             element={
               <Contact
                 update={update}
