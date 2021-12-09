@@ -1,6 +1,6 @@
 import { Card, Space, Tag, Tooltip } from 'antd';
 import Project, { DevState } from '../utils/project';
-import { LangStorage, ProjectsStorage } from '../dataStorage/storage';
+import { LangStorage } from '../dataStorage/storage';
 import LangUtils from '../lang/langUtils';
 import { GithubOutlined, SendOutlined } from '@ant-design/icons';
 import Technology from '../utils/technology';

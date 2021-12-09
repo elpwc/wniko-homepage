@@ -1,6 +1,6 @@
 import * as ZhCn from './zh_cn.json';
 import * as Ja from './ja.json';
-import { LangStorage, ProjectsStorage } from '../dataStorage/storage';
+import { LangStorage } from '../dataStorage/storage';
 
 export enum Lang {
   zh_cn,

@@ -5,7 +5,7 @@ import './App.css';
 import Blogs from './pages/Blogs';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import { ProjectsStorage, AdminModeStorage, DeviceStorage } from './dataStorage/storage';
+import { AdminModeStorage, DeviceStorage } from './dataStorage/storage';
 import { DevState, ProjectUtils } from './utils/project';
 import Illust from './pages/Illust';
 import Contact from './pages/Contact';
@@ -15,7 +15,6 @@ import Main from './Main';
 import Page404 from './pages/404';
 import cookie from 'react-cookies';
 import BlogView from './pages/BlogView';
-import init_debug_data from './staticData/initDebugData';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -51,8 +50,6 @@ function App() {
   useEffect(() => {
     // 初始化数据
   }, []);
-
-  init_debug_data();
 
   return (
     <div className='App'>

@@ -2,7 +2,7 @@ import { Button, Checkbox, Col, Input, Layout, Menu, message, Modal, Row, Select
 import { Header } from 'antd/lib/layout/layout';
 import React, { useState } from 'react';
 import { Link, Navigate, Outlet, useNavigate, useParams, useLocation } from 'react-router-dom';
-import { CurrentPageStorage, LangStorage, ProjectsStorage, AdminModeStorage, DeviceStorage } from './dataStorage/storage';
+import { CurrentPageStorage, LangStorage, AdminModeStorage, DeviceStorage } from './dataStorage/storage';
 import BackgroundImage from './resource/bg.jpg';
 import LangUtils from './lang/langUtils';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';

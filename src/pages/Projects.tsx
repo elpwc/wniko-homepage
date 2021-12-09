@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Project from '../components/ProjectCard';
 import ProjectList from '../components/ProjectList';
 import { CurrentPageStorage } from '../dataStorage/storage';
+import init_debug_data from '../staticData/initDebugData';
 
 interface P {
   update: boolean;
@@ -22,6 +23,7 @@ export default function Projects(props: P) {
         setUpdate={() => {
           setUpdate(!update);
         }}
+        projects={init_debug_data.projects}
       />
     </>
   );
