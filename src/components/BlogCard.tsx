@@ -3,6 +3,8 @@ import LangUtils from '../lang/langUtils';
 import { GithubOutlined, SendOutlined } from '@ant-design/icons';
 import Technology from '../utils/technology';
 import Blog from '../utils/blog';
+import ReactMarkdown from 'react-markdown';
+import { Link } from 'react-router-dom';
 
 interface P {
   blog: Blog;
@@ -16,7 +18,7 @@ export default function BlogCard(props: P) {
       <Card
         title={
           <>
-            <span>{props.blog.title}</span>
+            <span>{<Link to={'./'+props.blog.id}>{props.blog.title}</Link>}</span>
           </>
         }
         extra={
@@ -28,7 +30,7 @@ export default function BlogCard(props: P) {
       >
         <Space direction='vertical'>
           <div>
-            <p>{props.blog.content}</p>
+            <ReactMarkdown children={props.blog.content}/>
           </div>
         </Space>
       </Card>

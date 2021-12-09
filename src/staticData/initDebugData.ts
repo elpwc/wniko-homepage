@@ -24,7 +24,7 @@ class init_debug_data {
     ProjectUtils.create('RUA2', 'az', DevState.Dispose),
   ];
 
-  public static blogs = [BlogUtils.create('My First Blog!', '<p>RUA!</p>', 'wniko'), BlogUtils.create('摸了', '<p>az</p>', 'wniko')];
+  public static blogs = [BlogUtils.create('My First Blog!', '## RUA!', 'wniko', 1), BlogUtils.create('摸了', '[az]()', 'wniko', 2)];
 }
 
 export default init_debug_data;

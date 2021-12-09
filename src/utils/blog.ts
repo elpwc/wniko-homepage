@@ -1,3 +1,5 @@
+import init_debug_data from '../staticData/initDebugData';
+
 export default interface Blog {
   id: number;
   title: string;
@@ -11,9 +13,9 @@ export default interface Blog {
 }
 
 export class BlogUtils {
-  static create(title: string, content: string, author: string = 'wniko', access: 'public' | 'urasekai' | 'private' = 'public') {
+  static create(title: string, content: string, author: string = 'wniko', id: number = 0, access: 'public' | 'urasekai' | 'private' = 'public') {
     return {
-      id: 0,
+      id: id,
       title: title,
       author: author,
       viewCount: 0,
@@ -25,7 +27,13 @@ export class BlogUtils {
     };
   }
 
-  static exist(id: number): boolean{
-    return false;
+  static exist(id: number): boolean {
+    let res = false;
+    init_debug_data.blogs.forEach((b) => {
+      if (b.id === id) {
+        res = true;
+      }
+    });
+    return res;
   }
 }
