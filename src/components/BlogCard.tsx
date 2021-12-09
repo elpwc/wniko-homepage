@@ -18,7 +18,7 @@ export default function BlogCard(props: P) {
       <Card
         title={
           <>
-            <span>{<Link to={'./'+props.blog.id}>{props.blog.title}</Link>}</span>
+            <span>{<Link to={'./' + props.blog.id}>{props.blog.title}</Link>}</span>
           </>
         }
         extra={
@@ -29,8 +29,29 @@ export default function BlogCard(props: P) {
         style={{}}
       >
         <Space direction='vertical'>
-          <div>
-            <ReactMarkdown children={props.blog.content}/>
+          <div style={{ height: '80px' }}>
+            {/*<ReactMarkdown children={props.blog.content}/>*/}
+            <Space>
+              <p className='bloginfo'>{props.blog.author}</p>
+              <p className='bloginfo'>
+                创建：
+                {
+                  // @ts-ignore
+                  props.blog.createTime.format('yyyy-MM-dd hh:mm:ss')
+                }
+              </p>
+              <p className='bloginfo'>
+                修改：
+                {
+                  // @ts-ignore
+                  props.blog.updateTime.format('yyyy-MM-dd hh:mm:ss')
+                }
+              </p>
+              <p className='bloginfo'>
+                访问量：
+                {props.blog.viewCount}
+              </p>
+            </Space>
           </div>
         </Space>
       </Card>

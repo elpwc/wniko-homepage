@@ -10,6 +10,8 @@ export default interface Blog {
   location: string;
   content: string;
   access: 'public' | 'urasekai' | 'private';
+  createTime: Date;
+  updateTime: Date;
 }
 
 export class BlogUtils {
@@ -24,6 +26,8 @@ export class BlogUtils {
       location: '',
       content: content,
       access: access,
+      createTime: new Date(),
+      updateTime: new Date(),
     };
   }
 

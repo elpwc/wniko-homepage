@@ -13,5 +13,9 @@ export default function Blogs(props: P) {
     CurrentPageStorage.set('blogs');
     props.setUpdate();
   }, []);
-  return <><BlogList update={props.update} setUpdate={props.setUpdate} blogs={init_debug_data.blogs}></BlogList></>;
+  return (
+    <>
+      <BlogList update={props.update} setUpdate={props.setUpdate} blogs={init_debug_data.blogs}></BlogList>
+    </>
+  );
 }
