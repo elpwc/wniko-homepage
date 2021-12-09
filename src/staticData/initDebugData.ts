@@ -1,3 +1,4 @@
+import { BlogUtils } from '../utils/blog';
 import { DevState, ProjectUtils } from '../utils/project';
 import { UsingTechs } from './usingTechs';
 
@@ -23,7 +24,7 @@ class init_debug_data {
     ProjectUtils.create('RUA2', 'az', DevState.Dispose),
   ];
 
-  public static blogs = [];
+  public static blogs = [BlogUtils.create('My First Blog!', '<p>RUA!</p>', 'wniko'), BlogUtils.create('摸了', '<p>az</p>', 'wniko')];
 }
 
 export default init_debug_data;

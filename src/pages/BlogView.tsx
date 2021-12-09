@@ -9,6 +9,7 @@ interface P {
   setUpdate: () => void;
 }
 
+// Exploring page for each blog.
 export default function BlogView(props: P) {
   const [blog, setBlog]: [Blog, any] = useState(BlogUtils.create('', ''));
   const params = useParams();
