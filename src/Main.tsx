@@ -18,12 +18,16 @@ interface P {
 
 function Main(props: P) {
   const [update, setUpdate]: [boolean, any] = useState(false);
-  const [pw, setPw]: [string, any] = useState('');
-  const [rememberPw, setRememberPw]: [boolean, any] = useState(false);
-
   const updateNow = () => {
     setUpdate(!update);
   };
+
+  // Inputed admin password in Admin Win
+  const [pw, setPw]: [string, any] = useState('');
+  // Admin Win para
+  const [rememberPw, setRememberPw]: [boolean, any] = useState(false);
+  // Admin Win state
+  const [adminWinState, setAdminWinState]: [number, any] = useState(0); // 0 not admin, 1 open requireWin, 2 admin mode
 
   const params = useParams();
   const navigate = useNavigate();
@@ -80,12 +84,15 @@ function Main(props: P) {
             </Menu.Item>
 
             <Menu.Item key='admin' disabled style={{ cursor: 'default', position: 'absolute', right: '200px' }}>
-              {AdminModeStorage.value === 2 ? (
+              {adminWinState === 2 ? (
                 <Button
                   onClick={() => {
                     message.success('再会~');
                     sessionStorage.setItem('admin', 'false');
                     cookie.save('auto-admin', 'false', { path: '/' });
+                    // Close admin win
+                    setAdminWinState(0);
+                    // Set global win state
                     AdminModeStorage.set(0);
                     props.setUpdate();
                   }}
@@ -97,7 +104,7 @@ function Main(props: P) {
                   <Button
                     onClick={() => {
                       setPw('');
-                      AdminModeStorage.set(1);
+                      setAdminWinState(1);
                       props.setUpdate();
                     }}
                   >
@@ -105,7 +112,7 @@ function Main(props: P) {
                   </Button>
                   <Modal
                     title='~里世界的入口~'
-                    visible={AdminModeStorage.value === 1}
+                    visible={adminWinState === 1}
                     // 登录
                     onOk={() => {
                       if (pw === AdminPassword) {
@@ -115,14 +122,16 @@ function Main(props: P) {
                         }
                         sessionStorage.setItem('admin', 'true');
                         message.success('欢迎来到里世界~');
-                        AdminModeStorage.set(2);
+                        setAdminWinState(2);
+                        // Set global user mode to ADMIN
+                        AdminModeStorage.set(1);
                       } else {
                         message.warning('来自守门人的传话：咳..前往里世界的口令不对');
                       }
                       props.setUpdate();
                     }}
                     onCancel={() => {
-                      AdminModeStorage.set(0);
+                      setAdminWinState(0);
                       props.setUpdate();
                     }}
                     okText='进入里世界~'

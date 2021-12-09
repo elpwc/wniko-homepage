@@ -1,3 +1,4 @@
+// Subject of a blog.
 export default interface BlogSubject {
   id: number;
   title: string;
