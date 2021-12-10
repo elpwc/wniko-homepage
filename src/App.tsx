@@ -15,6 +15,7 @@ import Main from './Main';
 import Page404 from './pages/404';
 import cookie from 'react-cookies';
 import BlogView from './pages/BlogView';
+import TestPage from './pages/test';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -125,6 +126,17 @@ function App() {
             path='contact'
             element={
               <Contact
+                update={update}
+                setUpdate={() => {
+                  updateNow();
+                }}
+              />
+            }
+          ></Route>
+                    <Route
+            path='test'
+            element={
+              <TestPage
                 update={update}
                 setUpdate={() => {
                   updateNow();
