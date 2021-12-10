@@ -169,7 +169,7 @@ function Main(props: P) {
                 }}
               >
                 {LangUtils.getEnumStrings().map((lang: string) => {
-                  return <Option value={lang}>{LangUtils.enumStrToLangName(lang)}</Option>;
+                  return <Option value={lang} key={lang}>{LangUtils.enumStrToLangName(lang)}</Option>;
                 })}
               </Select>
             </Menu.Item>
