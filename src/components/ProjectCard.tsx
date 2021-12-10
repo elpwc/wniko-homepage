@@ -104,7 +104,7 @@ export default function ProjectCard(props: P) {
           <div>
             {props.project.technologies.map((tech: Technology) => {
               return (
-                <a target='_blank' href={tech.url} rel='noreferrer'>
+                <a target='_blank' href={tech.url} rel='noreferrer' key={tech.name}>
                   <Tag style={{ fontSize: '10px' }} color={tech.color}>
                     {tech.name}
                   </Tag>

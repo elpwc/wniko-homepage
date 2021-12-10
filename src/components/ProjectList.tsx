@@ -16,7 +16,7 @@ export default function ProjectList(props: P) {
     <>
       <Space direction='vertical' style={{ width: '-webkit-fill-available' }}>
         {props.projects.map((project: Project) => {
-          return <ProjectCard project={project} />;
+          return <ProjectCard project={project} key={project.id}/>;
         })}
       </Space>
     </>

@@ -15,7 +15,7 @@ export default function BlogList(props: P) {
     <>
       <Space direction='vertical' style={{ width: '-webkit-fill-available' }}>
         {props.blogs.map((blog: Blog) => {
-          return <BlogCard blog={blog} />;
+          return <BlogCard blog={blog} key={blog.id}/>;
         })}
       </Space>
     </>
