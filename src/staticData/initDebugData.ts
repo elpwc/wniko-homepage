@@ -1,6 +1,5 @@
 import { BlogUtils } from '../utils/blog';
 import { DevState, ProjectUtils } from '../utils/project';
-import { UsingTechs } from './usingTechs';
 
 class init_debug_data {
   public static projects = [
@@ -8,14 +7,14 @@ class init_debug_data {
       'Wotageipedia - ヲタ芸百科',
       '御宅艺副歌技视频分类收录网站 (绝赞开发进行中♥)',
       DevState.Developping,
-      [UsingTechs.reactjs, UsingTechs.sequelize, UsingTechs.nestjs, UsingTechs.antd, UsingTechs.typescript],
+      ['reactjs', 'sequelize', 'nestjs', 'antd', 'typescript'],
       'https://github.com/elpwc/wotageipedia'
     ),
     ProjectUtils.create(
       'アニメ整理 ANIMESEIRI',
       '一目了然的追番进度管理',
       DevState.Developping,
-      [UsingTechs.php, UsingTechs.scss],
+      ['php', 'scss'],
       'https://github.com/elpwc/ANIME-SEIRI.web',
       'http://www.elpwc.com/animeseiri'
     ),

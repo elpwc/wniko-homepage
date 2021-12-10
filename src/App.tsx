@@ -10,7 +10,6 @@ import { DevState, ProjectUtils } from './utils/project';
 import Illust from './pages/Illust';
 import Contact from './pages/Contact';
 import LangUtils from './lang/langUtils';
-import { UsingTechs } from './staticData/usingTechs';
 import Main from './Main';
 import Page404 from './pages/404';
 import cookie from 'react-cookies';

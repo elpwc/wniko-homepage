@@ -1,5 +1,3 @@
-import Technology from './technology';
-
 export enum DevState {
   Empty,
   Developping,
@@ -15,9 +13,9 @@ export default interface Project {
   url: string;
   githubUrl: string;
   description: string;
-  startDate: any;
+  startDate: Date;
   version: string;
-  technologies: Technology[];
+  technologies: string[];
 }
 
 export class ProjectUtils {
@@ -25,11 +23,11 @@ export class ProjectUtils {
     name: string,
     description: string = '',
     devState: DevState = DevState.Planning,
-    technologies: Technology[] = [],
+    technologies: string[] = [],
     githubUrl: string = '',
     url: string = '',
     version: string = '',
-    startDate: string = '202101011180000'
+    startDate: Date = new Date()
   ): Project {
     return {
       id: 0,

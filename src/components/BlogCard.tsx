@@ -1,7 +1,6 @@
 import { Card, Space, Tag, Tooltip } from 'antd';
 import LangUtils from '../lang/langUtils';
 import { GithubOutlined, SendOutlined } from '@ant-design/icons';
-import Technology from '../utils/technology';
 import Blog from '../utils/blog';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';

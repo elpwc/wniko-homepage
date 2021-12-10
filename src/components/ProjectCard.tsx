@@ -3,7 +3,6 @@ import Project, { DevState } from '../utils/project';
 import { LangStorage } from '../dataStorage/storage';
 import LangUtils from '../lang/langUtils';
 import { GithubOutlined, SendOutlined } from '@ant-design/icons';
-import Technology from '../utils/technology';
 
 interface P {
   project: Project;
@@ -58,6 +57,10 @@ export default function ProjectCard(props: P) {
     );
   };
 
+  const getRandColor = () => {
+    return `rgb(${Math.ceil(Math.random()*255)},${Math.ceil(Math.random()*255)},${Math.ceil(Math.random()*255)})`;
+  };
+
   return (
     <>
       <Card
@@ -102,13 +105,11 @@ export default function ProjectCard(props: P) {
       >
         <Space direction='vertical'>
           <div>
-            {props.project.technologies.map((tech: Technology) => {
+            {props.project.technologies.map((tech: string) => {
               return (
-                <a target='_blank' href={tech.url} rel='noreferrer' key={tech.name}>
-                  <Tag style={{ fontSize: '10px' }} color={tech.color}>
-                    {tech.name}
+                  <Tag style={{ fontSize: '10px' }} color={getRandColor()}>
+                    {tech}
                   </Tag>
-                </a>
               );
             })}
           </div>
