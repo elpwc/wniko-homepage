@@ -107,6 +107,20 @@ export default function Contact(props: P) {
       url: 'https://www.pixiv.net/users/18240502',
       desc: '',
     },
+    {
+      websiteLogo: 'https://www.pinclipart.com/picdir/middle/100-1003109_steam-clip-art.png',
+      website: 'Steam',
+      title: 'うにうに',
+      url: 'https://steamcommunity.com/id/elpwc/',
+      desc: '',
+    },
+    {
+      websiteLogo: 'http://image.eostatic.com/l/5332/201902115c60e858247ce.png',
+      website: 'Bilibili',
+      title: '海胆子うにこ_wniko',
+      url: 'https://space.bilibili.com/19893550',
+      desc: '',
+    },
   ];
 
   return (
@@ -116,24 +130,24 @@ export default function Contact(props: P) {
       </div>
 
       <div style={{ position: 'absolute', zIndex: 0, paddingTop: '30px', height: '100%', width: '100%' }}>
-        <div className='white-card' style={{ position: 'absolute', top: '-30px', paddingLeft: '300px', paddingTop: '30px', height: '220px' }}>
+        <div className='white-card' style={{ position: 'absolute', top: '-30px', paddingLeft: '250px', paddingTop: '30px', height: '220px' }}>
           <div style={{ position: 'absolute', bottom: '0px' }}>
             <Space size='large'>
               <h1>
                 Wniko{' '}
-                <span style={{ color: 'rgb(100, 100, 100)' }}>
+                <span className='hoverUnderline' style={{cursor: 'help', color: 'rgb(150, 150, 150)' }}>
                   <i>"Elpwc"</i>
                 </span>{' '}
                 Wang
               </h1>
-              <h3>性别: ?</h3>
+              <h3>性别: 海胆<sup><Tooltip title='海胆就是海胆，浑身带刺的那种'>?</Tooltip></sup></h3>
               <h3>居住地：淫梦大公国</h3>
               <h3></h3>
             </Space>
           </div>
         </div>
 
-        <div className='white-card' style={{ height: '200px', marginTop: '220px', padding: '30px 10px' }}>
+        <div className='white-card' style={{ height: 'fit-content', marginTop: '220px', padding: '30px 10px' }}>
           <div style={{ backgroundColor: 'plum', fontSize: '15px', position: 'absolute', color: 'white', left: '0px', width: '200px', textAlign: 'right', paddingRight: '20px' }}>
             <p>使用的技术</p>
           </div>
