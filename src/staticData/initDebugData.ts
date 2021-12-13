@@ -11,24 +11,13 @@ class init_debug_data {
       ['reactjs', 'sequelize', 'nestjs', 'antd', 'typescript'],
       'https://github.com/elpwc/wotageipedia'
     ),
-    ProjectUtils.create(
-      'アニメ整理 ANIMESEIRI',
-      '一目了然的追番进度管理',
-      DevState.Developping,
-      ['php', 'scss'],
-      'https://github.com/elpwc/ANIME-SEIRI.web',
-      'http://www.elpwc.com/animeseiri'
-    ),
+    ProjectUtils.create('アニメ整理 ANIMESEIRI', '一目了然的追番进度管理', DevState.Developping, ['php', 'scss'], 'https://github.com/elpwc/ANIME-SEIRI.web', 'http://www.elpwc.com/animeseiri'),
     ProjectUtils.create('City Counter Game', '猜城市名的web游戏 (待开发)', DevState.Planning),
     ProjectUtils.create('RUA', 'az', DevState.Done),
     ProjectUtils.create('RUA2', 'az', DevState.Dispose),
   ];
 
-  public static blogSubjects = [
-    BlogSubjectUtils.create(1,'杂记'),
-    BlogSubjectUtils.create(2,'web前端'),
-    BlogSubjectUtils.create(3,'rua'),
-  ];
+  public static blogSubjects = [BlogSubjectUtils.create(1, '杂记'), BlogSubjectUtils.create(2, 'web前端'), BlogSubjectUtils.create(3, 'rua')];
 
   public static blogs = [
     BlogUtils.create(

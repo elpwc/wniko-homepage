@@ -26,7 +26,8 @@ export default function FilterBar(props: P) {
   let fontSize: string = '15px';
   if (props.itemHeight) {
     itemHeight = props.itemHeight;
-  } if (props.fontSize) {
+  }
+  if (props.fontSize) {
     fontSize = props.fontSize;
   }
 

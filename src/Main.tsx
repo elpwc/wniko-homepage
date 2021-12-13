@@ -171,7 +171,11 @@ function Main(props: P) {
               >
                 {LangUtils.getEnumStrings().map((lang: string) => {
                   if (appconfig.usingLanguages.includes(LangUtils.enumStrToLang(lang))) {
-                    return <Option value={lang} key={lang}>{LangUtils.enumStrToLangName(lang)}</Option>;
+                    return (
+                      <Option value={lang} key={lang}>
+                        {LangUtils.enumStrToLangName(lang)}
+                      </Option>
+                    );
                   }
                 })}
               </Select>

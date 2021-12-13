@@ -10,7 +10,7 @@ export enum Lang {
   en,
   vi,
   id,
-  ms
+  ms,
 }
 
 export default class LangUtils {

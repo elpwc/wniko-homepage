@@ -1,23 +1,21 @@
-.item{
-    left: 0px;
-    width: 100%;
-    background-color: white;
-    border-bottom-color: gray;
-    border-bottom-style: solid;
-    border-bottom-width: 1px; 
-    cursor: pointer;
+.item {
+  left: 0px;
+  width: 100%;
+  background-color: white;
+  border-bottom-color: gray;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  cursor: pointer;
 }
 
-.item:hover{
-    
-    background-color: skyblue;
+.item:hover {
+  background-color: skyblue;
 }
 
-.selected{
-    color: white;
+.selected {
+  color: white;
 }
 
-.lastitem{
-    
-    border-bottom-style: none;
+.lastitem {
+  border-bottom-style: none;
 }
