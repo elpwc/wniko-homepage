@@ -15,6 +15,7 @@ import Page404 from './pages/404';
 import cookie from 'react-cookies';
 import BlogView from './pages/BlogView';
 import TestPage from './pages/test';
+import BlogEdit from './pages/BlogEdit';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -27,7 +28,7 @@ function App() {
   const isAdmin = sessionStorage.getItem('admin');
   if (isAdmin) {
     if (isAdmin === 'true') {
-      AdminModeStorage.set(2);
+      AdminModeStorage.set(1);
     }
   } else {
     sessionStorage.setItem('admin', 'false');
@@ -35,7 +36,7 @@ function App() {
     console.log('cookie', isAdminFromCookie);
     if (isAdminFromCookie) {
       if (isAdminFromCookie === 'true') {
-        AdminModeStorage.set(2);
+        AdminModeStorage.set(1);
       }
     } else {
       cookie.save('auto-admin', 'false', { path: '/' });
@@ -103,6 +104,17 @@ function App() {
             path='blog/:blogid'
             element={
               <BlogView
+                update={update}
+                setUpdate={() => {
+                  updateNow();
+                }}
+              />
+            }
+          ></Route>
+          <Route
+            path='blog/new'
+            element={
+              <BlogEdit
                 update={update}
                 setUpdate={() => {
                   updateNow();

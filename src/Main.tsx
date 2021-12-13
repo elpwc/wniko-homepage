@@ -28,7 +28,7 @@ function Main(props: P) {
   // Admin Win para
   const [rememberPw, setRememberPw]: [boolean, any] = useState(false);
   // Admin Win state
-  const [adminWinState, setAdminWinState]: [number, any] = useState(0); // 0 not admin, 1 open requireWin, 2 admin mode
+  const [adminWinState, setAdminWinState]: [number, any] = useState(AdminModeStorage.value === 1 ? 2 : 0); // 0 not admin, 1 open requireWin, 2 admin mode
 
   const params = useParams();
   const navigate = useNavigate();
@@ -170,7 +170,7 @@ function Main(props: P) {
                 }}
               >
                 {LangUtils.getEnumStrings().map((lang: string) => {
-                  if(appconfig.usingLanguages.includes(LangUtils.enumStrToLang(lang))){
+                  if (appconfig.usingLanguages.includes(LangUtils.enumStrToLang(lang))) {
                     return <Option value={lang} key={lang}>{LangUtils.enumStrToLangName(lang)}</Option>;
                   }
                 })}

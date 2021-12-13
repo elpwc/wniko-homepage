@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import BlogList from '../components/BlogList';
 import FilterBar from '../components/FilterBar';
 import LeftContent from '../components/LeftContent';
@@ -29,7 +30,7 @@ export default function Blogs(props: P) {
       <LeftContent update={props.update} setUpdate={props.setUpdate} marginRight={20}>
         <div style={{ marginTop: '20px', borderRadius: '5px' }}>
           {AdminModeStorage.value === 1? 
-          <Button style={{marginBottom: '10px'}}>写博客</Button>:<></>}
+          <Link to='./new'><Button style={{marginBottom: '10px'}}>写博客</Button></Link>:<></>}
           <FilterBar
             update={props.update}
             setUpdate={props.setUpdate}
