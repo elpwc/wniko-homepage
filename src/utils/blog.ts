@@ -9,13 +9,14 @@ export default interface Blog {
   lang: string;
   location: string;
   content: string;
+  headPageUrl: string;
   access: 'public' | 'urasekai' | 'private';
   createTime: Date;
   updateTime: Date;
 }
 
 export class BlogUtils {
-  static create(title: string, content: string, author: string = 'wniko', id: number = 0, access: 'public' | 'urasekai' | 'private' = 'public') {
+  static create(title: string, content: string, author: string = 'wniko', id: number = 0, access: 'public' | 'urasekai' | 'private' = 'public', headPageUrl: string = '') {
     return {
       id: id,
       title: title,
@@ -26,6 +27,7 @@ export class BlogUtils {
       location: '',
       content: content,
       access: access,
+      headPageUrl: headPageUrl,
       createTime: new Date(),
       updateTime: new Date(),
     };

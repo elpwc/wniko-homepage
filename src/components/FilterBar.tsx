@@ -6,6 +6,7 @@ interface P {
   setUpdate: () => void;
   items: { title: string; key: string }[];
   itemHeight?: number;
+  fontSize?: string;
   selectedKey: string;
   onClick: (key: string) => void;
 }
@@ -21,9 +22,12 @@ export default function FilterBar(props: P) {
     setUpdate(Math.random());
   };
 
-  let itemHeight: number = 40;
+  let itemHeight: number = 30;
+  let fontSize: string = '15px';
   if (props.itemHeight) {
     itemHeight = props.itemHeight;
+  } if (props.fontSize) {
+    fontSize = props.fontSize;
   }
 
   const moveFloatBlock = (totalTimes: number = 10, msPerMove: number = 10) => {
@@ -47,11 +51,11 @@ export default function FilterBar(props: P) {
 
   return (
     <>
-      <div style={{ fontSize: '20px' }}>
+      <div style={{ fontSize: fontSize }}>
         <div id='list_background' style={{ position: 'absolute', zIndex: 0, width: '100%', borderRadius: '5px', backgroundColor: 'white', padding: '5px 0px' }}>
-          {props.items.map((item) => {
+          {props.items.map((item, index) => {
             return (
-              <div key={item.key} className={'item' + (selected === item.key ? ' selected' : '')} style={{ height: `${itemHeight}px` }}>
+              <div key={item.key} className={'item' + (selected === item.key ? ' selected' : '') + (index === props.items.length - 1 ? ' lastitem' : '')} style={{ height: `${itemHeight}px` }}>
                 &nbsp;
               </div>
             );
@@ -92,7 +96,7 @@ export default function FilterBar(props: P) {
                   moveFloatBlock();
                   props.onClick(item.key);
                 }}
-                style={{ color: selected === item.key ? 'white' : 'black', height: `${itemHeight}px`, paddingLeft: '20px' }}
+                style={{ cursor: 'pointer', color: selected === item.key ? 'white' : 'black', height: `${itemHeight}px`, paddingLeft: '20px' }}
               >
                 {item.title}
               </div>

@@ -7,12 +7,12 @@ export default interface BlogSubject {
 }
 
 export class BlogSubjectUtils {
-  static create(title: string, description: string = '', access: 'public' | 'urasekai' | 'private' = 'public') {
+  static create(id: number, title: string, description: string = '', access: 'public' | 'urasekai' | 'private' = 'public') {
     return {
-      id: 0,
+      id: id,
       title: title,
       description: description,
-      access: 'public',
+      access: 'public' as 'public' | 'urasekai' | 'private',
     };
   }
 }

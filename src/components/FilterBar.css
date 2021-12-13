@@ -5,6 +5,7 @@
     border-bottom-color: gray;
     border-bottom-style: solid;
     border-bottom-width: 1px; 
+    cursor: pointer;
 }
 
 .item:hover{
@@ -14,4 +15,9 @@
 
 .selected{
     color: white;
+}
+
+.lastitem{
+    
+    border-bottom-style: none;
 }

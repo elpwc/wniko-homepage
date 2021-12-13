@@ -1,4 +1,5 @@
 import { BlogUtils } from '../utils/blog';
+import { BlogSubjectUtils } from '../utils/blogSubject';
 import { DevState, ProjectUtils } from '../utils/project';
 
 class init_debug_data {
@@ -21,6 +22,12 @@ class init_debug_data {
     ProjectUtils.create('City Counter Game', '猜城市名的web游戏 (待开发)', DevState.Planning),
     ProjectUtils.create('RUA', 'az', DevState.Done),
     ProjectUtils.create('RUA2', 'az', DevState.Dispose),
+  ];
+
+  public static blogSubjects = [
+    BlogSubjectUtils.create(1,'杂记'),
+    BlogSubjectUtils.create(2,'web前端'),
+    BlogSubjectUtils.create(3,'rua'),
   ];
 
   public static blogs = [
