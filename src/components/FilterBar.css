@@ -1,0 +1,17 @@
+.item{
+    left: 0px;
+    width: 100%;
+    background-color: white;
+    border-bottom-color: gray;
+    border-bottom-style: solid;
+    border-bottom-width: 1px; 
+}
+
+.item:hover{
+    
+    background-color: skyblue;
+}
+
+.selected{
+    color: white;
+}
