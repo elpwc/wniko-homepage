@@ -8,6 +8,7 @@ import LangUtils from './lang/langUtils';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { AdminPassword } from './staticData/adminPassword';
 import cookie from 'react-cookies';
+import appconfig from './appconfig';
 
 const { Option } = Select;
 
@@ -169,7 +170,9 @@ function Main(props: P) {
                 }}
               >
                 {LangUtils.getEnumStrings().map((lang: string) => {
-                  return <Option value={lang} key={lang}>{LangUtils.enumStrToLangName(lang)}</Option>;
+                  if(appconfig.usingLanguages.includes(LangUtils.enumStrToLang(lang))){
+                    return <Option value={lang} key={lang}>{LangUtils.enumStrToLangName(lang)}</Option>;
+                  }
                 })}
               </Select>
             </Menu.Item>

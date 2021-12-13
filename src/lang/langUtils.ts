@@ -8,6 +8,9 @@ export enum Lang {
   ja,
   ko,
   en,
+  vi,
+  id,
+  ms
 }
 
 export default class LangUtils {
@@ -42,6 +45,13 @@ export default class LangUtils {
         return L.utils.langs.ko;
       case Lang.en:
         return L.utils.langs.en;
+      case Lang.vi:
+        return L.utils.langs.vi;
+      case Lang.id:
+        return L.utils.langs.id;
+      case Lang.ms:
+        return L.utils.langs.ms;
+
       default:
         return L.utils.langs.zh_cn;
     }
@@ -59,6 +69,12 @@ export default class LangUtils {
         return Lang.ko;
       case 'en':
         return Lang.en;
+      case 'vi':
+        return Lang.vi;
+      case 'id':
+        return Lang.id;
+      case 'ms':
+        return Lang.ms;
       default:
         return Lang.zh_cn;
     }
@@ -76,6 +92,12 @@ export default class LangUtils {
         return 'ko';
       case Lang.en:
         return 'en';
+      case Lang.vi:
+        return 'vi';
+      case Lang.id:
+        return 'id';
+      case Lang.ms:
+        return 'ms';
       default:
         return 'zh_cn';
     }
