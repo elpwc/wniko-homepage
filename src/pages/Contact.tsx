@@ -5,11 +5,11 @@ import avatar from '../resource/avatar.png';
 import './contact.css';
 
 const imgs: [string, string, string][] = [
-  ['js.png', 'JavaScript', 'https://www.javascript.com/'],
+  ['js.png', 'JavaScript', 'https://www.ecma-international.org/'],
   ['ts.jpg', 'TypeScript', 'https://www.typescriptlang.org/'],
   ['es6.png', 'ES6', 'https://www.javascript.com/'],
-  ['html.jpg', 'HTML5', ''],
-  ['css.jpg', 'CSS3', ''],
+  ['html.jpg', 'HTML5', 'https://html.spec.whatwg.org/multipage/'],
+  ['css.jpg', 'CSS3', 'https://www.w3.org/Style/CSS/'],
   ['bootstrap.jpg', 'BootStrap', 'https://getbootstrap.com/'],
   ['csharp.jpg', 'C#', 'https://docs.microsoft.com/zh-cn/dotnet/csharp/'],
   ['dotnet.jpg', '.Net', 'https://docs.microsoft.com/zh-cn/dotnet/core/introduction'],
@@ -135,12 +135,17 @@ export default function Contact(props: P) {
             <Space size='large'>
               <h1>
                 Wniko{' '}
-                <span className='hoverUnderline' style={{cursor: 'help', color: 'rgb(150, 150, 150)' }}>
+                <span className='hoverUnderline' style={{ cursor: 'help', color: 'rgb(150, 150, 150)' }}>
                   <i>"Elpwc"</i>
                 </span>{' '}
                 Wang
               </h1>
-              <h3>性别: 海胆<sup><Tooltip title='海胆就是海胆，浑身带刺的那种'>?</Tooltip></sup></h3>
+              <h3>
+                性别: 海胆
+                <sup>
+                  <abbr title='海胆就是海胆，浑身带刺的那种'>?</abbr>
+                </sup>
+              </h3>
               <h3>居住地：淫梦大公国</h3>
               <h3></h3>
             </Space>
@@ -176,28 +181,30 @@ export default function Contact(props: P) {
             <p>取得联系</p>
           </div>
           <div style={{ marginTop: '50px' }}>
-            <List
-              itemLayout='horizontal'
-              dataSource={contactData}
-              renderItem={(item) => (
-                <List.Item>
-                  <List.Item.Meta
-                    avatar={typeof item.websiteLogo === 'string' ? <img alt={item.website} width='30px' src={item.websiteLogo} /> : item.websiteLogo}
-                    title={
-                      <>
-                        <span style={{ position: 'absolute', width: '200px' }}>{item.website}</span>
-                        <span style={{ position: 'absolute', left: '180px' }}>
-                          <a target='_blank' rel='noreferrer' href={item.url}>
-                            {item.title}
-                          </a>
-                        </span>
-                      </>
-                    }
-                    description={item.desc}
-                  />
-                </List.Item>
-              )}
-            />
+            <address>
+              <List
+                itemLayout='horizontal'
+                dataSource={contactData}
+                renderItem={(item) => (
+                  <List.Item>
+                    <List.Item.Meta
+                      avatar={typeof item.websiteLogo === 'string' ? <img alt={item.website} width='30px' src={item.websiteLogo} /> : item.websiteLogo}
+                      title={
+                        <>
+                          <span style={{ position: 'absolute', width: '200px' }}>{item.website}</span>
+                          <span style={{ position: 'absolute', left: '180px' }}>
+                            <a target='_blank' rel='noreferrer' href={item.url}>
+                              {item.title}
+                            </a>
+                          </span>
+                        </>
+                      }
+                      description={item.desc}
+                    />
+                  </List.Item>
+                )}
+              />
+            </address>
           </div>
         </div>
       </div>

@@ -48,32 +48,34 @@ export default function BlogView(props: P) {
       </div>
 
       <div style={{ backgroundColor: 'white', borderRadius: '5px', padding: '20px 50px', marginTop: '8px' }}>
-        <h1>{currentBlog.title}</h1>
-        <Space>
-          <p className='bloginfo'>{currentBlog.author}</p>
-          <p className='bloginfo'>
-            创建：
-            {
-              // @ts-ignore
-              currentBlog.createTime.format('yyyy-MM-dd hh:mm:ss')
-            }
-          </p>
-          <p className='bloginfo'>
-            修改：
-            {
-              // @ts-ignore
-              currentBlog.updateTime.format('yyyy-MM-dd hh:mm:ss')
-            }
-          </p>
-          <p className='bloginfo'>
-            访问量：
-            {currentBlog.viewCount}
-          </p>
-        </Space>
+        <article>
+          <h1>{currentBlog.title}</h1>
+          <Space>
+            <p className='bloginfo'>{currentBlog.author}</p>
+            <p className='bloginfo'>
+              创建：
+              {
+                // @ts-ignore
+                currentBlog.createTime.format('yyyy-MM-dd hh:mm:ss')
+              }
+            </p>
+            <p className='bloginfo'>
+              修改：
+              {
+                // @ts-ignore
+                currentBlog.updateTime.format('yyyy-MM-dd hh:mm:ss')
+              }
+            </p>
+            <p className='bloginfo'>
+              访问量：
+              {currentBlog.viewCount}
+            </p>
+          </Space>
 
-        <Divider style={{ marginTop: '10px', marginBottom: '20px' }} />
+          <Divider style={{ marginTop: '10px', marginBottom: '20px' }} />
 
-        <ReactMarkdown children={currentBlog.content} />
+          <ReactMarkdown children={currentBlog.content} />
+        </article>
       </div>
     </>
   );
