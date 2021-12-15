@@ -16,6 +16,7 @@ import cookie from 'react-cookies';
 import BlogView from './pages/BlogView';
 import TestPage from './pages/test';
 import BlogEdit from './pages/BlogEdit';
+import 'animate.css';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);

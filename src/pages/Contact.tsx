@@ -125,12 +125,12 @@ export default function Contact(props: P) {
 
   return (
     <>
-      <div style={{ position: 'absolute', zIndex: 2 }}>
+      <div className='animate__animeted animate__bounceIn' style={{ position: 'absolute', zIndex: 2 }}>
         <img onClick={avatarOnClick} style={{ cursor: 'pointer', borderRadius: '250px', transform: `rotate(${avatarRotate}deg)` }} width='250px' src={avatar} alt='wniko' />
       </div>
 
       <div style={{ position: 'absolute', zIndex: 0, paddingTop: '30px', height: '100%', width: '100%' }}>
-        <div className='white-card' style={{ position: 'absolute', top: '-30px', paddingLeft: '250px', paddingTop: '30px', height: '220px' }}>
+        <div className='white-card animate__animated animate__bounceInDown' style={{ position: 'absolute', top: '-30px', paddingLeft: '250px', paddingTop: '30px', height: '220px' }}>
           <div style={{ position: 'absolute', bottom: '0px' }}>
             <Space size='large'>
               <h1>
@@ -152,14 +152,14 @@ export default function Contact(props: P) {
           </div>
         </div>
 
-        <div className='white-card' style={{ height: 'fit-content', marginTop: '220px', padding: '30px 10px' }}>
+        <div className='white-card animate__animeted animate__bounceInLeft' style={{ height: 'fit-content', marginTop: '220px', padding: '30px 10px' }}>
           <div style={{ backgroundColor: 'plum', fontSize: '15px', position: 'absolute', color: 'white', left: '0px', width: '200px', textAlign: 'right', paddingRight: '20px' }}>
             <p>使用的技术</p>
           </div>
           <div style={{ marginTop: '50px' }}>
-            {imgImports.map((img) => {
+            {imgImports.map((img, index) => {
               return (
-                <a target='_blank' rel='noreferrer' href={img[3]} key={img[0]}>
+                <a className={`animate__animeted animate__bounceIn`} target='_blank' rel='noreferrer' href={img[3]} key={img[0]}>
                   <Tooltip title={img[2]}>
                     <img
                       alt={img[0].split('.')[0]}
@@ -176,7 +176,7 @@ export default function Contact(props: P) {
           </div>
         </div>
 
-        <div className='white-card' style={{ height: 'fit-content', marginTop: '20px', padding: '30px 50px' }}>
+        <div className='white-card animate__animeted animate__bounceInDown' style={{ height: 'fit-content', marginTop: '20px', padding: '30px 50px' }}>
           <div style={{ backgroundColor: 'plum', fontSize: '15px', position: 'absolute', color: 'white', left: '0px', width: '200px', textAlign: 'right', paddingRight: '20px' }}>
             <p>取得联系</p>
           </div>

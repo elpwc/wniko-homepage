@@ -17,7 +17,7 @@ export default function RightContent(props: P) {
   }
   return (
     <>
-      <div style={{ position: 'absolute', right: `-${width + marginLeft}px`, width: `${width}px` }}>{props.children}</div>
+      <div style={{ position: 'absolute', right: `-${width + marginLeft}px`, width: `${width}px`, top: '0px' }}>{props.children}</div>
     </>
   );
 }
