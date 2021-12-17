@@ -1,4 +1,4 @@
-import { Button, Input, Modal, Form, FormInstance } from 'antd';
+import { Button, Input, Modal, Form, FormInstance, DatePicker, Space } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import Project from '../components/ProjectCard';
 import ProjectList from '../components/ProjectList';
@@ -8,6 +8,8 @@ import init_debug_data from '../staticData/initDebugData';
 import axios from 'axios';
 import appconfig from '../appconfig';
 import ModalForm from '../components/ModalForm';
+import { PlusOutlined } from '@ant-design/icons';
+import UniTag from '../components/UniTag/UniTag';
 
 interface P {
   update: boolean;
@@ -30,6 +32,12 @@ export default function Projects(props: P) {
 
   return (
     <>
+      <UniTag edit={true}>
+        <UniTag.Item keyid='0' desc='rua' url='#'>123</UniTag.Item>
+        <UniTag.Item keyid='1'>rua</UniTag.Item>
+        <UniTag.Item keyid='2'>z</UniTag.Item>
+        <UniTag.Item keyid='3'>1145141919810yjsnpi</UniTag.Item>
+      </UniTag>
       <ProjectList
         update={update}
         setUpdate={() => {
@@ -43,7 +51,7 @@ export default function Projects(props: P) {
           setUpdate(!update);
         }}
       >
-        <>
+        <div style={{marginTop: '20px'}}>
           <ModalForm
             title={'加入新项目'}
             visible={newProjectModalVisibility}
@@ -56,10 +64,16 @@ export default function Projects(props: P) {
             items={[
               { name: 'name', label: '项目名称', child: <Input /> },
               { name: 'desc', label: '说明', child: <Input /> },
+              { name: 'url', label: 'URL', child: <Input /> },
+              { name: 'githuburl', label: 'Github URL', child: <Input /> },
+              { name: 'starttime', label: '开始时间', child: <DatePicker /> },
+              { name: 'version', label: '最新版本', child: <Input /> },
             ]}
           />
 
           <Button
+            shape="circle"
+            size="large"
             onClick={() => {
               /*
               axios({
@@ -80,9 +94,9 @@ export default function Projects(props: P) {
               setNewProjectModalVisibility(!newProjectModalVisibility);
             }}
           >
-            add
+            <PlusOutlined />
           </Button>
-        </>
+        </div>
       </RightContent>
     </>
   );
