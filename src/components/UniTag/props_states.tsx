@@ -1,36 +1,42 @@
-import TagObj from "./TagObj";
-
 export interface UniTagP {
-    value?: TagObj[];
-    edit?: boolean;
-    style?: React.CSSProperties;
-    itemStyle?: React.CSSProperties;
-    onChange?: (value: TagObj[]) => void;
-    onDelete?: (keyid: string) => void;
-    onAdd?: (keyid: string) => void;
+  value?: string[];
+  edit?: boolean;
+  style?: React.CSSProperties;
+  itemStyle?: React.CSSProperties;
+  children?: JSX.Element | any;
+  editDropdown?: JSX.Element | any;
+  gap?: string;
+  onChange?: (value: string[]) => void;
+  onDelete?: (value: string) => void;
+  onAdd?: (value: string) => void;
+  onEditInputhange?: (value: string) => void;
 }
 
 export interface UniTagS {
-    value: TagObj[];
-    edit: boolean;
-    style?: React.CSSProperties;
-    itemStyle?: React.CSSProperties;
-    onChange?: (value: TagObj[]) => void;
-    onDelete?: (key: string) => void;
-    onAdd?: (key: string) => void;
+  value: string[];
+  items: JSX.Element[];
+  edit: boolean;
+  editing: boolean;
+  editingTagInputValue: string;
+  style?: React.CSSProperties;
+  itemStyle?: React.CSSProperties;
+  editDropdown?: JSX.Element | any;
+  gap?: string;
+  onChange?: (value: string[]) => void;
+  onDelete?: (value: string) => void;
+  onAdd?: (value: string) => void;
+  onEditInputhange?: (value: string) => void;
 }
 
 export interface UniTagItemP {
-    keyid: string;
-    children?: JSX.Element | string;
-    style?: React.CSSProperties;
-    desc?: string;
-    url?: string;
-    edit?: boolean;
-    onClick?: (e: any) => void;
-    onMouseEnter?: (e: any) => void;
-    onMouseLeave?: (e: any) => void;
-    onDelete?: (keyid: string) => void;
+  value: string;
+  children?: JSX.Element | string;
+  style?: React.CSSProperties;
+  edit?: boolean;
+  onClick?: (e: any, value: string) => void;
+  onMouseEnter?: (e: any, value: string) => void;
+  onMouseLeave?: (e: any, value: string) => void;
+  onDelete?: (value: string) => void;
 
-    parentProps?: UniTagP;
+  parentProps?: UniTagP;
 }

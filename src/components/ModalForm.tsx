@@ -47,10 +47,10 @@ const ModalForm: React.FC<ModalFormProps> = ({ title, visible, onSubmit, onCance
 
   return (
     <Modal title={title} visible={visible} onOk={onDone} onCancel={onCancel} okText={okButtonTitle ? okButtonTitle : 'OK'} cancelText={cancelButtonTitle ? cancelButtonTitle : 'Cancel'}>
-      <Form form={form} layout='vertical' name='userForm' onFinish={onSubmit} onFinishFailed={onSubmitFailed}>
+      <Form size='small'  labelCol= {{ span: 4 }} form={form} layout='horizontal' name='userForm' onFinish={onSubmit} onFinishFailed={onSubmitFailed}>
         {items.map((item: ModalFormItem) => {
           return (
-            <Form.Item name={item.name} label={item.label} rules={item.rules}>
+            <Form.Item  name={item.name} label={item.label} rules={item.rules}>
               {item.child}
             </Form.Item>
           );

@@ -1,4 +1,4 @@
-import { Button, Input, Modal, Form, FormInstance, DatePicker, Space } from 'antd';
+import { Button, Input, Modal, Form, FormInstance, DatePicker, Space, Tooltip, Select } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import Project from '../components/ProjectCard';
 import ProjectList from '../components/ProjectList';
@@ -10,6 +10,8 @@ import appconfig from '../appconfig';
 import ModalForm from '../components/ModalForm';
 import { PlusOutlined } from '@ant-design/icons';
 import UniTag from '../components/UniTag/UniTag';
+
+const { Option } = Select;
 
 interface P {
   update: boolean;
@@ -23,6 +25,7 @@ export default function Projects(props: P) {
   }, []);
   const [update, setUpdate]: [boolean, any] = useState(false);
   const [newProjectModalVisibility, setNewProjectModalVisibility]: [boolean, any] = useState(false);
+  const [tagSelectValue, setTagSelectValue]: [string, any] = useState('');
 
   const onProjectSubmit = (values: any) => {
     console.log(values);
@@ -32,12 +35,6 @@ export default function Projects(props: P) {
 
   return (
     <>
-      <UniTag edit={true}>
-        <UniTag.Item keyid='0' desc='rua' url='#'>123</UniTag.Item>
-        <UniTag.Item keyid='1'>rua</UniTag.Item>
-        <UniTag.Item keyid='2'>z</UniTag.Item>
-        <UniTag.Item keyid='3'>1145141919810yjsnpi</UniTag.Item>
-      </UniTag>
       <ProjectList
         update={update}
         setUpdate={() => {
@@ -51,7 +48,7 @@ export default function Projects(props: P) {
           setUpdate(!update);
         }}
       >
-        <div style={{marginTop: '20px'}}>
+        <div style={{ marginTop: '20px' }}>
           <ModalForm
             title={'加入新项目'}
             visible={newProjectModalVisibility}
@@ -64,16 +61,47 @@ export default function Projects(props: P) {
             items={[
               { name: 'name', label: '项目名称', child: <Input /> },
               { name: 'desc', label: '说明', child: <Input /> },
+              {
+                name: 'tech',
+                label: '使用的技术',
+                child: (
+                  <Select
+                    mode='tags'
+                    style={{ width: '100%' }}
+                    placeholder='Tags Mode'
+                    onSearch={(e) => {
+                      setTagSelectValue(e);
+                    }}
+                  >
+                    {tagSelectValue}
+                  </Select>
+                ),
+              },
               { name: 'url', label: 'URL', child: <Input /> },
               { name: 'githuburl', label: 'Github URL', child: <Input /> },
               { name: 'starttime', label: '开始时间', child: <DatePicker /> },
               { name: 'version', label: '最新版本', child: <Input /> },
+              {
+                name: 'state',
+                label: '开发状态',
+                child: (
+                  <Select defaultValue='lucy' style={{ width: 120 }}>
+                    <Option value='jack'>Jack</Option>
+                    <Option value='lucy'>Lucy</Option>
+                    <Option value='disabled' disabled>
+                      Disabled
+                    </Option>
+                    <Option value='Yiminghe'>yiminghe</Option>
+                  </Select>
+                ),
+              },
+              { name: 'iconurl', label: '图标URL', child: <Input /> },
             ]}
           />
 
           <Button
-            shape="circle"
-            size="large"
+            shape='circle'
+            size='large'
             onClick={() => {
               /*
               axios({
@@ -101,5 +129,3 @@ export default function Projects(props: P) {
     </>
   );
 }
-
-
