@@ -20,5 +20,5 @@ html ::-webkit-scrollbar-track {
   margin: 0;
 }
 html {
-  overflow-y: overlay;
+ 
 }
