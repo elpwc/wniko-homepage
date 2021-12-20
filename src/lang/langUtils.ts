@@ -1,5 +1,5 @@
-import * as ZhCn from './zh_cn.json';
-import * as Ja from './ja.json';
+import ZhCn from './zh_cn';
+import Ja from './ja';
 import { LangStorage } from '../dataStorage/storage';
 
 export enum Lang {
@@ -14,17 +14,17 @@ export enum Lang {
 }
 
 export default class LangUtils {
-  static selectLang(currentLang?: Lang | undefined) {
+  static selectLang(currentLang?: Lang | undefined): typeof ZhCn {
     if (currentLang === undefined) {
       currentLang = LangStorage.value;
     }
     switch (currentLang) {
       case Lang.zh_cn:
         // @ts-ignore
-        return ZhCn.default;
+        return ZhCn;
       case Lang.ja:
         // @ts-ignore
-        return Ja.default;
+        return Ja;
       default:
         // @ts-ignore
         return ZhCn.default;

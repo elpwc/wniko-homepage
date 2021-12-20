@@ -10,6 +10,8 @@ import appconfig from '../appconfig';
 import ModalForm from '../components/ModalForm';
 import { PlusOutlined } from '@ant-design/icons';
 import UniTag from '../components/UniTag/UniTag';
+import LangUtils from '../lang/langUtils';
+import moment from 'moment';
 
 const { Option } = Select;
 
@@ -26,6 +28,8 @@ export default function Projects(props: P) {
   const [update, setUpdate]: [boolean, any] = useState(false);
   const [newProjectModalVisibility, setNewProjectModalVisibility]: [boolean, any] = useState(false);
   const [tagSelectValue, setTagSelectValue]: [string, any] = useState('');
+
+  const L = LangUtils.selectLang();
 
   const onProjectSubmit = (values: any) => {
     console.log(values);
@@ -68,7 +72,7 @@ export default function Projects(props: P) {
                   <Select
                     mode='tags'
                     style={{ width: '100%' }}
-                    placeholder='Tags Mode'
+                    placeholder='输入标签'
                     onSearch={(e) => {
                       setTagSelectValue(e);
                     }}
@@ -79,19 +83,17 @@ export default function Projects(props: P) {
               },
               { name: 'url', label: 'URL', child: <Input /> },
               { name: 'githuburl', label: 'Github URL', child: <Input /> },
-              { name: 'starttime', label: '开始时间', child: <DatePicker /> },
+              { name: 'starttime', label: '开始时间', child: <DatePicker placeholder={'请选择日期'} defaultValue={moment()} defaultPickerValue={moment()} /> },
               { name: 'version', label: '最新版本', child: <Input /> },
               {
                 name: 'state',
                 label: '开发状态',
                 child: (
-                  <Select defaultValue='lucy' style={{ width: 120 }}>
-                    <Option value='jack'>Jack</Option>
-                    <Option value='lucy'>Lucy</Option>
-                    <Option value='disabled' disabled>
-                      Disabled
-                    </Option>
-                    <Option value='Yiminghe'>yiminghe</Option>
+                  <Select defaultValue='planning' style={{ width: 120 }}>
+                    <Option value='planning'>{L.utils.devstates.planning}</Option>
+                    <Option value='developping'>{L.utils.devstates.developping}</Option>
+                    <Option value='done'>{L.utils.devstates.done}</Option>
+                    <Option value='dispose'>{L.utils.devstates.dispose}</Option>
                   </Select>
                 ),
               },
