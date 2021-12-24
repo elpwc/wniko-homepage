@@ -9,6 +9,7 @@ import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { AdminPassword } from './staticData/adminPassword';
 import cookie from 'react-cookies';
 import appconfig from './appconfig';
+import Head from './pages/Head';
 
 const { Option } = Select;
 
@@ -125,6 +126,8 @@ function Main(props: P) {
               {LangUtils.enumStrToLangName(lang)}
             </Option>
           );
+        }else{
+          return <></>;
         }
       })}
     </Select>
@@ -140,20 +143,14 @@ function Main(props: P) {
           height: '600px',
           zIndex: '2',
         }}
-      ></div>
-            <div
-        style={{
-          display: 'flex',
-          position: 'sticky',
-          top: '30px',
-          bottom: '0px',
-        }}
-      >114514</div>
+      >
+      <Head />
+      </div>
       <div
         style={{
           display: 'flex',
           position: 'sticky',
-          top: '30px',
+          top: '0px',
           bottom: '0px',
           zIndex: '2',
         }}
@@ -175,6 +172,8 @@ function Main(props: P) {
               selectedKeys={[CurrentPageStorage.value]}
               style={{ fontSize: '15px', height: '60px' }}
               onClick={(key) => {
+                // 定位到下面
+                //todo
                 CurrentPageStorage.set(key.key);
               }}
             >
