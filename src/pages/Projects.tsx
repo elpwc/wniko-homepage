@@ -33,6 +33,11 @@ export default function Projects(props: P) {
 
   const onProjectSubmit = (values: any) => {
     console.log(values);
+    axios({
+      method: 'post',
+      url: '',
+      data: '',
+    }).then((res)=>{console.log(res);}).catch((e)=>{console.log(e);});
   };
 
   const onProjectSubmitFailed = (errorInfo: any) => {};
