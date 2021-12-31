@@ -1,11 +1,15 @@
-import { Card, Space, Tag, Tooltip } from 'antd';
+import { Card, Popconfirm, Space, Switch, Tag, Tooltip } from 'antd';
 import Project, { DevState } from '../utils/project';
 import { LangStorage } from '../dataStorage/storage';
 import LangUtils from '../lang/langUtils';
-import { GithubOutlined, SendOutlined } from '@ant-design/icons';
+import { GithubOutlined, SendOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 interface P {
   project: Project;
+  edit?: boolean;
+  onDeleteClick?: (project: Project) => void;
+  onEditClick?: (project: Project) => void;
+  onPrivateChange?: (project: Project, isprivate: boolean) => void;
 }
 
 export default function ProjectCard(props: P) {
@@ -58,7 +62,7 @@ export default function ProjectCard(props: P) {
   };
 
   const getRandColor = () => {
-    return `rgb(${Math.ceil(Math.random()*255)},${Math.ceil(Math.random()*255)},${Math.ceil(Math.random()*255)})`;
+    return `rgb(${Math.ceil(Math.random() * 255)},${Math.ceil(Math.random() * 255)},${Math.ceil(Math.random() * 255)})`;
   };
 
   return (
@@ -74,6 +78,45 @@ export default function ProjectCard(props: P) {
         extra={
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <Space>
+              {props.edit ? (
+                <>
+                  <Switch
+                    checkedChildren='公开'
+                    unCheckedChildren='隐藏'
+                    defaultChecked={!props.project.isprivate}
+                    onChange={(checked) => {
+                      props.onPrivateChange?.(props.project, !checked);
+                    }}
+                  />
+                  <Tooltip placement='top' title='编辑'>
+                    <span
+                      style={{ fontSize: '20px', color: 'blue', cursor: 'pointer' }}
+                      onClick={() => {
+                        props.onEditClick?.(props.project);
+                      }}
+                    >
+                      <EditOutlined />
+                    </span>
+                  </Tooltip>
+                  <Tooltip placement='top' title='删除'>
+                    <Popconfirm
+                      title='确定永久删除吗？'
+                      onConfirm={() => {
+                        props.onDeleteClick?.(props.project);
+                      }}
+                      //onCancel={}
+                      okText='删除'
+                      cancelText='取消'
+                    >
+                      <span style={{ fontSize: '20px', color: 'red', cursor: 'pointer' }}>
+                        <DeleteOutlined />
+                      </span>
+                    </Popconfirm>
+                  </Tooltip>
+                </>
+              ) : (
+                <></>
+              )}
               {props.project.url === '' ? (
                 <></>
               ) : (
@@ -85,11 +128,11 @@ export default function ProjectCard(props: P) {
                   </a>
                 </Tooltip>
               )}
-              {props.project.githubUrl === '' ? (
+              {props.project.githuburl === '' ? (
                 <></>
               ) : (
                 <Tooltip placement='top' title='打开Github'>
-                  <a target='_blank' href={props.project.githubUrl} rel='noreferrer'>
+                  <a target='_blank' href={props.project.githuburl} rel='noreferrer'>
                     <span style={{ fontSize: '20px', color: 'black' }}>
                       <GithubOutlined />
                     </span>
@@ -97,7 +140,7 @@ export default function ProjectCard(props: P) {
                 </Tooltip>
               )}
 
-              {getStateBox(props.project.devState)}
+              {getStateBox(props.project.state)}
             </Space>
           </div>
         }
@@ -107,9 +150,9 @@ export default function ProjectCard(props: P) {
           <div>
             {props.project.technologies.map((tech: string) => {
               return (
-                  <Tag style={{ fontSize: '10px' }} color={getRandColor()}>
-                    {tech}
-                  </Tag>
+                <Tag style={{ fontSize: '10px' }} color={getRandColor()} key={tech}>
+                  {tech}
+                </Tag>
               );
             })}
           </div>

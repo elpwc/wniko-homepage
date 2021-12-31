@@ -9,36 +9,42 @@ export enum DevState {
 export default interface Project {
   id: number;
   name: string;
-  devState: DevState;
+  state: DevState;
   url: string;
-  githubUrl: string;
+  githuburl: string;
   description: string;
-  startDate: Date;
+  starttime: Date;
   version: string;
   technologies: string[];
+  headImageUrl: string;
+  isprivate: boolean;
 }
 
 export class ProjectUtils {
   static create(
     name: string,
     description: string = '',
-    devState: DevState = DevState.Planning,
+    state: DevState = DevState.Planning,
     technologies: string[] = [],
-    githubUrl: string = '',
+    githuburl: string = '',
     url: string = '',
     version: string = '',
-    startDate: Date = new Date()
+    starttime: Date = new Date(),
+    headImageUrl: string = '',
+    isprivate: boolean = false
   ): Project {
     return {
       id: 0,
       name: name,
       description: description,
       url: url,
-      githubUrl: githubUrl,
-      devState: devState,
+      githuburl: githuburl,
+      state: state,
       version: version,
-      startDate: startDate,
+      starttime: starttime,
       technologies: technologies,
+      headImageUrl: headImageUrl,
+      isprivate: isprivate,
     };
   }
 }
