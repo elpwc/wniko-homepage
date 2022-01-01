@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-cookies": "^0.1.0"
+    "@types/react-cookies": "^0.1.0",
+    "@types/react-syntax-highlighter": "^13.5.2"
   }
 }
