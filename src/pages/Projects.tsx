@@ -57,6 +57,7 @@ export default function Projects(props: P) {
         setEdit(false);
       });
   };
+  
 
   const getProjects = () => {
     axios({
