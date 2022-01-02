@@ -13,7 +13,7 @@ export default interface Project {
   url: string;
   githuburl: string;
   description: string;
-  starttime: Date;
+  starttime: string;
   version: string;
   technologies: string[];
   headImageUrl: string;
@@ -29,7 +29,7 @@ export class ProjectUtils {
     githuburl: string = '',
     url: string = '',
     version: string = '',
-    starttime: Date = new Date(),
+    starttime: string = new Date().toUTCString(),
     headImageUrl: string = '',
     isprivate: boolean = false
   ): Project {

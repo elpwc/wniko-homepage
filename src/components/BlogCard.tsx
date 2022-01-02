@@ -36,14 +36,14 @@ export default function BlogCard(props: P) {
                 创建：
                 {
                   // @ts-ignore
-                  props.blog.createTime.format('yyyy-MM-dd hh:mm:ss')
+                  (new Date(props.blog.createTime) as Date).format('yyyy-MM-dd hh:mm:ss')
                 }
               </p>
               <p className='bloginfo'>
                 修改：
                 {
                   // @ts-ignore
-                  props.blog.updateTime.format('yyyy-MM-dd hh:mm:ss')
+                  (new Date(props.blog.updateTime) as Date).format('yyyy-MM-dd hh:mm:ss')
                 }
               </p>
               <p className='bloginfo'>

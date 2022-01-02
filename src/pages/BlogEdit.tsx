@@ -1,4 +1,4 @@
-import { Button, Divider, Space, Input, Select } from 'antd';
+import { Button, Divider, Space, Input, Select, message } from 'antd';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Navigate, useLocation, useParams } from 'react-router';
@@ -12,6 +12,8 @@ import './blogView.css';
 import RightContent from '../components/RightContent';
 import { PlusOutlined } from '@ant-design/icons';
 import LangUtils from '../lang/langUtils';
+import axios from 'axios';
+import api from '../api';
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -27,6 +29,13 @@ export default function BlogEdit(props: P) {
 
   const [markdownCode, setMarkdownCode]: [string, any] = useState('');
   const [newSubjectName, setNewSubjectName]: [string, any] = useState('');
+  const [title, setTitle]: [string, any] = useState('');
+  const [author, setAuthor]: [string, any] = useState('');
+  const [subject, setSubject]: [string, any] = useState('');
+  const [language, setLanguage]: [string, any] = useState('');
+  const [location, setLocation]: [string, any] = useState('');
+  const [access, setAccess]: ['public' | 'urasekai' | 'private', any] = useState('public');
+  const [headPageUrl, setHeadPageUrl]: [string, any] = useState('');
 
   let currentBlogid: number = 0;
   let currentBlog: Blog = BlogUtils.create('', '');
@@ -38,9 +47,37 @@ export default function BlogEdit(props: P) {
 
   currentBlogid = Number(params.blogid);
 
-  const onDraftClick = () => {};
+  const onDraftClick = () => {
+    axios({
+      method: 'POST',
+      url: api.url + api.blog,
+      data: BlogUtils.create(title, markdownCode, author, 0, 0, language, location, access, headPageUrl, true),
+    })
+      .then((res) => {
+        console.log(res);
+        message.success('储存成功');
+      })
+      .catch((error) => {
+        console.log(error);
+        message.error('储存失败');
+      });
+  };
 
-  const onSaveClick = () => {};
+  const onSaveClick = () => {
+    axios({
+      method: 'POST',
+      url: api.url + api.blog,
+      data: BlogUtils.create(title, markdownCode, author, 0, 0, language, location, access, headPageUrl, true),
+    })
+      .then((res) => {
+        console.log(res);
+        message.success('储存成功');
+      })
+      .catch((error) => {
+        console.log(error);
+        message.error('储存失败');
+      });
+  };
 
   const onNewSubjectClick = () => {};
 
@@ -57,57 +94,67 @@ export default function BlogEdit(props: P) {
       </div>
 
       <RightContent update={props.update} setUpdate={props.setUpdate}>
-        <div style={{ backgroundColor: 'white', borderRadius: '5px', marginTop: '5px' }}>
+        <div style={{ backgroundColor: 'white', borderRadius: '5px', marginTop: '5px', width: '200px', padding: '10px' }}>
           <Space direction='vertical'>
-          <Select
-            style={{ width: '100%' }}
-            placeholder='选择主题'
-            dropdownRender={(menu) => (
-              <div>
-                <Divider style={{ margin: '4px 0' }} />
-                <div style={{ display: 'flex', flexWrap: 'nowrap', padding: 8 }}>
-                  <Input
-                    style={{ flex: 'auto' }}
-                    value={newSubjectName}
-                    onChange={(e) => {
-                      setNewSubjectName(e.target.value);
-                    }}
-                  />
-                  <a style={{ flex: 'none', padding: '8px', display: 'block', cursor: 'pointer' }} onClick={onNewSubjectClick}>
-                    <PlusOutlined /> 添加主题
-                  </a>
+            <Select
+              style={{ width: '100%' }}
+              placeholder='选择主题'
+              dropdownRender={(menu) => (
+                <div>
+                  <Divider style={{ margin: '4px 0' }} />
+                  <div style={{ display: 'flex', flexWrap: 'nowrap', padding: 8 }}>
+                    <Input
+                      style={{ flex: 'auto' }}
+                      value={newSubjectName}
+                      onChange={(e) => {
+                        setNewSubjectName(e.target.value);
+                      }}
+                    />
+                    <a style={{ flex: 'none', padding: '8px', display: 'block', cursor: 'pointer' }} onClick={onNewSubjectClick}>
+                      <PlusOutlined /> 添加主题
+                    </a>
+                  </div>
                 </div>
-              </div>
-            )}
-          >
-            {/*items.map((item) => (
+              )}
+            >
+              {/*items.map((item) => (
               <Option key={item}>{item}</Option>
             ))*/}
-          </Select>
+            </Select>
 
-          <Select style={{ width: '100%' }} placeholder='选择语言'>
-            {LangUtils.getEnumStrings().map((lang: string) => {
-              return (
-                <Option key={lang} value={lang}>
-                  {LangUtils.enumStrToLangName(lang)}
-                </Option>
-              );
-            })}
-          </Select>
+            <Input
+              placeholder='语言'
+              onChange={(e) => {
+                setLanguage(e.target.value);
+              }}
+              value={language}
+            ></Input>
 
-          <Input placeholder='地点'></Input>
+            <Input
+              placeholder='地点'
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
+              value={location}
+            ></Input>
 
-          <Select style={{ width: '100%' }} placeholder='选择可访问性'>
-            {['private', 'urasekai', 'public'].map((value: string) => {
-              return (
-                <Option key={value} value={value}>
-                  {value}
-                </Option>
-              );
-            })}
-          </Select>
+            <Select
+              style={{ width: '100%' }}
+              placeholder='选择可访问性'
+              onChange={(e) => {
+                setAccess(e);
+              }}
+              value={access}
+            >
+              {['private', 'urasekai', 'public'].map((value: string) => {
+                return (
+                  <Option key={value} value={value}>
+                    {value}
+                  </Option>
+                );
+              })}
+            </Select>
           </Space>
-
         </div>
       </RightContent>
 
@@ -118,12 +165,30 @@ export default function BlogEdit(props: P) {
           <Button onClick={onSaveClick}>发布</Button>
         </Space>
         <h1>
-          <Input placeholder='标题' bordered={false} style={{ fontWeight: 'bold', fontSize: '20px', borderBottom: 'solid 1px lightgray' }} />
+          <Input
+            placeholder='标题'
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+            value={title}
+            bordered={false}
+            style={{ fontWeight: 'bold', fontSize: '20px', borderBottom: 'solid 1px lightgray' }}
+          />
         </h1>
         <Space>
           <p className='bloginfo'>
-            <Input placeholder='作者' bordered={false} style={{ borderBottom: 'solid 1px lightgray' }} />
+            <Input
+              placeholder='作者'
+              onChange={(e) => {
+                setAuthor(e.target.value);
+              }}
+              value={author}
+              bordered={false}
+              style={{ borderBottom: 'solid 1px lightgray' }}
+            />
           </p>
+          {/*
+          
           <p className='bloginfo'>
             创建：
             {
@@ -142,6 +207,7 @@ export default function BlogEdit(props: P) {
             访问量：
             {currentBlog.viewCount}
           </p>
+          */}
         </Space>
 
         <Divider style={{ marginTop: '10px', marginBottom: '20px' }} />

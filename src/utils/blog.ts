@@ -11,25 +11,38 @@ export default interface Blog {
   content: string;
   headPageUrl: string;
   access: 'public' | 'urasekai' | 'private';
-  createTime: Date;
-  updateTime: Date;
+  createTime: string;
+  updateTime: string;
+  isDraft: boolean;
 }
 
 export class BlogUtils {
-  static create(title: string, content: string, author: string = 'wniko', id: number = 0, access: 'public' | 'urasekai' | 'private' = 'public', headPageUrl: string = '') {
+  static create(
+    title: string,
+    content: string,
+    author: string = 'wniko',
+    id: number = 0,
+    subject: number = 0,
+    lang: string = 'zh-cn',
+    location: string = '',
+    access: 'public' | 'urasekai' | 'private' = 'public',
+    headPageUrl: string = '',
+    isDraft: boolean = false
+  ) {
     return {
       id: id,
       title: title,
       author: author,
       viewCount: 0,
-      subject: 0,
-      lang: 'zh_cn',
-      location: '',
+      subject: subject,
+      lang: lang,
+      location: location,
       content: content,
       access: access,
       headPageUrl: headPageUrl,
-      createTime: new Date(),
-      updateTime: new Date(),
+      createTime: new Date().toUTCString(),
+      updateTime: new Date().toUTCString(),
+      isDraft: isDraft,
     };
   }
 
