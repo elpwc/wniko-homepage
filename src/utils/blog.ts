@@ -1,11 +1,12 @@
 import init_debug_data from '../staticData/initDebugData';
+import BlogSubject, { BlogSubjectUtils } from './blogSubject';
 
 export default interface Blog {
   id: number;
   title: string;
   author: string;
   viewCount: number;
-  subject: number;
+  subjectId: number;
   lang: string;
   location: string;
   content: string;
@@ -22,7 +23,7 @@ export class BlogUtils {
     content: string,
     author: string = 'wniko',
     id: number = 0,
-    subject: number = 0,
+    subjectId: number = 0,
     lang: string = 'zh-cn',
     location: string = '',
     access: 'public' | 'urasekai' | 'private' = 'public',
@@ -34,7 +35,7 @@ export class BlogUtils {
       title: title,
       author: author,
       viewCount: 0,
-      subject: subject,
+      subjectId: subjectId,
       lang: lang,
       location: location,
       content: content,
