@@ -105,6 +105,6 @@ export default class LangUtils {
 
   // 获取包含所有enum值的字符串数组
   static getEnumStrings(): string[] {
-    return Object.keys(Lang).filter((k) => typeof Lang[k as any] === 'number');
+    return Object.keys(Lang).filter(k => typeof Lang[k as any] === 'number');
   }
 }

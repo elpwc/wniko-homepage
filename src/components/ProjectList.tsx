@@ -19,7 +19,7 @@ interface P {
 export default function ProjectList(props: P) {
   return (
     <>
-      <Space direction='vertical' style={{ width: '-webkit-fill-available' }}>
+      <Space direction="vertical" style={{ width: '-webkit-fill-available' }}>
         {props.projects.map((project: Project) => {
           return props.edit || !project.isprivate ? (
             <ProjectCard project={project} key={project.id} edit={props.edit} onDeleteClick={props.onDeleteClick} onEditClick={props.onEditClick} onPrivateChange={props.onPrivateChange} />

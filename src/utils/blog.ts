@@ -49,7 +49,7 @@ export class BlogUtils {
 
   static exist(id: number): boolean {
     let res = false;
-    init_debug_data.blogs.forEach((b) => {
+    init_debug_data.blogs.forEach(b => {
       if (b.id === id) {
         res = true;
       }

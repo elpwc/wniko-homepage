@@ -38,7 +38,7 @@ class UniTag extends React.Component<UniTagP, UniTagS> {
         const childProps: UniTagItemP = {
           ...child.props,
           parentProps: this.state,
-          onDelete: (key) => {
+          onDelete: key => {
             this.itemOnDelete(key);
           },
           edit: this.props.edit,
@@ -98,7 +98,7 @@ class UniTag extends React.Component<UniTagP, UniTagS> {
                 <input
                   style={{ height: '80%', width: '100px' }}
                   value={this.state.editingTagInputValue}
-                  onChange={(e) => {
+                  onChange={e => {
                     this.state.onEditInputhange?.(e.target.value);
                     this.setState({ editingTagInputValue: e.target.value });
                   }}
@@ -136,14 +136,14 @@ class UniTag extends React.Component<UniTagP, UniTagS> {
             // add button
             this.state.edit ? (
               <UniTag.Item
-                value='_______add_______'
+                value="_______add_______"
                 onClick={() => {
                   this.setState({ editing: true });
                 }}
                 style={{ ...this.state.itemStyle, color: 'black', backgroundColor: 'white', padding: '0px 0px', borderRadius: '10px' }}
               >
-                <svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='currentColor' className='bi bi-plus-lg' viewBox='0 0 16 16'>
-                  <path fill-rule='evenodd' d='M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z' />
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
                 </svg>
               </UniTag.Item>
             ) : (

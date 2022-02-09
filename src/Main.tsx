@@ -39,13 +39,13 @@ function Main(props: P) {
   if (LangUtils.getEnumStrings().includes(currentLang)) {
     LangStorage.set(LangUtils.enumStrToLang(currentLang));
   } else {
-    return <Navigate to='/zh-cn' />;
+    return <Navigate to="/zh-cn" />;
   }
 
   const L = LangUtils.selectLang();
 
   return (
-    <div className='main'>
+    <div className="main">
       <Layout
         style={{
           position: 'fixed',
@@ -56,35 +56,35 @@ function Main(props: P) {
           zIndex: '2',
         }}
       >
-        <Header className='header' style={{ padding: '0px', height: '60px', backgroundColor: 'white' }}>
-          <div className='logo' />
+        <Header className="header" style={{ padding: '0px', height: '60px', backgroundColor: 'white' }}>
+          <div className="logo" />
           <Menu
-            theme='light'
-            mode='horizontal'
+            theme="light"
+            mode="horizontal"
             defaultSelectedKeys={[CurrentPageStorage.value]}
             selectedKeys={[CurrentPageStorage.value]}
             style={{ fontSize: '15px', height: '60px' }}
-            onClick={(key) => {
+            onClick={key => {
               CurrentPageStorage.set(key.key);
             }}
           >
-            <Menu.Item key='home'>
-              <Link to='./'>{L.header.home}</Link>
+            <Menu.Item key="home">
+              <Link to="./">{L.header.home}</Link>
             </Menu.Item>
-            <Menu.Item key='projects'>
-              <Link to='./projects'>{L.header.projects}</Link>
+            <Menu.Item key="projects">
+              <Link to="./projects">{L.header.projects}</Link>
             </Menu.Item>
-            <Menu.Item key='blogs'>
-              <Link to='./blog'>{L.header.blogs}</Link>
+            <Menu.Item key="blogs">
+              <Link to="./blog">{L.header.blogs}</Link>
             </Menu.Item>
-            <Menu.Item key='illust'>
-              <Link to='./illust'>{L.header.illust}</Link>
+            <Menu.Item key="illust">
+              <Link to="./illust">{L.header.illust}</Link>
             </Menu.Item>
-            <Menu.Item key='contact'>
-              <Link to='./contact'>{L.header.contact}</Link>
+            <Menu.Item key="contact">
+              <Link to="./contact">{L.header.contact}</Link>
             </Menu.Item>
 
-            <Menu.Item key='admin' disabled style={{ cursor: 'default', position: 'absolute', right: '200px' }}>
+            <Menu.Item key="admin" disabled style={{ cursor: 'default', position: 'absolute', right: '200px' }}>
               {adminWinState === 2 ? (
                 <Button
                   onClick={() => {
@@ -112,7 +112,7 @@ function Main(props: P) {
                     喵🐾
                   </Button>
                   <Modal
-                    title='~里世界的入口~'
+                    title="~里世界的入口~"
                     visible={adminWinState === 1}
                     // 登录
                     onOk={() => {
@@ -135,20 +135,20 @@ function Main(props: P) {
                       setAdminWinState(0);
                       props.setUpdate();
                     }}
-                    okText='进入里世界~'
-                    cancelText='算了'
+                    okText="进入里世界~"
+                    cancelText="算了"
                   >
-                    <Space size='large'>
+                    <Space size="large">
                       <Input.Password
-                        placeholder='口令'
-                        iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                        onChange={(e) => {
+                        placeholder="口令"
+                        iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                        onChange={e => {
                           setPw(e.target.value);
                         }}
                         value={pw}
                       />
                       <Checkbox
-                        onChange={(e) => {
+                        onChange={e => {
                           setRememberPw(e.target.checked);
                         }}
                       >
@@ -160,11 +160,11 @@ function Main(props: P) {
               )}
             </Menu.Item>
 
-            <Menu.Item key='langsele' disabled style={{ cursor: 'default', position: 'absolute', width: '200px', right: '0px' }}>
+            <Menu.Item key="langsele" disabled style={{ cursor: 'default', position: 'absolute', width: '200px', right: '0px' }}>
               <Select
-                defaultValue='zh_cn'
+                defaultValue="zh_cn"
                 style={{ width: 120 }}
-                onChange={(value) => {
+                onChange={value => {
                   navigate(`/${value.replace('_', '-')}/` + mylocation.pathname.split('/').slice(2).join('/'));
                   props.setUpdate();
                 }}

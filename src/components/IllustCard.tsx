@@ -4,19 +4,16 @@ import LangUtils from '../lang/langUtils';
 import Illust from '../utils/illust';
 
 interface P {
-    illust: Illust;
+  illust: Illust;
 }
 
 export default function IllustCard(props: P) {
   const L = LangUtils.selectLang();
 
-
   return (
     <>
-      <Card
-        style={{}}
-      >
-          <Image width={200} src={props.illust.url} preview={{src: props.illust.thumburl}}/>
+      <Card style={{}}>
+        <Image width={200} src={props.illust.url} preview={{ src: props.illust.thumburl }} />
       </Card>
     </>
   );

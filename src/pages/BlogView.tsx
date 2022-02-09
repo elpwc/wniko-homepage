@@ -31,10 +31,10 @@ export default function BlogView(props: P) {
       method: 'get',
       url: api.url + api.blog + '/' + currentBlogid,
     })
-      .then((res) => {
+      .then(res => {
         setBlog(res.data);
       })
-      .catch((error) => {
+      .catch(error => {
         return <Page404 title={<>你要找的博客不存在捏</>} returnText={<>返回博客列表</>} returnRoute={mylocation.pathname + '/..'} />;
       });
   };
@@ -49,7 +49,7 @@ export default function BlogView(props: P) {
     <>
       <div style={{ position: 'absolute', top: '15px', left: '-50px' }}>
         <Link to={mylocation.pathname + '/..'}>
-          <Button size='large' shape='circle'>
+          <Button size="large" shape="circle">
             <LeftOutlined />
           </Button>
         </Link>
@@ -59,22 +59,22 @@ export default function BlogView(props: P) {
         <article>
           <h1>{blog.title}</h1>
           <Space>
-            <p className='bloginfo'>{blog.author}</p>
-            <p className='bloginfo'>
+            <p className="bloginfo">{blog.author}</p>
+            <p className="bloginfo">
               创建：
               {
                 // @ts-ignore
                 (new Date(blog.createTime || '') as Date).format?.('yyyy-MM-dd hh:mm:ss')
               }
             </p>
-            <p className='bloginfo'>
+            <p className="bloginfo">
               修改：
               {
                 // @ts-ignore
                 (new Date(blog.updateTime || '') as Date).format?.('yyyy-MM-dd hh:mm:ss')
               }
             </p>
-            <p className='bloginfo'>
+            <p className="bloginfo">
               访问量：
               {blog.viewCount}
             </p>
