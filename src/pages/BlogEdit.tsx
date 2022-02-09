@@ -58,11 +58,11 @@ export default function BlogEdit(props: P) {
       url: api.url + api.blog,
       data: BlogUtils.create(title, markdownCode, author, 0, subjectid, language, location, access, headPageUrl, true),
     })
-      .then((res) => {
+      .then(res => {
         console.log(res);
         message.success('储存成功');
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
         message.error('储存失败');
       });
@@ -74,11 +74,11 @@ export default function BlogEdit(props: P) {
       url: api.url + api.blog,
       data: BlogUtils.create(title, markdownCode, author, 0, subjectid, language, location, access, headPageUrl, false),
     })
-      .then((res) => {
+      .then(res => {
         console.log(res);
         message.success('储存成功');
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
         message.error('储存失败');
       });
@@ -90,13 +90,13 @@ export default function BlogEdit(props: P) {
       url: api.url + api.blogsubject,
       data: values,
     })
-      .then((res) => {
+      .then(res => {
         console.log(res);
         message.success('储存成功');
         getSubjects();
         setSubjectModalVisibility(false);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
         message.error('储存失败');
       });
@@ -109,12 +109,12 @@ export default function BlogEdit(props: P) {
       method: 'GET',
       url: api.url + api.blogsubject + (id <= 0 ? '' : '/' + id),
     })
-      .then((res) => {
+      .then(res => {
         console.log(res);
         setSubjects(res.data);
         console.log(114514, subjects);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
         message.error('获取主题失败');
       });
@@ -125,30 +125,33 @@ export default function BlogEdit(props: P) {
       <ModalForm
         title={'新建主题'}
         visible={subjectModalVisibility}
-        okButtonTitle='确定'
-        cancelButtonTitle='取消'
-        onSubmit={(values) => {
+        okButtonTitle="确定"
+        cancelButtonTitle="取消"
+        onSubmit={values => {
           onNewSubjectClick(values);
         }}
-        onCancel={(error) => {
+        onCancel={error => {
           setSubjectModalVisibility(false);
         }}
         items={[
           {
             name: 'title',
             label: '标题',
-            child: <Input defaultValue={''} />,
+            initialValue: '',
+            child: <Input />,
           },
           {
             name: 'description',
             label: '描述',
-            child: <Input defaultValue={''} />,
+            initialValue: '',
+            child: <Input />,
           },
           {
             name: 'access',
             label: '访问权限',
+            initialValue: 'public',
             child: (
-              <Select style={{ width: '100%' }} placeholder='选择可访问性' defaultValue={'public'}>
+              <Select style={{ width: '100%' }} placeholder="选择可访问性">
                 {['private', 'urasekai', 'public'].map((value: string) => {
                   return (
                     <Option key={value} value={value}>
@@ -164,7 +167,7 @@ export default function BlogEdit(props: P) {
 
       <div style={{ position: 'absolute', top: '15px', left: '-50px' }}>
         <Link to={mylocation.pathname + '/..'}>
-          <Button size='large' shape='circle'>
+          <Button size="large" shape="circle">
             <LeftOutlined />
           </Button>
         </Link>
@@ -172,29 +175,29 @@ export default function BlogEdit(props: P) {
 
       <RightContent update={props.update} setUpdate={props.setUpdate}>
         <div style={{ backgroundColor: 'white', borderRadius: '5px', marginTop: '5px', width: '200px', padding: '10px' }}>
-          <Space direction='vertical'>
+          <Space direction="vertical">
             <Select
               style={{ width: '100%' }}
-              placeholder='选择主题'
+              placeholder="选择主题"
               onChange={setSubjectid}
-              dropdownRender={(menu) => (
+              dropdownRender={menu => (
                 <div>
                   {menu}
                   <Divider style={{ margin: '4px 0' }} />
                   <div style={{ display: 'flex', flexWrap: 'nowrap', padding: 8 }}>
-                    <a
-                      style={{ flex: 'none', padding: '8px', display: 'block', cursor: 'pointer' }}
+                    <button
+                      style={{ flex: 'none', padding: '8px', display: 'block', cursor: 'pointer', border: 'none', background: 'none' }}
                       onClick={() => {
                         setSubjectModalVisibility(true);
                       }}
                     >
                       <PlusOutlined /> 添加主题
-                    </a>
+                    </button>
                   </div>
                 </div>
               )}
             >
-              {subjects.map((item) => {
+              {subjects.map(item => {
                 console.log(item);
                 return (
                   <Option key={item.id} value={item.id}>
@@ -205,16 +208,16 @@ export default function BlogEdit(props: P) {
             </Select>
 
             <Input
-              placeholder='语言'
-              onChange={(e) => {
+              placeholder="语言"
+              onChange={e => {
                 setLanguage(e.target.value);
               }}
               value={language}
             ></Input>
 
             <Input
-              placeholder='地点'
-              onChange={(e) => {
+              placeholder="地点"
+              onChange={e => {
                 setLocation(e.target.value);
               }}
               value={location}
@@ -222,8 +225,8 @@ export default function BlogEdit(props: P) {
 
             <Select
               style={{ width: '100%' }}
-              placeholder='选择可访问性'
-              onChange={(e) => {
+              placeholder="选择可访问性"
+              onChange={e => {
                 setAccess(e);
               }}
               value={access}
@@ -248,8 +251,8 @@ export default function BlogEdit(props: P) {
         </Space>
         <h1>
           <Input
-            placeholder='标题'
-            onChange={(e) => {
+            placeholder="标题"
+            onChange={e => {
               setTitle(e.target.value);
             }}
             value={title}
@@ -258,10 +261,10 @@ export default function BlogEdit(props: P) {
           />
         </h1>
         <Space>
-          <p className='bloginfo'>
+          <p className="bloginfo">
             <Input
-              placeholder='作者'
-              onChange={(e) => {
+              placeholder="作者"
+              onChange={e => {
                 setAuthor(e.target.value);
               }}
               value={author}
@@ -298,7 +301,7 @@ export default function BlogEdit(props: P) {
           <TextArea
             rows={20}
             style={{ width: '50%' }}
-            onChange={(e) => {
+            onChange={e => {
               setMarkdownCode(e.target.value);
             }}
           />
