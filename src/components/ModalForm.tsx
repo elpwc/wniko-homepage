@@ -17,6 +17,7 @@ interface ModalFormItem {
   label: string;
   rules?: any;
   child: JSX.Element;
+  initialValue?: any;
 }
 
 // reset form fields when modal is form, closed
@@ -59,10 +60,10 @@ const ModalForm: React.FC<ModalFormProps> = ({ title, visible, onSubmit, onCance
       cancelText={cancelButtonTitle ? cancelButtonTitle : 'Cancel'}
       destroyOnClose={true} // important
     >
-      <Form size='small' labelCol={{ span: 4 }} form={form} layout='horizontal' name='userForm' onFinish={onSubmit} onFinishFailed={onSubmitFailed}>
+      <Form size="small" labelCol={{ span: 4 }} form={form} layout="horizontal" name="userForm" onFinish={onSubmit} onFinishFailed={onSubmitFailed}>
         {items.map((item: ModalFormItem) => {
           return (
-            <Form.Item name={item.name} label={item.label} rules={item.rules}>
+            <Form.Item name={item.name} label={item.label} rules={item.rules} initialValue={item.initialValue}>
               {item.child}
             </Form.Item>
           );
