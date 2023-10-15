@@ -112,7 +112,7 @@ function Main(props: P) {
                     喵🐾
                   </Button>
                   <Modal
-                    title='~里世界的入口~'
+                    title='ん？'
                     visible={adminWinState === 1}
                     // 登录
                     onOk={() => {
@@ -127,7 +127,7 @@ function Main(props: P) {
                         // Set global user mode to ADMIN
                         AdminModeStorage.set(1);
                       } else {
-                        message.warning('来自守门人的传话：咳..前往里世界的口令不对');
+                        message.warning('?');
                       }
                       props.setUpdate();
                     }}
@@ -135,8 +135,8 @@ function Main(props: P) {
                       setAdminWinState(0);
                       props.setUpdate();
                     }}
-                    okText='进入里世界~'
-                    cancelText='算了'
+                    okText='?'
+                    cancelText='Close'
                   >
                     <Space size='large'>
                       <Input.Password
