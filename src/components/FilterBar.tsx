@@ -53,7 +53,7 @@ export default function FilterBar(props: P) {
   return (
     <>
       <div style={{ fontSize: fontSize }}>
-        <div id='list_background' style={{ position: 'absolute', zIndex: 0, width: '100%', borderRadius: '5px', backgroundColor: 'white', padding: '5px 0px' }}>
+        <div id="list_background" style={{ position: 'absolute', zIndex: 0, width: '100%', borderRadius: '5px', backgroundColor: 'white', padding: '5px 0px' }}>
           {props.items.map((item, index) => {
             return (
               <div key={item.key} className={'item' + (selected === item.key ? ' selected' : '') + (index === props.items.length - 1 ? ' lastitem' : '')} style={{ height: `${itemHeight}px` }}>
@@ -62,7 +62,7 @@ export default function FilterBar(props: P) {
             );
           })}
         </div>
-        <div id='list_select_block' style={{ position: 'absolute', zIndex: 1, width: '100%', padding: '5px 0px' }}>
+        <div id="list_select_block" style={{ position: 'absolute', zIndex: 1, width: '100%', padding: '5px 0px' }}>
           {selected !== '' ? (
             <div
               style={{
@@ -83,14 +83,14 @@ export default function FilterBar(props: P) {
             <></>
           )}
         </div>
-        <div id='list_title' style={{ position: 'absolute', zIndex: 2, width: '100%', padding: '5px 0px' }}>
+        <div id="list_title" style={{ position: 'absolute', zIndex: 2, width: '100%', padding: '5px 0px' }}>
           {props.items.map((item, index) => {
             return (
               <div
                 key={item.key}
                 data-index={index}
                 className={''}
-                onClick={(e) => {
+                onClick={e => {
                   setSelected(item.key);
                   formerTop = targetTop;
                   targetTop = index * itemHeight;

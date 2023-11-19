@@ -125,17 +125,17 @@ export default function Contact(props: P) {
 
   return (
     <>
-      <div className='animate__animeted animate__bounceIn' style={{ position: 'absolute', zIndex: 2 }}>
-        <img onClick={avatarOnClick} style={{ cursor: 'pointer', borderRadius: '250px', transform: `rotate(${avatarRotate}deg)` }} width='250px' src={avatar} alt='wniko' />
+      <div className="animate__animeted animate__bounceIn" style={{ position: 'absolute', zIndex: 2 }}>
+        <img onClick={avatarOnClick} style={{ cursor: 'pointer', borderRadius: '250px', transform: `rotate(${avatarRotate}deg)` }} width="250px" src={avatar} alt="wniko" />
       </div>
 
       <div style={{ position: 'absolute', zIndex: 0, paddingTop: '30px', height: '100%', width: '100%' }}>
-        <div className='white-card animate__animated animate__bounceInDown' style={{ position: 'absolute', top: '-30px', paddingLeft: '250px', paddingTop: '30px', height: '220px' }}>
+        <div className="white-card animate__animated animate__bounceInDown" style={{ position: 'absolute', top: '-30px', paddingLeft: '250px', paddingTop: '30px', height: '220px' }}>
           <div style={{ position: 'absolute', bottom: '0px' }}>
-            <Space size='large'>
+            <Space size="large">
               <h1>
                 Wniko{' '}
-                <span className='hoverUnderline' style={{ cursor: 'help', color: 'rgb(150, 150, 150)' }}>
+                <span className="hoverUnderline" style={{ cursor: 'help', color: 'rgb(150, 150, 150)' }}>
                   <i>"Elpwc"</i>
                 </span>{' '}
                 Wang
@@ -143,7 +143,7 @@ export default function Contact(props: P) {
               <h3>
                 性别: 海胆
                 <sup>
-                  <abbr title='海胆就是海胆，浑身带刺的那种'>?</abbr>
+                  <abbr title="海胆就是海胆，浑身带刺的那种">?</abbr>
                 </sup>
               </h3>
               <h3>居住地：淫梦大公国</h3>
@@ -152,14 +152,14 @@ export default function Contact(props: P) {
           </div>
         </div>
 
-        <div className='white-card animate__animeted animate__bounceInLeft' style={{ height: 'fit-content', marginTop: '220px', padding: '30px 10px' }}>
+        <div className="white-card animate__animeted animate__bounceInLeft" style={{ height: 'fit-content', marginTop: '220px', padding: '30px 10px' }}>
           <div style={{ backgroundColor: 'plum', fontSize: '15px', position: 'absolute', color: 'white', left: '0px', width: '200px', textAlign: 'right', paddingRight: '20px' }}>
             <p>使用的技术</p>
           </div>
           <div style={{ marginTop: '50px' }}>
             {imgImports.map((img, index) => {
               return (
-                <a className={`animate__animeted animate__bounceIn`} target='_blank' rel='noreferrer' href={img[3]} key={img[0]}>
+                <a className={`animate__animeted animate__bounceIn`} target="_blank" rel="noreferrer" href={img[3]} key={img[0]}>
                   <Tooltip title={img[2]}>
                     <img
                       alt={img[0].split('.')[0]}
@@ -167,7 +167,7 @@ export default function Contact(props: P) {
                         // @ts-ignore
                         img[1].default
                       }
-                      width='50px'
+                      width="50px"
                     />
                   </Tooltip>
                 </a>
@@ -176,24 +176,24 @@ export default function Contact(props: P) {
           </div>
         </div>
 
-        <div className='white-card animate__animeted animate__bounceInDown' style={{ height: 'fit-content', marginTop: '20px', padding: '30px 50px' }}>
+        <div className="white-card animate__animeted animate__bounceInDown" style={{ height: 'fit-content', marginTop: '20px', padding: '30px 50px' }}>
           <div style={{ backgroundColor: 'plum', fontSize: '15px', position: 'absolute', color: 'white', left: '0px', width: '200px', textAlign: 'right', paddingRight: '20px' }}>
             <p>取得联系</p>
           </div>
           <div style={{ marginTop: '50px' }}>
             <address>
               <List
-                itemLayout='horizontal'
+                itemLayout="horizontal"
                 dataSource={contactData}
-                renderItem={(item) => (
+                renderItem={item => (
                   <List.Item>
                     <List.Item.Meta
-                      avatar={typeof item.websiteLogo === 'string' ? <img alt={item.website} width='30px' src={item.websiteLogo} /> : item.websiteLogo}
+                      avatar={typeof item.websiteLogo === 'string' ? <img alt={item.website} width="30px" src={item.websiteLogo} /> : item.websiteLogo}
                       title={
                         <>
                           <span style={{ position: 'absolute', width: '200px' }}>{item.website}</span>
                           <span style={{ position: 'absolute', left: '180px' }}>
-                            <a target='_blank' rel='noreferrer' href={item.url}>
+                            <a target="_blank" rel="noreferrer" href={item.url}>
                               {item.title}
                             </a>
                           </span>

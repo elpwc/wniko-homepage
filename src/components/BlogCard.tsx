@@ -27,26 +27,26 @@ export default function BlogCard(props: P) {
         }
         style={{}}
       >
-        <Space direction='vertical'>
+        <Space direction="vertical">
           <div style={{ height: '80px' }}>
             {/*<ReactMarkdown children={props.blog.content}/>*/}
             <Space>
-              <p className='bloginfo'>{props.blog.author}</p>
-              <p className='bloginfo'>
+              <p className="bloginfo">{props.blog.author}</p>
+              <p className="bloginfo">
                 创建：
                 {
                   // @ts-ignore
                   (new Date(props.blog.createTime) as Date).format('yyyy-MM-dd hh:mm:ss')
                 }
               </p>
-              <p className='bloginfo'>
+              <p className="bloginfo">
                 修改：
                 {
                   // @ts-ignore
                   (new Date(props.blog.updateTime) as Date).format('yyyy-MM-dd hh:mm:ss')
                 }
               </p>
-              <p className='bloginfo'>
+              <p className="bloginfo">
                 访问量：
                 {props.blog.viewCount}
               </p>

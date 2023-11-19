@@ -13,9 +13,9 @@ interface P {
 export default function BlogList(props: P) {
   return (
     <>
-      <Space direction='vertical' style={{ width: '-webkit-fill-available' }}>
+      <Space direction="vertical" style={{ width: '-webkit-fill-available' }}>
         {props.blogs.map((blog: Blog) => {
-          return <BlogCard blog={blog} key={blog.id}/>;
+          return <BlogCard blog={blog} key={blog.id} />;
         })}
       </Space>
     </>

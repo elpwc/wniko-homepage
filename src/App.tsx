@@ -54,11 +54,11 @@ function App() {
   }, []);
 
   return (
-    <div className='App'>
+    <div className="App">
       <Routes>
-        <Route index element={<Navigate to='/zh-cn' />}></Route>
+        <Route index element={<Navigate to="/zh-cn" />}></Route>
         <Route
-          path=':lang'
+          path=":lang"
           element={
             <Main
               update={update}
@@ -80,7 +80,7 @@ function App() {
             }
           ></Route>
           <Route
-            path='projects'
+            path="projects"
             element={
               <Projects
                 update={update}
@@ -91,7 +91,7 @@ function App() {
             }
           ></Route>
           <Route
-            path='blog'
+            path="blog"
             element={
               <Blogs
                 update={update}
@@ -102,7 +102,7 @@ function App() {
             }
           ></Route>
           <Route
-            path='blog/:blogid'
+            path="blog/:blogid"
             element={
               <BlogView
                 update={update}
@@ -113,7 +113,7 @@ function App() {
             }
           ></Route>
           <Route
-            path='blog/new'
+            path="blog/new"
             element={
               <BlogEdit
                 update={update}
@@ -124,7 +124,7 @@ function App() {
             }
           ></Route>
           <Route
-            path='illust'
+            path="illust"
             element={
               <Illust
                 update={update}
@@ -135,7 +135,7 @@ function App() {
             }
           ></Route>
           <Route
-            path='contact'
+            path="contact"
             element={
               <Contact
                 update={update}
@@ -146,7 +146,7 @@ function App() {
             }
           ></Route>
           <Route
-            path='test'
+            path="test"
             element={
               <TestPage
                 update={update}
@@ -157,7 +157,7 @@ function App() {
             }
           ></Route>
           <Route
-            path='404'
+            path="404"
             element={
               <Contact
                 update={update}
@@ -167,7 +167,7 @@ function App() {
               />
             }
           ></Route>
-          <Route path='*' element={<Page404 />}></Route>
+          <Route path="*" element={<Page404 />}></Route>
         </Route>
       </Routes>
     </div>

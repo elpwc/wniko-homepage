@@ -12,6 +12,5 @@ export default function TestPage(props: P) {
     CurrentPageStorage.set('test');
     props.setUpdate();
   }, []);
-  return <>
-  </>;
+  return <></>;
 }

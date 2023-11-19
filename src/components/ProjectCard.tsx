@@ -70,7 +70,7 @@ export default function ProjectCard(props: P) {
       <Card
         title={
           <>
-            <a target='_blank' href={props.project.url} rel='noreferrer'>
+            <a target="_blank" href={props.project.url} rel="noreferrer">
               <span>{props.project.name}</span>
             </a>
           </>
@@ -81,14 +81,14 @@ export default function ProjectCard(props: P) {
               {props.edit ? (
                 <>
                   <Switch
-                    checkedChildren='公开'
-                    unCheckedChildren='隐藏'
+                    checkedChildren="公开"
+                    unCheckedChildren="隐藏"
                     defaultChecked={!props.project.isprivate}
-                    onChange={(checked) => {
+                    onChange={checked => {
                       props.onPrivateChange?.(props.project, !checked);
                     }}
                   />
-                  <Tooltip placement='top' title='编辑'>
+                  <Tooltip placement="top" title="编辑">
                     <span
                       style={{ fontSize: '20px', color: 'blue', cursor: 'pointer' }}
                       onClick={() => {
@@ -98,15 +98,15 @@ export default function ProjectCard(props: P) {
                       <EditOutlined />
                     </span>
                   </Tooltip>
-                  <Tooltip placement='top' title='删除'>
+                  <Tooltip placement="top" title="删除">
                     <Popconfirm
-                      title='确定永久删除吗？'
+                      title="确定永久删除吗？"
                       onConfirm={() => {
                         props.onDeleteClick?.(props.project);
                       }}
                       //onCancel={}
-                      okText='删除'
-                      cancelText='取消'
+                      okText="删除"
+                      cancelText="取消"
                     >
                       <span style={{ fontSize: '20px', color: 'red', cursor: 'pointer' }}>
                         <DeleteOutlined />
@@ -120,8 +120,8 @@ export default function ProjectCard(props: P) {
               {props.project.url === '' ? (
                 <></>
               ) : (
-                <Tooltip placement='top' title='打开项目'>
-                  <a target='_blank' href={props.project.url} rel='noreferrer'>
+                <Tooltip placement="top" title="打开项目">
+                  <a target="_blank" href={props.project.url} rel="noreferrer">
                     <span style={{ fontSize: '20px', color: 'green' }}>
                       <SendOutlined />
                     </span>
@@ -131,8 +131,8 @@ export default function ProjectCard(props: P) {
               {props.project.githuburl === '' ? (
                 <></>
               ) : (
-                <Tooltip placement='top' title='打开Github'>
-                  <a target='_blank' href={props.project.githuburl} rel='noreferrer'>
+                <Tooltip placement="top" title="打开Github">
+                  <a target="_blank" href={props.project.githuburl} rel="noreferrer">
                     <span style={{ fontSize: '20px', color: 'black' }}>
                       <GithubOutlined />
                     </span>
@@ -146,7 +146,7 @@ export default function ProjectCard(props: P) {
         }
         style={{}}
       >
-        <Space direction='vertical'>
+        <Space direction="vertical">
           <div>
             {props.project.technologies.map((tech: string) => {
               return (
