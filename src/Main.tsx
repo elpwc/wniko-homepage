@@ -176,7 +176,7 @@ function Main(props: P) {
                         {LangUtils.enumStrToLangName(lang)}
                       </Option>
                     );
-                  }
+                  }else{return <></>}
                 })}
               </Select>
             </Menu.Item>

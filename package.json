@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@types/react-cookies": "^0.1.0",
-    "@types/react-syntax-highlighter": "^13.5.2"
+    "@types/react-syntax-highlighter": "^13.5.2",
+    "eslint-plugin-html": "^7.1.0"
   }
 }
