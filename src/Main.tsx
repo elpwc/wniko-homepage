@@ -56,7 +56,7 @@ function Main(props: P) {
           zIndex: '2',
         }}
       >
-        <Header className="header" style={{ padding: '0px', height: '60px', backgroundColor: 'white' }}>
+        <Header className="header" style={{ padding: '0px', height: '60px', backgroundColor: 'white' , }}>
           <div className="logo" />
           <Menu
             theme="light"
@@ -75,12 +75,17 @@ function Main(props: P) {
               <Link to="./projects">{L.header.projects}</Link>
             </Menu.Item>
             <Menu.Item key="blogs">
-              <Link to="./blog">{L.header.blogs}</Link>
+              <Link to="./blogs">{L.header.blogs}</Link>
             </Menu.Item>
+            <Menu.Item key="photos">
+              <Link to="./photos">{L.header.illust}</Link>
+            </Menu.Item>
+            {/**
+             * 
             <Menu.Item key="illust">
               <Link to="./illust">{L.header.illust}</Link>
             </Menu.Item>
-            <Menu.Item key="contact">
+                         <Menu.Item key="contact">
               <Link to="./contact">{L.header.contact}</Link>
             </Menu.Item>
 
@@ -159,6 +164,10 @@ function Main(props: P) {
                 </>
               )}
             </Menu.Item>
+
+
+             */}
+
 
             <Menu.Item key="langsele" disabled style={{ cursor: 'default', position: 'absolute', width: '200px', right: '0px' }}>
               <Select

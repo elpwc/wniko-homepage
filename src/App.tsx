@@ -91,7 +91,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="blog"
+            path="blogs"
             element={
               <Blogs
                 update={update}
@@ -102,7 +102,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="blog/:blogid"
+            path="blogs/:blogid"
             element={
               <BlogView
                 update={update}
@@ -113,7 +113,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="blog/new"
+            path="blogs/new"
             element={
               <BlogEdit
                 update={update}
