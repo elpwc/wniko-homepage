@@ -29,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "openapi": "ts-node openapi.config.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +53,7 @@
   "devDependencies": {
     "@types/react-cookies": "^0.1.0",
     "@types/react-syntax-highlighter": "^13.5.2",
+    "@umijs/openapi": "^1.12.1",
     "eslint-plugin-html": "^7.1.0"
   }
 }

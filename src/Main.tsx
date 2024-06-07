@@ -89,6 +89,8 @@ function Main(props: P) {
               <Link to="./contact">{L.header.contact}</Link>
             </Menu.Item>
 
+
+             */}
             <Menu.Item key="admin" disabled style={{ cursor: 'default', position: 'absolute', right: '200px' }}>
               {adminWinState === 2 ? (
                 <Button
@@ -118,7 +120,7 @@ function Main(props: P) {
                   </Button>
                   <Modal
                     title='ん？'
-                    visible={adminWinState === 1}
+                    open={adminWinState === 1}
                     // 登录
                     onOk={() => {
                       if (pw === AdminPassword) {
@@ -165,8 +167,6 @@ function Main(props: P) {
               )}
             </Menu.Item>
 
-
-             */}
 
 
             <Menu.Item key="langsele" disabled style={{ cursor: 'default', position: 'absolute', width: '200px', right: '0px' }}>
