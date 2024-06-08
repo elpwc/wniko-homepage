@@ -6,16 +6,14 @@
   border-bottom-style: solid;
   border-bottom-width: 1px;
   cursor: pointer;
-  padding: 0 7px;
 }
 
 .item:hover {
-  /*background-color: rgb(242, 251, 255);*/
+  background-color: skyblue;
 }
 
 .selected {
   color: white;
-  background-color: royalblue;
 }
 
 .lastitem {

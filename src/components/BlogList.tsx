@@ -7,16 +7,20 @@ import Blog from '../utils/blog';
 interface P {
   update: boolean;
   setUpdate: () => void;
-  blogs: Blog[];
+  blogs: API.Blog[];
 }
 
 export default function BlogList(props: P) {
   return (
     <>
       <Space direction="vertical" style={{ width: '-webkit-fill-available' }}>
-        {props.blogs.map((blog: Blog) => {
-          return <BlogCard blog={blog} key={blog.id} />;
-        })}
+        {props.blogs
+          ?.sort((a, b) => {
+            return new Date(b.createtime).getTime() - new Date(a.createtime).getTime();
+          })
+          .map((blog: API.Blog) => {
+            return <BlogCard blog={blog} key={blog.id} />;
+          })}
       </Space>
     </>
   );

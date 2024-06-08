@@ -9,37 +9,70 @@ import LeftContent from '../components/LeftContent';
 import RightContent from '../components/RightContent';
 import { AdminModeStorage, CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
-import Blog, { BlogUtils } from '../utils/blog';
-import BlogSubject from '../utils/blogSubject';
+import { findAllBlog } from '../services/api/blog';
 
 interface P {
   update: boolean;
   setUpdate: () => void;
 }
 
-let blogSubjects: BlogSubject[] = [];
+interface BlogSubject {
+  name: string;
+  sum: number;
+}
+
+const newBlogSubject = (name: string, sum: number = 1) => {
+  return { name, sum } as BlogSubject;
+};
 
 export default function Blogs(props: P) {
-  const [blogs, setBlogs]: [Blog[], any] = useState([]);
+  const [blogs, setBlogs]: [API.Blog[], any] = useState([]);
+  const [blogSubjects, setBlogSubjects]: [BlogSubject[], any] = useState([]);
+  const [selectedSubjectKey, setselectedSubjectKey]: [string, any] = useState('0');
 
-  const getBlogs = () => {
-    axios({
-      method: 'get',
-      url: api.url + api.blog,
-    })
-      .then(res => {
-        setBlogs(res.data);
+  const getBlogs = (subject: string = '', onReceive?: (e: any) => void) => {
+    findAllBlog({ params: { subject } })
+      .then((e: any) => {
+        onReceive?.(e);
+        console.log(e);
+        const receivedBlogs = e.data;
+        setBlogs(receivedBlogs as API.Blog[]);
+
+        props.setUpdate();
       })
       .catch(error => {});
   };
 
+  const updateSubjects = (receivedBlogs: API.Blog[]) => {
+    let blogSubjectsTemp: BlogSubject[] = [];
+    (receivedBlogs as API.Blog[]).forEach(blogItem => {
+      const blogItemSubjects = blogItem.subject.split(',');
+
+      blogItemSubjects.forEach(blogItemSubject => {
+        const index = blogSubjectsTemp.findIndex(blogSubject => {
+          return blogSubject.name === blogItemSubject;
+        });
+        console.log(index);
+        if (index !== -1) {
+          // 确保 sum 更新正确
+          blogSubjectsTemp[index].sum++;
+        } else {
+          blogSubjectsTemp.push(newBlogSubject(blogItemSubject));
+        }
+      });
+    });
+    blogSubjectsTemp = [{ name: '全部', sum: receivedBlogs.length }, ...blogSubjectsTemp];
+    setBlogSubjects(blogSubjectsTemp);
+  };
+
   useEffect(() => {
     CurrentPageStorage.set('blogs');
-
-    blogSubjects = init_debug_data.blogSubjects;
-    getBlogs();
+    getBlogs('', e => {
+      updateSubjects(e.data);
+    });
     props.setUpdate();
   }, []);
+
   return (
     <>
       <LeftContent update={props.update} setUpdate={props.setUpdate} marginRight={20}>
@@ -54,18 +87,33 @@ export default function Blogs(props: P) {
           <FilterBar
             update={props.update}
             setUpdate={props.setUpdate}
-            items={blogSubjects.map(sub => {
-              return { title: sub.title, key: String(sub.id) };
+            items={blogSubjects.map((blogSubject, i) => {
+              return {
+                contents: (
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span>{blogSubject.name === '' ? '未分类' : blogSubject.name}</span>
+                    <span>{blogSubject.sum}篇</span>
+                  </div>
+                ),
+                key: i.toString(),
+              };
             })}
-            selectedKey="1"
-            onClick={() => {}}
+            selectedKey={selectedSubjectKey}
+            onClick={e => {
+              setselectedSubjectKey(e);
+              if (e === '0') {
+                getBlogs();
+              } else {
+                getBlogs(blogSubjects[Number(e)].name);
+              }
+            }}
           />
         </div>
       </LeftContent>
       <RightContent update={props.update} setUpdate={props.setUpdate}>
         <p>114514</p>
       </RightContent>
-      <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs}></BlogList>
+      <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
     </>
   );
 }

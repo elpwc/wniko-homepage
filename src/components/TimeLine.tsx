@@ -7,7 +7,7 @@ import Blog from '../utils/blog';
 interface P {
   update: boolean;
   setUpdate: () => void;
-  blogs?: Blog[];
+  blogs?: API.Blog[];
 }
 
 // 监听滚动条位置，到最下面时加载更多
@@ -29,7 +29,7 @@ export default function TimeLine(props: P) {
   return (
     <>
       <Space direction="vertical" style={{ width: '-webkit-fill-available' }}>
-        {props.blogs?.map((blog: Blog) => {
+        {props.blogs?.map((blog: API.Blog) => {
           return <BlogCard blog={blog} key={blog.id} />;
         })}
       </Space>

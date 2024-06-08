@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 
 interface P {
-  blog: Blog;
+  blog: API.Blog;
 }
 
 export default function BlogCard(props: P) {
@@ -35,15 +35,15 @@ export default function BlogCard(props: P) {
               <p className="bloginfo">
                 创建：
                 {
-                  // @ts-ignore
-                  (new Date(props.blog.createTime) as Date).format('yyyy-MM-dd hh:mm:ss')
+                  //@ts-ignore
+                  new Date(props.blog.createtime).format('yyyy-MM-dd hh:mm:ss')
                 }
               </p>
               <p className="bloginfo">
                 修改：
                 {
-                  // @ts-ignore
-                  (new Date(props.blog.updateTime) as Date).format('yyyy-MM-dd hh:mm:ss')
+                  //@ts-ignore
+                  new Date(props.blog.updatetime).format('yyyy-MM-dd hh:mm:ss')
                 }
               </p>
               <p className="bloginfo">
