@@ -18,9 +18,10 @@ export default {
     devstates: {
       empty: '',
       planning: '计划中',
-      developping: '开发中',
-      done: '已完成',
+      developing: '开發中',
+      done: '已發布',
       dispose: '已废弃',
+      maintainingstopped: '已停止维护',
     },
     langs: {
       zh_cn: '简体中文',
