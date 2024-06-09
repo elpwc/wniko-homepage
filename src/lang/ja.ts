@@ -9,6 +9,11 @@ export default {
   home: {},
   projects: {},
   blogs: {},
+  page404: {
+    tip1: '訪問しようとしたURLは存在しません',
+    tip2: 'このURLが正しいと確信している場合は、ページが削除されたか、移動された可能性があります',
+    returnButton: '👉HPに戻る👈',
+  },
 
   components: {
     project: {},

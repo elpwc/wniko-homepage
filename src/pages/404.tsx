@@ -12,19 +12,24 @@ interface P {
 }
 
 export default function Page404(props: P) {
+  const L = LangUtils.selectLang();
+
   useEffect(() => {
     CurrentPageStorage.set('404');
   }, []);
-  let title = props.title ? props.title : <>这个页面不存在捏</>;
-  let text = props.text ? props.text : <>如果你确信网址没有问题，那大概是因为已经被删了或者改了位置了8</>;
-  let returnText = props.returnText ? props.returnText : <>👉返回主页👈</>;
+  let title = props.title ? props.title : <>{L.page404.tip1}</>;
+  let text = props.text ? props.text : <>{L.page404.tip2}</>;
+  let returnText = props.returnText ? props.returnText : <>{L.page404.returnButton}</>;
   let returnRoute = props.returnRoute ? props.returnRoute : `/${LangUtils.LangToEnumStr(LangStorage.value).replace('_', '-')}`;
 
   return (
     <>
       <div style={{ backgroundColor: 'white', borderRadius: '5px', marginTop: '10px' }}>
         <div style={{ padding: '60px 30px' }}>
-          <p style={{ fontSize: '50px', color: 'red' }}>404</p>
+          <p>
+            <span style={{ fontSize: '50px', color: 'red' }}>404 </span>
+            <span style={{ fontSize: '35px' }}>Page Not Exist</span>
+          </p>
           <Divider />
           <p>
             {title}
