@@ -5,6 +5,7 @@ import BlogCard from './BlogCard';
 import Blog from '../utils/blog';
 import { UMenuItemData } from '../utils/umenu';
 import { Link } from 'react-router-dom';
+import './UMenuItem.css';
 
 interface P {
   data: UMenuItemData;
@@ -20,6 +21,7 @@ export default function UMenuItem(props: P) {
     <>
       <span>
         <Link
+          className={'umenuitem' + (isChecked() ? ' checked' : '')}
           to={props.data.route}
           onClick={() => {
             props.onClick();
