@@ -9,6 +9,8 @@ import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { AdminPassword } from './staticData/adminPassword';
 import cookie from 'react-cookies';
 import appconfig from './appconfig';
+import UMenu from './components/UMenu';
+import headerbg from './resource/headerbg.jpg';
 
 const { Option } = Select;
 
@@ -30,6 +32,8 @@ function Main(props: P) {
   // Admin Win state
   const [adminWinState, setAdminWinState]: [number, any] = useState(AdminModeStorage.value === 1 ? 2 : 0); // 0 not admin, 1 open requireWin, 2 admin mode
 
+  const [selectedMenu, setselectedMenu]: [number, any] = useState(0);
+
   const params = useParams();
   const navigate = useNavigate();
   const mylocation = useLocation();
@@ -46,52 +50,49 @@ function Main(props: P) {
 
   return (
     <div className="main">
-      <Layout
+      <div
         style={{
           position: 'fixed',
           top: '0px',
           left: '0px',
           right: '0px',
-          height: '60px',
-          zIndex: '2',
+          bottom: '0px',
+          background: `url(${headerbg})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: `100%`,
+          zIndex: -114514,
+        }}
+      ></div>
+      <div style={{ height: '80%', margin: '45% 0' }}></div>
+      {/*<div style={{ height: '5px', margin: '0', width: '100%', backgroundColor: 'rgb(18 21 22 / 61%)' }}></div>*/}
+      <header
+        style={{
+          display: 'flex',
+          position: 'sticky',
+          top: '0px',
+          padding: '5px 0',
+          zIndex: 114514,
+          color: 'white',
+          backgroundColor: '#121516',
+          boxShadow: 'rgb(18, 21, 22) 0px -30px 50px 50px' /*'0px 0px 5px 2px #121516'*/,
         }}
       >
-        <Header className="header" style={{ padding: '0px', height: '60px', backgroundColor: 'white' , }}>
-          <div className="logo" />
-          <Menu
-            theme="light"
-            mode="horizontal"
-            defaultSelectedKeys={[CurrentPageStorage.value]}
-            selectedKeys={[CurrentPageStorage.value]}
-            style={{ fontSize: '15px', height: '60px' }}
-            onClick={key => {
-              CurrentPageStorage.set(key.key);
-            }}
-          >
-            <Menu.Item key="home">
-              <Link to="./">{L.header.home}</Link>
-            </Menu.Item>
-            <Menu.Item key="projects">
-              <Link to="./projects">{L.header.projects}</Link>
-            </Menu.Item>
-            <Menu.Item key="blogs">
-              <Link to="./blogs">{L.header.blogs}</Link>
-            </Menu.Item>
-            <Menu.Item key="photos">
-              <Link to="./photos">{L.header.illust}</Link>
-            </Menu.Item>
-            {/**
-             * 
-            <Menu.Item key="illust">
-              <Link to="./illust">{L.header.illust}</Link>
-            </Menu.Item>
-                         <Menu.Item key="contact">
-              <Link to="./contact">{L.header.contact}</Link>
-            </Menu.Item>
-
-
-             */}
-            <Menu.Item key="admin" disabled style={{ cursor: 'default', position: 'absolute', right: '200px' }}>
+        <div style={{ display: 'flex', width: '100%' }}>
+          <div style={{ padding: '0 10px' }}>
+            <p style={{ width: 'max-content', height: '100%', padding: '1px 5px', margin: '0' }}>🌸 wniko's homepage</p>
+          </div>
+          <UMenu
+            items={[
+              { key: 'home', title: L.header.home, route: './' },
+              { key: 'projects', title: L.header.projects, route: './projects' },
+              { key: 'blogs', title: L.header.blogs, route: './blogs' },
+              { key: 'photos', title: L.header.illust, route: './photos' },
+              { key: 'contact', title: L.header.contact, route: './contact' },
+            ]}
+            onCheck={() => {}}
+          />
+          <div style={{ display: 'flex' }}>
+            <div style={{ alignContent: 'center' }}>
               {adminWinState === 2 ? (
                 <Button
                   onClick={() => {
@@ -109,17 +110,22 @@ function Main(props: P) {
                 </Button>
               ) : (
                 <>
-                  <Button
+                  <a
                     onClick={() => {
                       setPw('');
                       setAdminWinState(1);
                       props.setUpdate();
                     }}
+                    style={{
+                      color: 'white',
+                      padding: '0 5px',
+                      margin: '0 10px',
+                    }}
                   >
-                    喵🐾
-                  </Button>
+                    ◇
+                  </a>
                   <Modal
-                    title='ん？'
+                    title="E'яkesaru osokōy!"
                     open={adminWinState === 1}
                     // 登录
                     onOk={() => {
@@ -134,7 +140,7 @@ function Main(props: P) {
                         // Set global user mode to ADMIN
                         AdminModeStorage.set(1);
                       } else {
-                        message.warning('?');
+                        setAdminWinState(0);
                       }
                       props.setUpdate();
                     }}
@@ -142,12 +148,12 @@ function Main(props: P) {
                       setAdminWinState(0);
                       props.setUpdate();
                     }}
-                    okText='?'
-                    cancelText='Close'
+                    okText="?"
+                    closeIcon={null}
                   >
                     <Space size="large">
                       <Input.Password
-                        placeholder="口令"
+                        placeholder="Ōgna"
                         iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                         onChange={e => {
                           setPw(e.target.value);
@@ -159,61 +165,49 @@ function Main(props: P) {
                           setRememberPw(e.target.checked);
                         }}
                       >
-                        以后直接进入里世界~
+                        Urяh in'яkesaru in'ustesukoч arakerok.
                       </Checkbox>
                     </Space>
                   </Modal>
                 </>
               )}
-            </Menu.Item>
+            </div>
+            <Select
+              defaultValue="zh_cn"
+              style={{ width: 120, backgroundColor: '#121516', color: 'black' }}
+              onChange={value => {
+                navigate(`/${value.replace('_', '-')}/` + mylocation.pathname.split('/').slice(2).join('/'));
+                props.setUpdate();
+              }}
+            >
+              {LangUtils.getEnumStrings().map((lang: string) => {
+                if (appconfig.usingLanguages.includes(LangUtils.enumStrToLang(lang))) {
+                  return (
+                    <Option value={lang} key={lang}>
+                      {lang}
+                    </Option>
+                  );
+                } else {
+                  return <></>;
+                }
+              })}
+            </Select>
+          </div>
+        </div>
+      </header>
 
-
-
-            <Menu.Item key="langsele" disabled style={{ cursor: 'default', position: 'absolute', width: '200px', right: '0px' }}>
-              <Select
-                defaultValue="zh_cn"
-                style={{ width: 120 }}
-                onChange={value => {
-                  navigate(`/${value.replace('_', '-')}/` + mylocation.pathname.split('/').slice(2).join('/'));
-                  props.setUpdate();
-                }}
-              >
-                {LangUtils.getEnumStrings().map((lang: string) => {
-                  if (appconfig.usingLanguages.includes(LangUtils.enumStrToLang(lang))) {
-                    return (
-                      <Option value={lang} key={lang}>
-                        {LangUtils.enumStrToLangName(lang)}
-                      </Option>
-                    );
-                  }else{return <></>}
-                })}
-              </Select>
-            </Menu.Item>
-          </Menu>
-        </Header>
-      </Layout>
       <div
         style={{
-          position: 'fixed',
+          position: 'initial',
           top: '60px',
           left: '0px',
           right: '0px',
           bottom: '0px',
-          background: `url(${BackgroundImage})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: `100%`,
-          zIndex: '0',
-          backgroundColor: 'rgb(20,20,20)',
-        }}
-      ></div>
-      <div
-        style={{
-          position: 'absolute',
-          top: '60px',
-          left: '0px',
-          right: '0px',
-          bottom: '0px',
-          zIndex: '1',
+          paddingTop: '5%',
+          zIndex: '-5',
+          backgroundColor: '#ffffff87',
+          backdropFilter: 'blur(10px)',
+          minHeight: '1000px',
         }}
       >
         <Row>
