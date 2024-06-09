@@ -19,9 +19,8 @@ export default function UMenuItem(props: P) {
 
   return (
     <>
-      <span>
+      <div className={'umenuitem' + (isChecked() ? ' checked' : '')} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <Link
-          className={'umenuitem' + (isChecked() ? ' checked' : '')}
           to={props.data.route}
           onClick={() => {
             props.onClick();
@@ -31,10 +30,9 @@ export default function UMenuItem(props: P) {
             margin: '3px 10px',
           }}
         >
-          {isChecked() ? '⇒' : ''}
           {props.data.title}
         </Link>
-      </span>
+      </div>
     </>
   );
 }

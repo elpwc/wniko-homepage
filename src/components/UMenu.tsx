@@ -14,7 +14,14 @@ interface P {
 export default function UMenu(props: P) {
   return (
     <>
-      <Space direction="horizontal" style={{ width: '-webkit-fill-available' }}>
+      <menu
+        style={{
+          display: 'flex',
+          gap: '',
+          width: '-webkit-fill-available',
+          height: '100%',
+        }}
+      >
         {props.items.map((item, i) => {
           return (
             <UMenuItem
@@ -26,7 +33,7 @@ export default function UMenu(props: P) {
             />
           );
         })}
-      </Space>
+      </menu>
     </>
   );
 }

@@ -1,5 +1,25 @@
-#checked {
-  border-top-color: white;
-  border-top-width: 2px;
-  border-top-style: solid;
+.checked {
+  border-bottom-color: white;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+}
+
+.umenuitem {
+  width: 10%;
+  text-align: center;
+  transition: all 0.1s;
+}
+
+@media (any-hover: hover) {
+  .umenuitem:hover {
+    border-bottom-color: rgb(133, 133, 133);
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+  }
+}
+
+.umenuitem:active {
+  border-bottom-color: white;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
 }
