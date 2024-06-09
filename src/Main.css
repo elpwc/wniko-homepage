@@ -1,0 +1,23 @@
+.langSelectItem{
+  background-color: white;
+  width: 100%;
+  border-style: solid;
+  border-color: rgb(189, 209, 218);
+  border-width: 1px;
+  padding: 6px 15px;
+  font-size: large;
+  transition: all 0.1s;
+  cursor: pointer;
+}
+
+
+@media (any-hover: hover) {
+  .langSelectItem:hover {
+    
+  background-color: rgb(204, 204, 204);
+  }
+}
+
+.langSelectItem:active {
+  border-bottom-color: rgb(151, 151, 151);
+}
