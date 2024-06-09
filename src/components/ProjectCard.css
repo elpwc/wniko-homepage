@@ -1,0 +1,163 @@
+
+.projectContainer {
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  transition: all 0.3s;
+  min-height: 200px;
+  height: fit-content;
+  background-color: #f2f9ffc4;
+}
+
+@media (any-hover: hover) {
+  .projectContainer:hover {
+      box-shadow: 0 0 5px 0 gray;
+  }
+}
+
+.projectContainer .titlebar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.projectContainer .titlebar .link {
+  display: flex;
+  gap: 2em;
+  min-width: max-content
+}
+
+.projectContainer .titlebar .link a {
+  color: #000;
+  text-decoration: underline;
+  font-size: 0.8em;
+}
+
+.projectContainer .titlebar .title {
+  display: flex;
+  gap: 0.5em;
+}
+
+.projectContainer .titlebar .title a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.projectContainer .titlebar .title a.linkable {
+  cursor: pointer;
+}
+
+@media (any-hover: hover) {
+  .projectContainer .titlebar .title a.linkable:hover {
+      text-decoration: underline;
+  }
+}
+
+.projectContainer .titlebar .title div {
+  font-size: small;
+  padding: 3px;
+  background-color: white;
+  border-radius: 5px;
+  min-width: max-content;
+  height: fit-content;
+}
+
+.projectContainer .titlebar .title div.developing {
+  background-color: rgb(199, 186, 11);
+  color: white;
+}
+
+.projectContainer .titlebar .title div.complete {
+  background-color: rgb(67, 139, 67);
+  color: white;
+}
+
+.projectContainer .titlebar .title div.disposed {
+  background-color: rgb(88, 88, 88);
+  color: white;
+}
+
+.projectContainer .titlebar .title div.plan {
+  background-color: rgb(65, 139, 168);
+  color: white;
+}
+
+.projectContainer .desc {
+  padding-top: 1em;
+  display: flex;
+  gap: 0.5em;
+  justify-content: space-between;
+}
+
+.projectContainer .desc article .tags {
+  font-size: 0.9em;
+  color: gray;
+  text-decoration: underline;
+}
+
+nav {
+  display: flex;
+  gap: 5em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav div {
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+}
+
+nav a {
+  cursor: pointer;
+  color: white;
+}
+
+h3 span {
+  color: gray;
+}
+
+@media screen and (min-width: 1200px) {
+  nav {
+      gap: 15em;
+  }
+
+  nav div {
+      gap: 8em;
+  }
+
+}
+
+@media screen and (min-width: 960px) and (max-width: 1199px) {}
+
+@media screen and (min-width: 768px) and (max-width: 959px) {}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  main {
+      margin: 0;
+  }
+
+  nav {
+      gap: 2em;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  main {
+      margin: auto;
+  }
+
+  nav {
+      gap: 2em;
+  }
+
+  nav div {
+      gap: 1.5em;
+  }
+
+  .constructioninfo {
+      font-size: 2em;
+      padding: 10% 0;
+  }
+
+}

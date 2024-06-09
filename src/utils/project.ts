@@ -1,9 +1,10 @@
 export enum DevState {
   Empty,
-  Developping,
+  Developing,
   Planning,
   Done,
   Dispose,
+  MaintainingStopped,
 }
 
 export default interface Project {
