@@ -61,19 +61,6 @@ function Main(props: P) {
 
   return (
     <div className="main">
-      <div
-        style={{
-          position: 'fixed',
-          top: '0px',
-          left: '0px',
-          right: '0px',
-          bottom: '0px',
-          background: `url(${headerbg})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: `100%`,
-          zIndex: -114514,
-        }}
-      ></div>
       {langSelectMenuVisible ? (
         <div style={{ position: 'fixed', inset: 0, zIndex: 1145141919, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ backgroundColor: 'white', borderRadius: '3px', padding: '10px' }}>
@@ -101,24 +88,22 @@ function Main(props: P) {
       ) : (
         <></>
       )}
-      <div style={{ height: '80%', margin: '45% 0' }}></div>
       {/*<div style={{ height: '5px', margin: '0', width: '100%', backgroundColor: 'rgb(18 21 22 / 61%)' }}></div>*/}
       <header
         style={{
           display: 'flex',
-          position: 'sticky',
           top: '0px',
+          left: '0',
+          right: '0',
           padding: '0 0',
           zIndex: 114514,
           color: 'white',
-          backgroundColor: '#121516',
-          boxShadow: 'rgb(18, 21, 22) 0px -30px 50px 50px' /*'0px 0px 5px 2px #121516'*/,
+          backgroundColor: '#FFFFFF',
+          position: 'fixed',
+          boxShadow: '1px 1px 9px 0px rgb(222 232 241)' /*'0px 0px 5px 2px #121516'*/,
         }}
       >
         <div style={{ display: 'flex', width: '100%', paddingTop: '10px' }}>
-          <div style={{ padding: '0 10px' }}>
-            <p style={{ width: 'max-content', height: '100%', padding: '1px 5px', margin: '0' }}>🌸 wniko's homepage</p>
-          </div>
           <UMenu
             items={[
               { key: 'home', title: L.header.home, route: './' },

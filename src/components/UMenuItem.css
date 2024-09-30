@@ -1,5 +1,5 @@
 .checked {
-  border-bottom-color: white;
+  border-bottom-color: #2d72d2;
   border-bottom-width: 3px;
   border-bottom-style: solid;
 }
@@ -8,6 +8,7 @@
   width: 10%;
   text-align: center;
   transition: all 0.1s;
+  font-family: serif;
 }
 
 @media (any-hover: hover) {

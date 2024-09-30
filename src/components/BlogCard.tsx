@@ -4,6 +4,7 @@ import { GithubOutlined, SendOutlined } from '@ant-design/icons';
 import Blog from '../utils/blog';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
+import './BlogCard.css';
 
 interface P {
   blog: API.Blog;
@@ -14,46 +15,24 @@ export default function BlogCard(props: P) {
 
   return (
     <>
-      <Card
-        title={
-          <>
-            <span>{<Link to={'./' + props.blog.id}>{props.blog.title}</Link>}</span>
-          </>
-        }
-        extra={
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <Space></Space>
-          </div>
-        }
-        style={{}}
-      >
-        <Space direction="vertical">
-          <div style={{ height: '80px' }}>
-            {/*<ReactMarkdown children={props.blog.content}/>*/}
-            <Space>
-              <p className="bloginfo">{props.blog.author}</p>
-              <p className="bloginfo">
-                创建：
-                {
-                  //@ts-ignore
-                  new Date(props.blog.createtime).format('yyyy-MM-dd hh:mm:ss')
-                }
-              </p>
-              <p className="bloginfo">
-                修改：
-                {
-                  //@ts-ignore
-                  new Date(props.blog.updatetime).format('yyyy-MM-dd hh:mm:ss')
-                }
-              </p>
-              <p className="bloginfo">
-                访问量：
-                {props.blog.viewCount}
-              </p>
-            </Space>
-          </div>
-        </Space>
-      </Card>
+      <div>
+        <div>
+          <Link to={'./' + props.blog.id}>
+            <span className="blogtitle">{props.blog.title}</span>
+          </Link>
+        </div>
+        <div className="bloginfo" style={{display: 'flex'}}>
+          <p className="blogsubject">
+            {props.blog.subject}
+          </p>
+          <p className="blogdate">
+            {
+              //@ts-ignore
+              new Date(props.blog.createtime).format('yyyy-MM-dd')
+            }
+          </p>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,0 +1,13 @@
+.blogtitle{
+  font-size: 30px;
+  color: black;
+}
+
+.bloginfo{
+  font-size: small;
+  color: gray;
+}
+
+.blogsubject{
+  min-width: 50px;
+}

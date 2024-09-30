@@ -26,8 +26,9 @@ export default function UMenuItem(props: P) {
             props.onClick();
           }}
           style={{
-            color: 'white',
+            color: 'black',
             margin: '3px 10px',
+            fontSize: '24px'
           }}
         >
           {props.data.title}

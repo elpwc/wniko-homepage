@@ -20,6 +20,7 @@ export default function UMenu(props: P) {
           gap: '',
           width: '-webkit-fill-available',
           height: '100%',
+          justifyContent: 'center'
         }}
       >
         {props.items.map((item, i) => {

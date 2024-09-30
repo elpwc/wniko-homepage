@@ -1,10 +1,10 @@
 export default {
   header: {
-    home: '主页',
-    projects: '项目',
-    blogs: '博客',
-    illust: '插画',
-    contact: '联系',
+    home: '✹Wniko',
+    projects: '🦩Projects',
+    blogs: '🐝Blog',
+    illust: '🦋Illust',
+    contact: '🪼Contact',
   },
   home: {},
   projects: {},
