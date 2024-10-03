@@ -35,6 +35,8 @@ function Main(props: P) {
 
   const [langSelectMenuVisible, setLangSelectedMenuVisible]: [boolean, any] = useState(false);
 
+  const [currentPageIndex, setcurrentPageIndex]: [number, any] = useState(0);
+
   const params = useParams();
   const navigate = useNavigate();
   const mylocation = useLocation();
@@ -58,6 +60,14 @@ function Main(props: P) {
   const onLangSelectButtonClick = () => {
     setLangSelectedMenuVisible(!langSelectMenuVisible);
   };
+
+  const themeColor = [
+    ['#686868', '#FFFFFF'],
+    ['#ff7875', '#ffdbdb'],
+    ['#ffb729', '#fff2d7'],
+    ['#f87bff', '#fce8ff'],
+    ['#f87bff', '#fce8ff'],
+  ];
 
   return (
     <div className="main">
@@ -106,13 +116,15 @@ function Main(props: P) {
         <div style={{ display: 'flex', width: '100%', paddingTop: '10px' }}>
           <UMenu
             items={[
-              { key: 'home', title: L.header.home, route: './' },
-              { key: 'projects', title: L.header.projects, route: './projects' },
-              { key: 'blogs', title: L.header.blogs, route: './blogs' },
-              { key: 'photos', title: L.header.illust, route: './photos' },
-              { key: 'contact', title: L.header.contact, route: './contact' },
+              { key: 'home', title: L.header.home, route: './', focuscolor: themeColor[0][0] },
+              { key: 'projects', title: L.header.projects, route: './projects', focuscolor: themeColor[1][0] },
+              { key: 'blogs', title: L.header.blogs, route: './blogs', focuscolor: themeColor[2][0] },
+              { key: 'photos', title: L.header.illust, route: './photos', focuscolor: themeColor[3][0] },
+              { key: 'contact', title: L.header.contact, route: './contact', focuscolor: themeColor[4][0] },
             ]}
-            onCheck={() => {}}
+            onCheck={index => {
+              setcurrentPageIndex(index);
+            }}
           />
           <div style={{ display: 'flex' }}>
             <div style={{ alignContent: 'center' }}>
@@ -215,7 +227,7 @@ function Main(props: P) {
           bottom: '0px',
           paddingTop: '5%',
           zIndex: '-5',
-          backgroundColor: '#ffffff87',
+          backgroundColor: themeColor[currentPageIndex][1],
           backdropFilter: 'blur(10px)',
           minHeight: '1000px',
         }}

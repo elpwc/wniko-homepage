@@ -41,7 +41,7 @@ export default function FilterBar(props: P) {
                   setSelected(item.key);
                   props.onClick(item.key);
                 }}
-                style={{ cursor: 'pointer', color: selected === item.key ? 'white' : 'black', height: `${itemHeight}px` }}
+                style={{ cursor: 'pointer', height: `${itemHeight}px` }}
               >
                 {item.contents}
               </div>

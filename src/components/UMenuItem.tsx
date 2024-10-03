@@ -19,7 +19,7 @@ export default function UMenuItem(props: P) {
 
   return (
     <>
-      <div className={'umenuitem' + (isChecked() ? ' checked' : '')} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <div className={'umenuitem' + (isChecked() ? ' checked' : '')} style={{ height: '100%', display: 'flex', flexDirection: 'column' , borderBottomColor: props.data.focuscolor}}>
         <Link
           to={props.data.route}
           onClick={() => {
@@ -28,7 +28,7 @@ export default function UMenuItem(props: P) {
           style={{
             color: 'black',
             margin: '3px 10px',
-            fontSize: '24px'
+            fontSize: '24px',
           }}
         >
           {props.data.title}

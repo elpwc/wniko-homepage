@@ -92,7 +92,7 @@ export default function Blogs(props: P) {
                 contents: (
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>{blogSubject.name === '' ? '未分类' : blogSubject.name}</span>
-                    <span>{blogSubject.sum}篇</span>
+                    <span>{blogSubject.sum}</span>
                   </div>
                 ),
                 key: i.toString(),
