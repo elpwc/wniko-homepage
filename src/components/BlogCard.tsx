@@ -15,22 +15,23 @@ export default function BlogCard(props: P) {
 
   return (
     <>
-      <div>
+      <div className='blogCardContainer'>
         <div>
           <Link to={'./' + props.blog.id}>
             <span className="blogtitle">{props.blog.title}</span>
           </Link>
         </div>
         <div className="bloginfo" style={{display: 'flex'}}>
-          <p className="blogsubject">
-            {props.blog.subject}
-          </p>
-          <p className="blogdate">
+        <p className="blogdate">
             {
               //@ts-ignore
               new Date(props.blog.createtime).format('yyyy-MM-dd')
             }
           </p>
+          <p className="blogsubject">
+            {props.blog.subject}
+          </p>
+
         </div>
       </div>
     </>

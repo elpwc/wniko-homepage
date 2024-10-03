@@ -1,13 +1,24 @@
-.blogtitle{
-  font-size: 30px;
+.blogtitle {
   color: black;
+  font-size: 30px;
 }
 
-.bloginfo{
-  font-size: small;
+.bloginfo {
   color: gray;
+  font-size: small;
 }
 
-.blogsubject{
-  min-width: 50px;
+.blogdate {
+  min-width: 100px;
+}
+
+.blogCardContainer {
+  transition: all 0.2s;
+  padding: 3px 7px;
+}
+
+@media (any-hover: hover) {
+  .blogCardContainer:hover {
+    background-color: rgb(245, 245, 245);
+  }
 }
