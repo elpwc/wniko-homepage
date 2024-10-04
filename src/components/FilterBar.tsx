@@ -30,7 +30,7 @@ export default function FilterBar(props: P) {
   return (
     <>
       <div style={{ fontSize: fontSize }}>
-        <div id="list_background" style={{ position: 'absolute', zIndex: 0, width: '100%', borderRadius: '5px', backgroundColor: 'white', padding: '5px 0px' }}>
+        <div id="list_background" style={{ position: 'absolute', zIndex: 0, width: '100%', borderRadius: '5px', padding: '5px 0px' }}>
           {props.items.map((item, index) => {
             return (
               <div

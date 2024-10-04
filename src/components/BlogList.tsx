@@ -12,16 +12,14 @@ interface P {
 
 export default function BlogList(props: P) {
   return (
-    <>
-      <Space direction="vertical" style={{ width: '-webkit-fill-available' }}>
-        {props.blogs
-          ?.sort((a, b) => {
-            return new Date(b.createtime).getTime() - new Date(a.createtime).getTime();
-          })
-          .map((blog: API.Blog) => {
-            return <BlogCard blog={blog} key={blog.id} />;
-          })}
-      </Space>
-    </>
+    <div>
+      {props.blogs
+        ?.sort((a, b) => {
+          return new Date(b.createtime).getTime() - new Date(a.createtime).getTime();
+        })
+        .map((blog: API.Blog) => {
+          return <BlogCard blog={blog} key={blog.id} />;
+        })}
+    </div>
   );
 }

@@ -1,10 +1,11 @@
 .item {
   left: 0px;
   width: 100%;
-  padding: 0 7px;
-  font-size: 20px;
-  background-color: white;
+  padding: 0 15px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.596);
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .item:hover {
@@ -12,7 +13,7 @@
 }
 
 .selected {
-  background-color: rgb(204, 205, 255);
+  background-color: #fdbb368f;
 }
 
 .lastitem {

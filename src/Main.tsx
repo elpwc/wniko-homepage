@@ -1,6 +1,6 @@
 import { Button, Checkbox, Col, Input, Layout, Menu, message, Modal, Row, Select, Space } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Navigate, Outlet, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { CurrentPageStorage, LangStorage, AdminModeStorage, DeviceStorage } from './dataStorage/storage';
 import BackgroundImage from './resource/bg.jpg';
@@ -62,12 +62,22 @@ function Main(props: P) {
   };
 
   const themeColor = [
-    ['#686868', '#FFFFFF'],
-    ['#ff7875', '#ffdbdb'],
-    ['#ffb729', '#fff2d7'],
-    ['#f87bff', '#fce8ff'],
-    ['#f87bff', '#fce8ff'],
+    ['#686868', '#FFFFFF', 'home'],
+    ['#ff7875', '#ffdbdb', 'projects'],
+    ['#ffb729', '#fff2d7', 'blogs'],
+    ['#f87bff', '#fce8ff', 'photos'],
+    ['#f87bff', '#fce8ff', 'contact'],
   ];
+  console.log(CurrentPageStorage.value);
+
+  // 启动时更新主题
+  useEffect(() => {
+    setcurrentPageIndex(
+      themeColor.findIndex(t => {
+        return t[2] === CurrentPageStorage.value;
+      })
+    );
+  }, [CurrentPageStorage.value]);
 
   return (
     <div className="main">
