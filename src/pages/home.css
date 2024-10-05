@@ -20,6 +20,10 @@
   font-size: 20px;
 }
 
+.contentText{
+  font-size: 18px;
+}
+
 @media screen and (min-width: 768px) {
   #welcomeContent1 {
     width: 60%;

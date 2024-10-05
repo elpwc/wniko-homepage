@@ -1,8 +1,7 @@
-import { Timeline } from 'antd';
 import { useEffect } from 'react';
-import TimeLine from '../components/TimeLine';
 import { CurrentPageStorage } from '../dataStorage/storage';
 import './home.css';
+import { Timeline } from 'react-twitter-widgets';
 
 interface P {
   update: boolean;
@@ -20,19 +19,25 @@ export default function Home(props: P) {
       <p className="headerText1">Wniko or うに</p>
       <div id="welcomeContainer">
         <div className="welcomeItem" id="welcomeContent1">
-          <p>大学院在读</p>
-          <p>地理，地図，ｱﾌﾟﾘ開発，言語，漢字，旅行，アニメ，ヲタ芸，音ゲ</p>
-          <p></p>
+          <p className="contentText">🪪筑波大学大学院在学，東京在住</p>
+          <p className="contentText">🌟地理，地図，ｱﾌﾟﾘ開発，言語，漢字，旅行，アニメ，ヲタ芸，音ゲー</p>
+          <p className="contentText">✨SIMPLE is BEST</p>
         </div>
         <div className="welcomeItem">
           <p className="headerText2">Contact</p>
-          <p>📫elpwc@hotmail.com</p>
-          <p>🐱elpwc</p>
+          <p className="contentText">📫elpwc@hotmail.com</p>
+          <p className="contentText">🐱<a href='https://github.com/elpwc'>elpwc</a>&nbsp;&nbsp;&nbsp;🐤<a href='https://x.com/elpwc'>elpwc</a></p>
         </div>
       </div>
-      <a className="twitter-timeline" href="https://twitter.com/elpwc?ref_src=twsrc%5Etfw">
-        Tweets by elpwc
-      </a>
+      <Timeline
+          dataSource={{
+            sourceType: 'profile',
+            screenName: 'elpwc' // アカウント名
+          }}
+          options={{
+            height: 'auto'
+          }}
+        />
     </div>
   );
 }

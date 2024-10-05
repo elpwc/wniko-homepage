@@ -25,7 +25,7 @@ document.addEventListener('scroll', (e: any) => {
   console.log(e.target.documentElement.scrollTop);
 });
 
-export default function TimeLine(props: P) {
+export default function TimeLine_dis(props: P) {
   return (
     <>
       <Space direction="vertical" style={{ width: '-webkit-fill-available' }}>
