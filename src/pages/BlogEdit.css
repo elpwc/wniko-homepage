@@ -1,0 +1,20 @@
+@media screen and (min-width: 768px) {
+  #editContainer {
+    flex-direction: row;
+  }
+  .editor {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 767px) {
+  #editContainer {
+    flex-direction: column;
+  }
+  .editor {
+    width: 100%;
+  }
+}
+
+#editContainer {
+  display: flex;
+}

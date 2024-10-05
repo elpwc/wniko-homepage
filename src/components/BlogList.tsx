@@ -12,7 +12,7 @@ interface P {
 
 export default function BlogList(props: P) {
   return (
-    <div>
+    <div style={{ width: '-webkit-fill-available' }}>
       {props.blogs
         ?.sort((a, b) => {
           return new Date(b.createtime).getTime() - new Date(a.createtime).getTime();

@@ -26,8 +26,8 @@ export default function Blogs(props: P) {
   const [blogSubjects, setBlogSubjects]: [BlogSubject[], any] = useState([]);
   const [selectedSubjectKey, setselectedSubjectKey]: [string, any] = useState('0');
 
-  const getBlogs = (subject: string = '', onReceive?: (e: any) => void) => {
-    findAllBlog({ params: { subject } })
+  const getBlogs = (subject: string = '', includeDraft: boolean = false, onReceive?: (e: any) => void) => {
+    findAllBlog({ params: { subject, includeDraft: includeDraft ? '1' : '0' } })
       .then((e: any) => {
         onReceive?.(e);
         console.log(e);
@@ -63,7 +63,7 @@ export default function Blogs(props: P) {
 
   useEffect(() => {
     CurrentPageStorage.set('blogs');
-    getBlogs('', e => {
+    getBlogs('', AdminModeStorage.value === 1 ? true : false, e => {
       updateSubjects(e.data);
     });
     props.setUpdate();

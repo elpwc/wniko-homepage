@@ -17,7 +17,10 @@ code {
 button {
   padding: 4px 10px;
   font-size: 1rem;
-  border: none;
+  background-color: white;
+  border: solid;
+  border-color: rgb(201, 201, 201);
+  border-width: 1px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -27,8 +30,8 @@ input {
   font-size: 1rem;
   border: solid;
   border-color: rgb(180, 180, 180);
-  border-radius: 5px;
   border-width: 1px;
+  border-radius: 5px;
 }
 
 @media screen and (min-width: 1200px) {

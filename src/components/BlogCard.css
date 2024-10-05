@@ -13,8 +13,9 @@
 }
 
 .blogCardContainer {
-  transition: all 0.2s;
+  width: 100%;
   padding: 3px 7px;
+  transition: all 0.2s;
 }
 
 @media (any-hover: hover) {

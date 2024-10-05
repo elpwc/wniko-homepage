@@ -1,4 +1,3 @@
-import { Button, Divider, Space } from 'antd';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Navigate, useLocation, useParams } from 'react-router';
@@ -6,7 +5,6 @@ import { CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
 import Blog, { BlogUtils } from '../utils/blog';
 import Page404 from './404';
-import { LeftOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import './blogView.css';
 import axios from 'axios';
@@ -46,45 +44,33 @@ export default function BlogView(props: P) {
   }, []);
 
   return (
-    <>
-      <div style={{ position: 'absolute', top: '15px', left: '-50px' }}>
-        <Link to={mylocation.pathname + '/..'}>
-          <Button size="large" shape="circle">
-            <LeftOutlined />
-          </Button>
-        </Link>
-      </div>
+    <div style={{ backgroundColor: 'white', borderRadius: '5px', marginTop: '8px', minHeight: window.innerHeight + 'px' }}>
+      <article>
+        <div id="articleHeader" style={{ padding: '20px 50px' }}>
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <Link to={mylocation.pathname + '/..'}>
+              <button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                </svg>
+              </button>
+            </Link>
+            <h1>{blog.title}</h1>
+          </div>
 
-      <div style={{ backgroundColor: 'white', borderRadius: '5px', padding: '20px 50px', marginTop: '8px' }}>
-        <article>
-          <h1>{blog.title}</h1>
-          <Space>
-            <p className="bloginfo">{blog.author}</p>
-            <p className="bloginfo">
-              创建：
-              {
-                // @ts-ignore
-                (new Date(blog.createTime || '') as Date).format?.('yyyy-MM-dd hh:mm:ss')
-              }
-            </p>
-            <p className="bloginfo">
-              修改：
-              {
-                // @ts-ignore
-                (new Date(blog.updateTime || '') as Date).format?.('yyyy-MM-dd hh:mm:ss')
-              }
-            </p>
-            <p className="bloginfo">
-              访问量：
-              {blog.viewCount}
-            </p>
-          </Space>
+          <p className="bloginfo">
+            {
+              // @ts-ignore
+              new Date(blog.createtime).format('yyyy-MM-dd hh:mm:ss')
+            }
+          </p>
+        </div>
 
-          <Divider style={{ marginTop: '10px', marginBottom: '20px' }} />
-
+        <div className="divideLine"></div>
+        <div style={{ padding: '20px 50px' }}>
           <ReactMarkdown children={blog.content} />
-        </article>
-      </div>
-    </>
+        </div>
+      </article>
+    </div>
   );
 }
