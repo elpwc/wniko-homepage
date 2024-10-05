@@ -38,13 +38,6 @@ function Main(props: P) {
   const navigate = useNavigate();
   const mylocation = useLocation();
 
-  const currentLang: string = String(params.lang).toLowerCase().replace('-', '_');
-
-  if (LangUtils.getEnumStrings().includes(currentLang)) {
-    LangStorage.set(LangUtils.enumStrToLang(currentLang));
-  } else {
-    return <Navigate to="/zh-cn" />;
-  }
 
   const L = LangUtils.selectLang();
 

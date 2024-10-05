@@ -54,9 +54,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route index element={<Navigate to="/zh-cn" />}></Route>
         <Route
-          path=":lang"
+          path="/"
           element={
             <Main
               update={update}
