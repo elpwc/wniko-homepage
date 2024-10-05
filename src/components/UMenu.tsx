@@ -1,10 +1,6 @@
-import React from 'react';
-import { LangStorage } from '../dataStorage/storage';
-import { Space } from 'antd';
-import BlogCard from './BlogCard';
-import Blog from '../utils/blog';
 import { UMenuItemData } from '../utils/umenu';
 import UMenuItem from './UMenuItem';
+import './UMenu.css';
 
 interface P {
   items: UMenuItemData[];
@@ -14,15 +10,7 @@ interface P {
 export default function UMenu(props: P) {
   return (
     <>
-      <menu
-        style={{
-          display: 'flex',
-          gap: '',
-          width: '-webkit-fill-available',
-          height: '100%',
-          justifyContent: 'center'
-        }}
-      >
+      <menu id="mainMenu">
         {props.items.map((item, i) => {
           return (
             <UMenuItem

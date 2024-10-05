@@ -1,19 +1,14 @@
-import { Button, Checkbox, Col, Input, Layout, Menu, message, Modal, Row, Select, Space } from 'antd';
-import { Header } from 'antd/lib/layout/layout';
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate, Outlet, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { CurrentPageStorage, LangStorage, AdminModeStorage, DeviceStorage } from './dataStorage/storage';
-import BackgroundImage from './resource/bg.jpg';
 import LangUtils from './lang/langUtils';
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { AdminPassword } from './staticData/adminPassword';
 import cookie from 'react-cookies';
 import appconfig from './appconfig';
 import UMenu from './components/UMenu';
-import headerbg from './resource/headerbg.jpg';
 import './Main.css';
-
-const { Option } = Select;
+import Modal from './components/Modal';
+import UMenuItem from './components/UMenuItem';
 
 interface P {
   update: boolean;
@@ -33,9 +28,11 @@ function Main(props: P) {
   // Admin Win state
   const [adminWinState, setAdminWinState]: [number, any] = useState(AdminModeStorage.value === 1 ? 2 : 0); // 0 not admin, 1 open requireWin, 2 admin mode
 
-  const [langSelectMenuVisible, setLangSelectedMenuVisible]: [boolean, any] = useState(false);
-
   const [currentPageIndex, setcurrentPageIndex]: [number, any] = useState(0);
+
+  const [isPhoneDeviceMenuOpen, setisPhoneDeviceMenuOpen]: [boolean, any] = useState(false);
+
+  const [winWidth, setwinWidth]: [number, any] = useState(window.innerWidth);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -51,16 +48,6 @@ function Main(props: P) {
 
   const L = LangUtils.selectLang();
 
-  const onLangSelectClick = (lang: string) => {
-    navigate(`/${lang.replace('_', '-')}/` + mylocation.pathname.split('/').slice(2).join('/'));
-    props.setUpdate();
-    setLangSelectedMenuVisible(false);
-  };
-
-  const onLangSelectButtonClick = () => {
-    setLangSelectedMenuVisible(!langSelectMenuVisible);
-  };
-
   const themeColor = [
     ['#686868', '#FFFFFF', 'home'],
     ['#ff7875', '#ffdbdb', 'projects'],
@@ -68,6 +55,15 @@ function Main(props: P) {
     ['#f87bff', '#fce8ff', 'photos'],
     ['#f87bff', '#fce8ff', 'contact'],
   ];
+
+  const menuItems = [
+    { key: 'home', title: L.header.home, route: './', focuscolor: themeColor[0][0] },
+    { key: 'projects', title: L.header.projects, route: './projects', focuscolor: themeColor[1][0] },
+    { key: 'blogs', title: L.header.blogs, route: './blogs', focuscolor: themeColor[2][0] },
+    { key: 'photos', title: L.header.illust, route: './photos', focuscolor: themeColor[3][0] },
+    /*{ key: 'contact', title: L.header.contact, route: './contact', focuscolor: themeColor[4][0] },*/
+  ];
+
   console.log(CurrentPageStorage.value);
 
   // 启动时更新主题
@@ -79,36 +75,13 @@ function Main(props: P) {
     );
   }, [CurrentPageStorage.value]);
 
+  window.addEventListener('resize', e => {
+    // @ts-ignore
+    setwinWidth(e.target.innerWidth);
+  });
+
   return (
     <div className="main">
-      {langSelectMenuVisible ? (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 1145141919, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <div style={{ backgroundColor: 'white', borderRadius: '3px', padding: '10px' }}>
-            <p>Select language</p>
-            <div>
-              {LangUtils.getEnumStrings().map((lang: string) => {
-                if (appconfig.usingLanguages.includes(LangUtils.enumStrToLang(lang))) {
-                  return (
-                    <div
-                      className="langSelectItem"
-                      key={lang}
-                      onClick={() => {
-                        onLangSelectClick(lang);
-                      }}
-                    >
-                      {lang}
-                    </div>
-                  );
-                }
-                return <></>;
-              })}
-            </div>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
-      {/*<div style={{ height: '5px', margin: '0', width: '100%', backgroundColor: 'rgb(18 21 22 / 61%)' }}></div>*/}
       <header
         style={{
           display: 'flex',
@@ -117,31 +90,58 @@ function Main(props: P) {
           right: '0',
           padding: '0 0',
           zIndex: 114514,
-          color: 'white',
           backgroundColor: '#FFFFFF',
           position: 'fixed',
           boxShadow: '1px 1px 9px 0px rgb(222 232 241)' /*'0px 0px 5px 2px #121516'*/,
         }}
       >
-        <div style={{ display: 'flex', width: '100%', paddingTop: '10px' }}>
-          <UMenu
-            items={[
-              { key: 'home', title: L.header.home, route: './', focuscolor: themeColor[0][0] },
-              { key: 'projects', title: L.header.projects, route: './projects', focuscolor: themeColor[1][0] },
-              { key: 'blogs', title: L.header.blogs, route: './blogs', focuscolor: themeColor[2][0] },
-              { key: 'photos', title: L.header.illust, route: './photos', focuscolor: themeColor[3][0] },
-              { key: 'contact', title: L.header.contact, route: './contact', focuscolor: themeColor[4][0] },
-            ]}
-            onCheck={index => {
-              setcurrentPageIndex(index);
-            }}
-          />
-          <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', width: '100%', paddingTop: '10px', justifyContent: 'space-between' }}>
+          <div>
+            <button
+              id="phoneShowMenuButton"
+              style={{ backgroundColor: 'white' }}
+              onClick={() => {
+                setisPhoneDeviceMenuOpen(!isPhoneDeviceMenuOpen);
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                />
+              </svg>
+            </button>
+          </div>
+          {winWidth >= 768 ? (
+            <UMenu
+              items={menuItems}
+              onCheck={index => {
+                setcurrentPageIndex(index);
+              }}
+            />
+          ) : (
+            <>
+              {isPhoneDeviceMenuOpen ? (
+                <UMenu
+                  items={menuItems}
+                  onCheck={index => {
+                    setcurrentPageIndex(index);
+                    setisPhoneDeviceMenuOpen(false);
+                  }}
+                />
+              ) : (
+                <div style={{ width: '100%' }}>
+                  <UMenuItem key={-1} data={menuItems[currentPageIndex]} onClick={() => {}} />
+                </div>
+              )}
+            </>
+          )}
+
+          <div style={{ display: 'flex', alignItems: 'flex-start' }}>
             <div style={{ alignContent: 'center' }}>
               {adminWinState === 2 ? (
-                <Button
+                <button
                   onClick={() => {
-                    message.success('再会~');
                     sessionStorage.setItem('admin', 'false');
                     cookie.save('auto-admin', 'false', { path: '/' });
                     // Close admin win
@@ -152,7 +152,7 @@ function Main(props: P) {
                   }}
                 >
                   退出adminMode
-                </Button>
+                </button>
               ) : (
                 <>
                   <a
@@ -162,17 +162,18 @@ function Main(props: P) {
                       props.setUpdate();
                     }}
                     style={{
-                      color: 'white',
                       padding: '0 5px',
                       margin: '0 10px',
+                      color: 'black',
                     }}
                   >
                     ◇
                   </a>
                   <Modal
                     title="E'яkesaru osokōy!"
-                    open={adminWinState === 1}
-                    // 登录
+                    isOpen={adminWinState === 1}
+                    showOkButton={true}
+                    showCancelButton={true}
                     onOk={() => {
                       if (pw === AdminPassword) {
                         if (rememberPw) {
@@ -180,7 +181,6 @@ function Main(props: P) {
                           console.log(1141514, cookie.load('auto-admin'));
                         }
                         sessionStorage.setItem('admin', 'true');
-                        message.success('欢迎来到里世界~');
                         setAdminWinState(2);
                         // Set global user mode to ADMIN
                         AdminModeStorage.set(1);
@@ -193,36 +193,18 @@ function Main(props: P) {
                       setAdminWinState(0);
                       props.setUpdate();
                     }}
-                    okText="?"
-                    closeIcon={null}
                   >
-                    <Space size="large">
-                      <Input.Password
-                        placeholder="Ōgna"
-                        iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                        onChange={e => {
-                          setPw(e.target.value);
-                        }}
-                        value={pw}
-                      />
-                      <Checkbox
-                        onChange={e => {
-                          setRememberPw(e.target.checked);
-                        }}
-                      >
-                        Urяh in'яkesaru in'ustesukoч arakerok.
-                      </Checkbox>
-                    </Space>
+                    <input
+                      type="password"
+                      placeholder="Ōgna"
+                      onChange={e => {
+                        setPw(e.target.value);
+                      }}
+                      value={pw}
+                    ></input>
                   </Modal>
                 </>
               )}
-            </div>
-            <div style={{ display: 'flex' }}>
-              <button style={{ backgroundColor: 'transparent', border: 'none', padding: '0 5px', cursor: 'pointer' }} onClick={onLangSelectButtonClick}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-globe" viewBox="0 0 16 16">
-                  <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
@@ -235,18 +217,16 @@ function Main(props: P) {
           left: '0px',
           right: '0px',
           bottom: '0px',
-          paddingTop: '5%',
+          paddingTop: '60px',
           zIndex: '-5',
           backgroundColor: themeColor[currentPageIndex][1],
           backdropFilter: 'blur(10px)',
           minHeight: '1000px',
         }}
       >
-        <Row>
-          <Col span={DeviceStorage.value === 1 ? 22 : 14} offset={DeviceStorage.value === 1 ? 1 : 5}>
-            <Outlet />
-          </Col>
-        </Row>
+        <main>
+          <Outlet />
+        </main>
       </div>
     </div>
   );

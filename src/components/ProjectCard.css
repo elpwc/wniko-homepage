@@ -117,44 +117,7 @@ h3 span {
   color: gray;
 }
 
-@media screen and (min-width: 1200px) {
-  nav {
-      gap: 15em;
-  }
-
-  nav div {
-      gap: 8em;
-  }
-
-}
-
-@media screen and (min-width: 960px) and (max-width: 1199px) {}
-
-@media screen and (min-width: 768px) and (max-width: 959px) {}
-
-@media screen and (min-width: 480px) and (max-width: 767px) {
-  main {
-      margin: 0;
-  }
-
-  nav {
-      gap: 2em;
-  }
-}
-
 @media screen and (max-width: 479px) {
-  main {
-      margin: auto;
-  }
-
-  nav {
-      gap: 2em;
-  }
-
-  nav div {
-      gap: 1.5em;
-  }
-
   .constructioninfo {
       font-size: 2em;
       padding: 10% 0;

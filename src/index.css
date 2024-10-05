@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -16,4 +12,71 @@ code {
 * {
   margin: 0;
   padding: 0;
+}
+
+button {
+  padding: 4px 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input {
+  padding: 4px 10px;
+  font-size: 1rem;
+  border: solid;
+  border-color: rgb(180, 180, 180);
+  border-radius: 5px;
+  border-width: 1px;
+}
+
+@media screen and (min-width: 1200px) {
+  main {
+    margin: 0 20%;
+  }
+
+  nav {
+    gap: 15em;
+  }
+
+  nav div {
+    gap: 8em;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1199px) {
+  main {
+    margin: 0 15%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  main {
+    margin: 0 10%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  main {
+    margin: 0 8%;
+  }
+
+  nav {
+    gap: 2em;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  main {
+    margin: 0 8%;
+  }
+
+  nav {
+    gap: 2em;
+  }
+
+  nav div {
+    gap: 1.5em;
+  }
 }
