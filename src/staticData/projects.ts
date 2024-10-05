@@ -102,6 +102,36 @@ export const static_projects_zh_cn: StaticProject[] = [
 
 export const static_projects_ja: StaticProject[] = [
   {
+    name: 'OnlineEldenRingMap - 老头环地图',
+    url: 'http://www.elpwc.com/eldenringmap',
+    github: 'https://github.com/elpwc/EldenRingOnlineMap',
+    status: DevState.Done,
+    desc: '',
+    image: '',
+    imageWidth: '',
+    tags: 'Svelte, TypeScript, PHP, Leaflet',
+  },
+  {
+    name: 'maiweb',
+    url: '',
+    github: 'https://github.com/elpwc/maiweb',
+    status: DevState.Developing,
+    desc: '',
+    image: '',
+    imageWidth: '',
+    tags: 'React, TypeScript, Canvas',
+  },
+  {
+    name: 'OnlineEldenRingMap - 老头环地图',
+    url: 'http://www.elpwc.com/eldenringmap',
+    github: 'https://github.com/elpwc/EldenRingOnlineMap',
+    status: DevState.Done,
+    desc: '',
+    image: '',
+    imageWidth: '',
+    tags: 'Svelte, TypeScript, PHP, Leaflet',
+  },
+  {
     name: 'WOTAGEIPEDIA - ヲタ芸百科',
     url: 'http://wotagei.elpwc.com',
     github: 'https://github.com/elpwc/wotageipedia',
@@ -118,7 +148,7 @@ export const static_projects_ja: StaticProject[] = [
     status: DevState.Developing,
     desc: 'すなわち個人ページの事',
     image: '',
-    tags: 'React, Nest.js, TypeORM, TypeScript, AntDesign',
+    tags: 'React, Nest.js, TypeORM, TypeScript',
   },
   {
     name: 'XP系统测试器',

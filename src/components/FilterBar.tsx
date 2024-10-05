@@ -28,27 +28,25 @@ export default function FilterBar(props: P) {
   }
 
   return (
-    <>
-      <div style={{ fontSize: fontSize }}>
-        <div id="list_background" style={{ width: '100%', borderRadius: '5px', padding: '5px 0px' }}>
-          {props.items.map((item, index) => {
-            return (
-              <div
-                key={item.key}
-                data-index={index}
-                className={'item' + (selected === item.key ? ' selected' : '') + (index === props.items.length - 1 ? ' lastitem' : '')}
-                onClick={e => {
-                  setSelected(item.key);
-                  props.onClick(item.key);
-                }}
-                style={{ cursor: 'pointer', height: `${itemHeight}px` }}
-              >
-                {item.contents}
-              </div>
-            );
-          })}
-        </div>
+    <div style={{ fontSize: fontSize }}>
+      <div id="list_background" style={{ width: '100%', borderRadius: '5px', padding: '5px 0px' }}>
+        {props.items.map((item, index) => {
+          return (
+            <div
+              key={item.key}
+              data-index={index}
+              className={'item' + (selected === item.key ? ' selected' : '') + (index === props.items.length - 1 ? ' lastitem' : '')}
+              onClick={e => {
+                setSelected(item.key);
+                props.onClick(item.key);
+              }}
+              style={{ cursor: 'pointer', height: `${itemHeight}px` }}
+            >
+              {item.contents}
+            </div>
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 }

@@ -9,20 +9,18 @@ interface P {
 
 export default function UMenu(props: P) {
   return (
-    <>
-      <menu id="mainMenu">
-        {props.items.map((item, i) => {
-          return (
-            <UMenuItem
-              key={i}
-              data={item}
-              onClick={() => {
-                props.onCheck(i);
-              }}
-            />
-          );
-        })}
-      </menu>
-    </>
+    <menu id="mainMenu">
+      {props.items.map((item, i) => {
+        return (
+          <UMenuItem
+            key={i}
+            data={item}
+            onClick={() => {
+              props.onCheck(i);
+            }}
+          />
+        );
+      })}
+    </menu>
   );
 }

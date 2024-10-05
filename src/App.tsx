@@ -1,4 +1,3 @@
-import { Select } from 'antd';
 import { useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -8,7 +7,6 @@ import Projects from './pages/Projects';
 import { AdminModeStorage, DeviceStorage } from './dataStorage/storage';
 import { DevState, ProjectUtils } from './utils/project';
 import Illust from './pages/Illust';
-import Contact from './pages/Contact';
 import LangUtils from './lang/langUtils';
 import Main from './Main';
 import Page404 from './pages/404';
@@ -135,17 +133,6 @@ function App() {
             }
           ></Route>
           <Route
-            path="contact"
-            element={
-              <Contact
-                update={update}
-                setUpdate={() => {
-                  updateNow();
-                }}
-              />
-            }
-          ></Route>
-          <Route
             path="test"
             element={
               <TestPage
@@ -156,17 +143,7 @@ function App() {
               />
             }
           ></Route>
-          <Route
-            path="404"
-            element={
-              <Contact
-                update={update}
-                setUpdate={() => {
-                  updateNow();
-                }}
-              />
-            }
-          ></Route>
+          <Route path="404" element={<Page404 />}></Route>
           <Route path="*" element={<Page404 />}></Route>
         </Route>
       </Routes>

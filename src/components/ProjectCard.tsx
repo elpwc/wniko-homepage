@@ -1,8 +1,6 @@
-import { Card, Popconfirm, Space, Switch, Tag, Tooltip } from 'antd';
 import Project, { DevState } from '../utils/project';
 import { LangStorage } from '../dataStorage/storage';
 import LangUtils from '../lang/langUtils';
-import { GithubOutlined, SendOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import './ProjectCard.css';
 import { StaticProject } from '../utils/staticProject';
 interface P {
@@ -39,12 +37,12 @@ export default function ProjectCard(props: P) {
         break;
       case DevState.Dispose:
         bgcolor = '#868686';
-        classNameForStatus = 'disposed';
-        title = L.utils.devstates.dispose;
+        classNameForStatus = 'obsoleted';
+        title = L.utils.devstates.obsoleted;
         break;
       case DevState.MaintainingStopped:
         bgcolor = '#868686';
-        classNameForStatus = 'dispose';
+        classNameForStatus = 'notmaintaining';
         title = L.utils.devstates.maintainingstopped;
         break;
       default:

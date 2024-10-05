@@ -12,6 +12,7 @@ import axios from 'axios';
 import api from '../api';
 import { createBlog } from '../services/api/blog';
 import './BlogEdit.css';
+import { isNull } from 'util';
 
 interface P {
   update: boolean;

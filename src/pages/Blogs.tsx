@@ -70,44 +70,42 @@ export default function Blogs(props: P) {
   }, []);
 
   return (
-    <>
-      <div id="blogPageContainer">
-        <div style={{ marginTop: '20px', borderRadius: '5px', minWidth: '15%' }}>
-          {AdminModeStorage.value === 1 ? (
-            <Link to="./new">
-              <button style={{ marginBottom: '10px' }}>写博客</button>
-            </Link>
-          ) : (
-            <></>
-          )}
-          <FilterBar
-            update={props.update}
-            setUpdate={props.setUpdate}
-            items={blogSubjects.map((blogSubject, i) => {
-              return {
-                contents: (
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span>{blogSubject.name === '' ? 'Others' : blogSubject.name}</span>
-                    <span>{blogSubject.sum}</span>
-                  </div>
-                ),
-                key: i.toString(),
-              };
-            })}
-            selectedKey={selectedSubjectKey}
-            onClick={e => {
-              setselectedSubjectKey(e);
-              if (e === '0') {
-                getBlogs();
-              } else {
-                getBlogs(blogSubjects[Number(e)].name);
-              }
-            }}
-          />
-        </div>
-
-        <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+    <div id="blogPageContainer">
+      <div style={{ marginTop: '20px', borderRadius: '5px', minWidth: '15%' }}>
+        {AdminModeStorage.value === 1 ? (
+          <Link to="./new">
+            <button style={{ marginBottom: '10px' }}>写博客</button>
+          </Link>
+        ) : (
+          <></>
+        )}
+        <FilterBar
+          update={props.update}
+          setUpdate={props.setUpdate}
+          items={blogSubjects.map((blogSubject, i) => {
+            return {
+              contents: (
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span>{blogSubject.name === '' ? 'Others' : blogSubject.name}</span>
+                  <span>{blogSubject.sum}</span>
+                </div>
+              ),
+              key: i.toString(),
+            };
+          })}
+          selectedKey={selectedSubjectKey}
+          onClick={e => {
+            setselectedSubjectKey(e);
+            if (e === '0') {
+              getBlogs();
+            } else {
+              getBlogs(blogSubjects[Number(e)].name);
+            }
+          }}
+        />
       </div>
-    </>
+
+      <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+    </div>
   );
 }
