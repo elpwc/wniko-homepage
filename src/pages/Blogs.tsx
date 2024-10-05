@@ -1,15 +1,11 @@
-import { Button } from 'antd';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../api';
 import BlogList from '../components/BlogList';
 import FilterBar from '../components/FilterBar';
-import LeftContent from '../components/LeftContent';
-import RightContent from '../components/RightContent';
 import { AdminModeStorage, CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
 import { findAllBlog } from '../services/api/blog';
+import './Blogs.css';
 
 interface P {
   update: boolean;
@@ -61,7 +57,7 @@ export default function Blogs(props: P) {
         }
       });
     });
-    blogSubjectsTemp = [{ name: '全部', sum: receivedBlogs.length }, ...blogSubjectsTemp];
+    blogSubjectsTemp = [{ name: 'All', sum: receivedBlogs.length }, ...blogSubjectsTemp];
     setBlogSubjects(blogSubjectsTemp);
   };
 
@@ -75,11 +71,11 @@ export default function Blogs(props: P) {
 
   return (
     <>
-      <LeftContent update={props.update} setUpdate={props.setUpdate} marginRight={20}>
-        <div style={{ marginTop: '20px', borderRadius: '5px' }}>
+      <div id="blogPageContainer">
+        <div style={{ marginTop: '20px', borderRadius: '5px', minWidth: '15%' }}>
           {AdminModeStorage.value === 1 ? (
             <Link to="./new">
-              <Button style={{ marginBottom: '10px' }}>写博客</Button>
+              <button style={{ marginBottom: '10px' }}>写博客</button>
             </Link>
           ) : (
             <></>
@@ -91,7 +87,7 @@ export default function Blogs(props: P) {
               return {
                 contents: (
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span>{blogSubject.name === '' ? '未分类' : blogSubject.name}</span>
+                    <span>{blogSubject.name === '' ? 'Others' : blogSubject.name}</span>
                     <span>{blogSubject.sum}</span>
                   </div>
                 ),
@@ -109,11 +105,9 @@ export default function Blogs(props: P) {
             }}
           />
         </div>
-      </LeftContent>
-      <RightContent update={props.update} setUpdate={props.setUpdate}>
-        <p>114514</p>
-      </RightContent>
-      <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+
+        <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+      </div>
     </>
   );
 }

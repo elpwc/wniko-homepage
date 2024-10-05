@@ -52,7 +52,7 @@ function Main(props: P) {
     ['#686868', '#FFFFFF', 'home'],
     ['#ff7875', '#ffdbdb', 'projects'],
     ['#ffb729', '#fff2d7', 'blogs'],
-    ['#f87bff', '#fce8ff', 'photos'],
+    ['#17df55', '#d9ffdd', 'illust'],
     ['#f87bff', '#fce8ff', 'contact'],
   ];
 
@@ -60,7 +60,7 @@ function Main(props: P) {
     { key: 'home', title: L.header.home, route: './', focuscolor: themeColor[0][0] },
     { key: 'projects', title: L.header.projects, route: './projects', focuscolor: themeColor[1][0] },
     { key: 'blogs', title: L.header.blogs, route: './blogs', focuscolor: themeColor[2][0] },
-    { key: 'photos', title: L.header.illust, route: './photos', focuscolor: themeColor[3][0] },
+    { key: 'illust', title: L.header.illust, route: './illust', focuscolor: themeColor[3][0] },
     /*{ key: 'contact', title: L.header.contact, route: './contact', focuscolor: themeColor[4][0] },*/
   ];
 

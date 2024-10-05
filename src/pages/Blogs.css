@@ -1,0 +1,15 @@
+#blogPageContainer {
+  display: flex;
+  gap: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  #blogPageContainer {
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 767px) {
+  #blogPageContainer {
+    flex-direction: column;
+  }
+}

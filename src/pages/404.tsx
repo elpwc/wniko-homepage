@@ -1,4 +1,3 @@
-import { Divider } from 'antd';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CurrentPageStorage, LangStorage } from '../dataStorage/storage';
@@ -30,7 +29,6 @@ export default function Page404(props: P) {
             <span style={{ fontSize: '50px', color: 'red' }}>404 </span>
             <span style={{ fontSize: '35px' }}>Page Not Exist</span>
           </p>
-          <Divider />
           <p>
             {title}
             <br />
