@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { CurrentPageStorage } from '../dataStorage/storage';
+import './Illust.css';
 
 interface P {
   update: boolean;
@@ -12,5 +13,9 @@ export default function Illust(props: P) {
     props.setUpdate();
   }, []);
 
-  return <>i</>;
+  return (
+    <header>
+      <p className="constructioninfo">🚧 Under Construction.</p>
+    </header>
+  );
 }

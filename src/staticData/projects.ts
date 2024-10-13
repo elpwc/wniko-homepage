@@ -122,14 +122,14 @@ export const static_projects_ja: StaticProject[] = [
     tags: 'React, TypeScript, Canvas',
   },
   {
-    name: 'OnlineEldenRingMap - 老头环地图',
-    url: 'http://www.elpwc.com/eldenringmap',
-    github: 'https://github.com/elpwc/EldenRingOnlineMap',
+    name: 'react-maiweb',
+    url: '',
+    github: 'https://github.com/elpwc/maiweb',
     status: DevState.Done,
     desc: '',
     image: '',
     imageWidth: '',
-    tags: 'Svelte, TypeScript, PHP, Leaflet',
+    tags: 'React, TypeScript, Canvas',
   },
   {
     name: 'WOTAGEIPEDIA - ヲタ芸百科',

@@ -25,7 +25,7 @@ export default (props: P = { images: [], interval: 5000, fadeDuration: 1000 }) =
     }, props.interval); // 切换间隔
 
     return () => clearInterval(switchImages); // 清除定时器
-  }, [props.images.length, props.interval, props.fadeDuration]);
+  }, []);
 
   return (
     <div className="slideshow">

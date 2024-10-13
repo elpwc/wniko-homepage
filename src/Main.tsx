@@ -203,9 +203,7 @@ function Main(props: P) {
           </div>
         </div>
       </header>
-      <div>
-        <BackgroundSlideshow images={BackgroundImages} interval={5000} fadeDuration={1000} />
-      </div>
+
       <div
         style={{
           position: 'initial',

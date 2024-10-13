@@ -1,11 +1,21 @@
+#homeMainContainer {
+  padding: 30px 0;
+  display: flex;
+  gap: 15px;
+}
+
 #welcomeContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 0;
   justify-content: flex-start;
 
   padding: 50px 0;
+  background-color: #ffffffc9;
+  padding: 10px 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
 }
 
 .welcomeItem p {
@@ -20,23 +30,56 @@
   font-size: 20px;
 }
 
-.contentText{
+.contentText {
   font-size: 18px;
-  padding: 10px 0;
+  padding: 15px 0;
 }
 
-.welcomeContentTextLangname{
+.welcomeContentTextLangname {
   color: gray;
   font-size: 15px;
 }
 
+.ContactContainer {
+  padding: 50px 0;
+  background-color: #ffffffc9;
+  padding: 10px 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  margin-bottom: 15px;
+}
+
+.twitterPlaceHolder{
+  background-color: white;
+  border-radius: 15px;
+}
+
+
+.twitterPlaceHolder p{
+  padding: 20px;
+  font-size: 20px;
+}
+
 @media screen and (min-width: 768px) {
-  #welcomeContent1 {
+  #welcomeContainer {
     width: 60%;
+  }
+  #twitterContainer {
+    width: 30%;
+  }
+  #homeMainContainer {
+    flex-direction: row;
   }
 }
 @media screen and (max-width: 767px) {
-  #welcomeContent1 {
+  #welcomeContainer {
+    width: auto;
+  }
+
+  #twitterContainer {
     width: 100%;
+  }
+  #homeMainContainer {
+    flex-direction: column;
   }
 }

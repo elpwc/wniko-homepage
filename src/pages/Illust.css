@@ -1,0 +1,13 @@
+header {
+  margin: 0;
+  width: 100%;
+  color: rgb(233, 255, 232);
+}
+
+.constructioninfo {
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+  padding: 10% 0;
+  text-shadow: 0 0 10px rgb(36, 36, 36);
+}
