@@ -31,3 +31,23 @@
     display: initial;
   }
 }
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* 确保背景图片在所有内容的后面 */
+  overflow: hidden; /* 防止背景溢出 */
+}
+
+.background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 使用 cover 填充方式 */
+  object-position: center; /* 使图片居中 */
+  position: absolute;
+  top: 0;
+  left: 0;
+}

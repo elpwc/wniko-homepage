@@ -9,6 +9,8 @@ import UMenu from './components/UMenu';
 import './Main.css';
 import Modal from './components/Modal';
 import UMenuItem from './components/UMenuItem';
+import BackgroundSlideshow from './components/BackgroundSlideshow';
+import { BackgroundImages } from './resourcesReader/bgiReader';
 
 interface P {
   update: boolean;
@@ -38,11 +40,10 @@ function Main(props: P) {
   const navigate = useNavigate();
   const mylocation = useLocation();
 
-
   const L = LangUtils.selectLang();
 
   const themeColor = [
-    ['#686868', '#FFFFFF', 'home'],
+    ['#686868', '#ffffff00', 'home'],
     ['#ff7875', '#ffdbdb', 'projects'],
     ['#ffb729', '#fff2d7', 'blogs'],
     ['#17df55', '#d9ffdd', 'illust'],
@@ -99,7 +100,7 @@ function Main(props: P) {
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
                 />
               </svg>
@@ -202,7 +203,9 @@ function Main(props: P) {
           </div>
         </div>
       </header>
-
+      <div>
+        <BackgroundSlideshow images={BackgroundImages} interval={5000} fadeDuration={1000} />
+      </div>
       <div
         style={{
           position: 'initial',
@@ -213,7 +216,7 @@ function Main(props: P) {
           paddingTop: '60px',
           zIndex: '-5',
           backgroundColor: themeColor[currentPageIndex][1],
-          backdropFilter: 'blur(10px)',
+          backdropFilter: 'blur(0px)',
           minHeight: '1000px',
         }}
       >

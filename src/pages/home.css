@@ -22,6 +22,12 @@
 
 .contentText{
   font-size: 18px;
+  padding: 10px 0;
+}
+
+.welcomeContentTextLangname{
+  color: gray;
+  font-size: 15px;
 }
 
 @media screen and (min-width: 768px) {
