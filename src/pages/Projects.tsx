@@ -6,6 +6,11 @@ import init_debug_data from '../staticData/initDebugData';
 import LangUtils, { Lang } from '../lang/langUtils';
 import { static_projects_ja, static_projects_zh_cn } from '../staticData/projects';
 import { StaticProject } from '../utils/staticProject';
+import { ProjectIcons } from '../resourcesReader/projectIconReader';
+
+import './Projects.css';
+import { MainProjects } from '../staticData/mainProjects';
+import { Link } from 'react-router-dom';
 
 interface P {
   update: boolean;
@@ -54,12 +59,36 @@ export default function Projects(props: P) {
   }, [LangStorage.value]);
 
   return (
-    <ProjectList
-      update={update}
-      setUpdate={() => {
-        setUpdate(!update);
-      }}
-      projects={projects}
-    />
+    <div>
+      <div className="mainProjectContainer">
+        <div className="mainProjectList">
+          {MainProjects.map(mainProject => {
+            return (
+              <Link to={'../blogs/' + mainProject.blogId}>
+                <div className="mainProjectCard">
+                  <div className="iconImgContainer">
+                    <img src={mainProject.icon} alt={mainProject.name} />
+                  </div>
+                  <div className="mainProjectName">{mainProject.name}</div>
+                  <div className="mainProjectDesc">{mainProject.desc}</div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      <div>
+        <p style={{ fontSize: '25px' }}>All Projects</p>
+      </div>
+
+      <ProjectList
+        update={update}
+        setUpdate={() => {
+          setUpdate(!update);
+        }}
+        projects={projects}
+      />
+    </div>
   );
 }

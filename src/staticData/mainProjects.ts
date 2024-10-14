@@ -1,0 +1,52 @@
+import { ProjectIcons } from "../resourcesReader/projectIconReader";
+import { DevState } from "../utils/project";
+
+export const MainProjects = [
+  {
+    name: 'OnlineEldenRingMap',
+    url: 'http://www.elpwc.com/eldenringmap',
+    github: 'https://github.com/elpwc/EldenRingOnlineMap',
+    status: DevState.Done,
+    desc: 'EldenRingMapのオンライン編集マップ',
+    image: '',
+    imageWidth: '',
+    tags: 'Svelte, TypeScript, PHP, Leaflet',
+    icon: ProjectIcons.i_elden,
+    blogId: '1',
+  },
+  {
+    name: 'WOTAGEIPEDIA',
+    url: 'http://www.elpwc.com/wotageipedia',
+    github: 'https://github.com/elpwc/wotageipedia',
+    status: DevState.Developing,
+    desc: 'ヲタ芸百科',
+    image: './images/wotageipedia.png',
+    imageWidth: '40%',
+    tags: 'React, Python, TypeScript, AntDesign',
+    icon: ProjectIcons.i_wotagei,
+    blogId: '1',
+  },
+  {
+    name: 'Kikaku',
+    url: 'https://www.elpwc.com/kikaku',
+    github: 'https://github.com/elpwc/kikaku',
+    status: DevState.Done,
+    desc: '個人用スケジュール管理サイト',
+    image: '',
+    tags: 'React, Nest.js, TypeORM, TypeScript',
+    icon: ProjectIcons.i_kikaku,
+    blogId: '1',
+  },
+  {
+    name: 'maiweb',
+    url: 'https://www.elpwc.com/dev/maiweb/',
+    github: 'https://github.com/elpwc/maiweb',
+    status: DevState.Developing,
+    desc: '某アーケード音ゲのウェブ版実装',
+    image: '',
+    imageWidth: '',
+    tags: 'React, TypeScript, Canvas',
+    icon: ProjectIcons.i_maiweb,
+    blogId: '1',
+  },
+]

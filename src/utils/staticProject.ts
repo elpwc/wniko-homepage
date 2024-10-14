@@ -9,4 +9,5 @@ export interface StaticProject {
   image: string;
   imageWidth?: string;
   tags?: string;
+  icon?: string;
 }

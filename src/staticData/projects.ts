@@ -1,3 +1,4 @@
+import { ProjectIcons } from '../resourcesReader/projectIconReader';
 import { DevState } from '../utils/project';
 import { StaticProject } from '../utils/staticProject';
 
@@ -11,6 +12,7 @@ export const static_projects_zh_cn: StaticProject[] = [
     image: './images/wotageipedia.png',
     imageWidth: '40%',
     tags: 'React, Python, TypeScript, AntDesign',
+    icon: ProjectIcons.i_wotagei,
   },
   {
     name: 'wniko homepage',
@@ -53,7 +55,7 @@ export const static_projects_zh_cn: StaticProject[] = [
     name: 'ANIME-SEIRI.web',
     url: 'http://www.elpwc.com/animeseiri',
     github: 'https://github.com/elpwc/ANIME-SEIRI.web',
-    status: DevState.Dispose,
+    status: DevState.Deprecated,
     desc: '',
     image: '',
     tags: 'PHP, SASS, BootStrap',
@@ -110,10 +112,11 @@ export const static_projects_ja: StaticProject[] = [
     image: '',
     imageWidth: '',
     tags: 'Svelte, TypeScript, PHP, Leaflet',
+    icon: ProjectIcons.i_elden,
   },
   {
     name: 'maiweb',
-    url: '',
+    url: 'https://www.elpwc.com/dev/maiweb/',
     github: 'https://github.com/elpwc/maiweb',
     status: DevState.Developing,
     desc: '',
@@ -140,11 +143,30 @@ export const static_projects_ja: StaticProject[] = [
     image: './images/wotageipedia.png',
     imageWidth: '40%',
     tags: 'React, Python, TypeScript, AntDesign',
+    icon: ProjectIcons.i_wotagei,
   },
   {
     name: 'wniko homepage',
     url: '',
     github: 'https://github.com/elpwc/wniko-homepage',
+    status: DevState.Developing,
+    desc: 'すなわち個人ページの事',
+    image: '',
+    tags: 'React, Nest.js, TypeORM, TypeScript',
+  },
+  {
+    name: 'Kikaku',
+    url: 'https://www.elpwc.com/kikaku',
+    github: 'https://github.com/elpwc/kikaku',
+    status: DevState.Done,
+    desc: 'すなわち個人ページの事',
+    image: '',
+    tags: 'React, Nest.js, TypeORM, TypeScript',
+  },
+  {
+    name: '市町村行脚',
+    url: '',
+    github: '',
     status: DevState.Developing,
     desc: 'すなわち個人ページの事',
     image: '',
@@ -182,7 +204,7 @@ export const static_projects_ja: StaticProject[] = [
     name: 'ANIME-SEIRI.web',
     url: 'http://www.elpwc.com/animeseiri',
     github: 'https://github.com/elpwc/ANIME-SEIRI.web',
-    status: DevState.Dispose,
+    status: DevState.Deprecated,
     desc: '',
     image: '',
     tags: 'PHP, SASS, BootStrap',
