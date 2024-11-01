@@ -1,55 +1,86 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './BackgroundSlideshow.css';
 
-interface P {
+interface SlideshowProps {
   images: string[];
-  interval: number;
-  fadeDuration: number;
+  interval?: number; // Time between each image switch (ms)
+  fadeDuration?: number; // Duration of the fade effect (ms)
+  fadeSteps?: number; // Number of steps for smooth fade
+  children?: JSX.Element;
 }
 
-export default (props: P = { images: [], interval: 5000, fadeDuration: 1000 }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0); // 当前图片的索引
-  const [nextImageIndex, setNextImageIndex] = useState(1); // 下一张图片的索引
-  const [isFading, setIsFading] = useState(false); // 控制渐变状态
+const BackgroundSlideshow = ({ images, interval = 5000, fadeDuration = 1000, fadeSteps = 30, children = <></> }: SlideshowProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0); // Current image index
+  const [currentOpacity, setCurrentOpacity] = useState(1); // Opacity of the current image
+  const [nextOpacity, setNextOpacity] = useState(0); // Opacity of the next image
 
   useEffect(() => {
-    // 定时切换图片
-    const switchImages = setInterval(() => {
-      setIsFading(true); // 开始渐变
-      setTimeout(() => {
-        // 渐变结束后，更新图片的索引，并停止渐变
-        setCurrentImageIndex(nextImageIndex);
-        setNextImageIndex(prevIndex => (prevIndex + 1) % props.images.length);
-        setIsFading(false); // 结束渐变
-      }, props.fadeDuration); // 渐变时间
-    }, props.interval); // 切换间隔
+    if (images.length < 2) return; // Require at least two images
 
-    return () => clearInterval(switchImages); // 清除定时器
-  }, []);
+    // Calculate the time between each opacity step for smooth fading
+    const stepInterval = fadeDuration / fadeSteps;
+    let fadeInterval: NodeJS.Timeout;
+
+    const switchImage = () => {
+      let step = 0;
+      setCurrentOpacity(1); // Reset opacities at start of each switch
+      setNextOpacity(0);
+
+      // Set an interval to gradually change opacity
+      fadeInterval = setInterval(() => {
+        step += 1;
+        const newOpacity = 1 - step / fadeSteps;
+
+        // Gradually fade out current image and fade in next image
+        setCurrentOpacity(newOpacity);
+        setNextOpacity(1 - newOpacity);
+
+        // If we've completed the fade steps, finalize switch
+        if (step >= fadeSteps) {
+          clearInterval(fadeInterval);
+          setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
+          setCurrentOpacity(1); // Reset current image opacity for next cycle
+          setNextOpacity(0); // Reset next image opacity for next cycle
+        }
+      }, stepInterval);
+    };
+
+    // Main interval to switch images at specified interval
+    const mainInterval = setInterval(switchImage, interval);
+
+    // eslint-disable-next-line consistent-return
+    return () => {
+      clearInterval(mainInterval);
+      clearInterval(fadeInterval); // Clear fade interval on unmount
+    };
+  }, [images, interval, fadeDuration, fadeSteps]);
+
+  const nextIndex = (currentIndex + 1) % images.length;
 
   return (
-    <div className="slideshow">
-      {/* 第一张图片 */}
-      <div
-        className="image"
-        style={{
-          backgroundImage: `url(${props.images[currentImageIndex]})`,
-          zIndex: isFading ? 1 : 2, // 渐入时当前图片在上
-          opacity: isFading ? 0 : 1, // 渐出时当前图片透明度减少
-          transition: `opacity ${props.fadeDuration}ms ease-in-out`,
-        }}
-      ></div>
+    <div>
+      <div className="slideshow">
+        {/* Current Image */}
+        <div
+          className="image"
+          style={{
+            backgroundImage: `url(${images[currentIndex]})`,
+            opacity: currentOpacity,
+          }}
+        />
 
-      {/* 第二张图片 */}
-      <div
-        className="image"
-        style={{
-          backgroundImage: `url(${props.images[nextImageIndex]})`,
-          zIndex: isFading ? 2 : 1, // 渐入时下一张图片在上
-          opacity: isFading ? 1 : 0, // 渐入时下一张图片透明度增加
-          transition: `opacity ${props.fadeDuration}ms ease-in-out`,
-        }}
-      ></div>
+        {/* Next Image */}
+        <div
+          className="image"
+          style={{
+            backgroundImage: `url(${images[nextIndex]})`,
+            opacity: nextOpacity,
+          }}
+        />
+      </div>
+      <div className="contentHTML">{children}</div>
     </div>
   );
 };
+
+export default BackgroundSlideshow;

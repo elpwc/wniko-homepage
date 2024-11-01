@@ -204,24 +204,26 @@ function Main(props: P) {
         </div>
       </header>
 
-      <div
-        style={{
-          position: 'initial',
-          top: '60px',
-          left: '0px',
-          right: '0px',
-          bottom: '0px',
-          paddingTop: '60px',
-          zIndex: '-5',
-          backgroundColor: themeColor[currentPageIndex][1],
-          backdropFilter: 'blur(0px)',
-          minHeight: '1000px',
-        }}
-      >
-        <main>
-          <Outlet />
-        </main>
-      </div>
+      <BackgroundSlideshow images={BackgroundImages} interval={5000} fadeDuration={1000}>
+        <div
+          style={{
+            position: 'fixed',
+            paddingTop: '60px',
+            zIndex: '-5',
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            backgroundColor: themeColor[currentPageIndex][1],
+            backdropFilter: 'blur(0px)',
+            overflow: 'auto',
+          }}
+        >
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      </BackgroundSlideshow>
     </div>
   );
 }

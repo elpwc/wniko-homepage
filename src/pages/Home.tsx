@@ -17,7 +17,7 @@ interface P {
 export default function Home(props: P) {
   useEffect(() => {
     CurrentPageStorage.set('home');
-    
+
     getBlogs('', AdminModeStorage.value === 1 ? true : false, e => {});
     props.setUpdate();
   }, []);
@@ -39,9 +39,6 @@ export default function Home(props: P) {
 
   return (
     <div id="homeMainContainer">
-      <div>
-        <BackgroundSlideshow images={BackgroundImages} interval={5000} fadeDuration={1000} />
-      </div>
       {/*<p className="headerText1">Wniko</p>*/}
       <div id="welcomeContainer">
         <div className="welcomeItem" id="welcomeContent1">
