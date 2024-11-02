@@ -14,11 +14,13 @@ const BackgroundSlideshow = ({ images, interval = 5000, fadeDuration = 1000, fad
   const [currentOpacity, setCurrentOpacity] = useState(1); // Opacity of the current image
   const [nextOpacity, setNextOpacity] = useState(0); // Opacity of the next image
 
+
+  const stepInterval = fadeDuration / fadeSteps;
+
   useEffect(() => {
     if (images.length < 2) return; // Require at least two images
 
     // Calculate the time between each opacity step for smooth fading
-    const stepInterval = fadeDuration / fadeSteps;
     let fadeInterval: NodeJS.Timeout;
 
     const switchImage = () => {
