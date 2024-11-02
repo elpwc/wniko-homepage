@@ -54,6 +54,10 @@ export default function Home(props: P) {
         <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
       </div>
       <div id="twitterContainer">
+        <div className="bgDescContainer">
+        <p className="headerText2">八丈島　天の川</p>
+        <p>2024/3/14</p>
+        </div>
         <div className="ContactContainer">
           <p className="headerText2">Contact</p>
           <p className="contentText">📫elpwc@hotmail.com</p>
