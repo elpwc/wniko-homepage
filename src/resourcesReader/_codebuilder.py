@@ -13,8 +13,9 @@ def tip(fo):
 def readBgi():
     dictName = 'bgi/'
     root = rootRoute + dictName 
-    iconNames = [f.split('.')[0] for f in os.listdir(
-        pyRootRoute + dictName) if f.endswith('.jpg')]
+    filelist = sorted(os.listdir(pyRootRoute + dictName), key=lambda x: int(os.path.splitext(x)[0]) if os.path.splitext(x)[0].isdigit() else float('inf'))
+
+    iconNames = [f.split('.')[0] for f in filelist if f.endswith('.jpg')]
 
     fo = open(saveRootRoute + "bgiReader.ts", "w", encoding="utf-8")
     fo.seek(0)
