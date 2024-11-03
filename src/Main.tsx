@@ -11,6 +11,7 @@ import Modal from './components/Modal';
 import UMenuItem from './components/UMenuItem';
 import BackgroundSlideshow from './components/BackgroundSlideshow';
 import { BackgroundImages } from './resourcesReader/bgiReader';
+import { useDataContext } from './utils/context';
 
 interface P {
   update: boolean;
@@ -35,6 +36,8 @@ function Main(props: P) {
   const [isPhoneDeviceMenuOpen, setisPhoneDeviceMenuOpen]: [boolean, any] = useState(false);
 
   const [winWidth, setwinWidth]: [number, any] = useState(window.innerWidth);
+
+  const { setbgIndex } = useDataContext();
 
   const params = useParams();
   const navigate = useNavigate();
@@ -204,7 +207,14 @@ function Main(props: P) {
         </div>
       </header>
 
-      <BackgroundSlideshow images={BackgroundImages} interval={5000} fadeDuration={1000}>
+      <BackgroundSlideshow
+        images={BackgroundImages}
+        interval={7500}
+        fadeDuration={1000}
+        onChange={index => {
+          setbgIndex(index);
+        }}
+      >
         <div
           style={{
             position: 'fixed',
