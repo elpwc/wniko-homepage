@@ -96,7 +96,6 @@ function Main(props: P) {
           <div>
             <button
               id="phoneShowMenuButton"
-              style={{ backgroundColor: 'white' }}
               onClick={() => {
                 setisPhoneDeviceMenuOpen(!isPhoneDeviceMenuOpen);
               }}
