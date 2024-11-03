@@ -27,7 +27,7 @@ export default (props: P = { images: [], interval: 5000, fadeDuration: 1000 }) =
 
   useEffect(() => {
     const switchImages = setInterval(() => {
-      props.onChange?.(currentImageIndexRef.current);
+      props.onChange?.(nextImageIndexRef.current);
       setIsFading(true);
       setTimeout(() => {
         setCurrentImageIndex(nextImageIndexRef.current);
