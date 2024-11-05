@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Navigate, useLocation, useParams } from 'react-router';
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router';
 import { AdminModeStorage, CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
 import Blog, { BlogUtils } from '../utils/blog';
@@ -20,6 +20,7 @@ export default function BlogView(props: P) {
   const params = useParams();
   const [queryParams] = useSearchParams();
   const mylocation = useLocation();
+  const navigate = useNavigate();
 
   let currentBlogid: number = Number(params.blogid);
 
@@ -33,10 +34,14 @@ export default function BlogView(props: P) {
       url: api.url + api.blog + '/' + currentBlogid,
     })
       .then(res => {
-        setBlog(res.data);
+        if (res.data === '') {
+          navigate('/404');
+        } else {
+          setBlog(res.data);
+        }
       })
       .catch(error => {
-        return <Page404 title={<>你要找的博客不存在捏</>} returnText={<>返回博客列表</>} returnRoute={mylocation.pathname + '/..'} />;
+        alert('サーバー接続失敗');
       });
   };
 
