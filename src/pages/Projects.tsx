@@ -60,7 +60,8 @@ export default function Projects(props: P) {
 
   return (
     <div>
-      <div className="mainProjectContainer">
+      {/*
+            <div className="mainProjectContainer">
         <div className="mainProjectList">
           {MainProjects.map(mainProject => {
             return (
@@ -78,9 +79,12 @@ export default function Projects(props: P) {
         </div>
       </div>
 
-      <div>
+            <div>
         <p style={{ fontSize: '25px' }}>All Projects</p>
       </div>
+      */}
+
+
 
       <ProjectList
         update={update}

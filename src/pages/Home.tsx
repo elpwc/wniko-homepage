@@ -43,11 +43,11 @@ export default function Home(props: P) {
       {/*<p className="headerText1">Wniko</p>*/}
       <div id="welcomeContainer">
         <div className="welcomeItem" id="welcomeContent1">
-          <p className="contentText">🪪 Wniko/うに</p>
+          <p className="contentTextLarge">🪪 Wniko/うに</p>
           <p className="contentText">
             📢 中文<span className="welcomeContentTextLangname">(Native)</span>，日本語，English
           </p>
-          <p className="contentText">🌟 地理，地図，ｱﾌﾟﾘ開発，言語，漢字，旅行，アニメ，ヲタ芸，音ゲー</p>
+          <p className="contentText">🌟 Tags: 地理，地図，創作地図，アプリ開発，TypeScript♡，言語，漢字，旅行，鉄道，駅メモ，アニメ，ラブライブ，ゆるキャン△，鉄道，デザイン，ヲタ芸，地下芸，音ゲ，maimaiDX，云々</p>
         </div>
         <Divider />
         <p className="headerText2">🐝Latest blogs</p>

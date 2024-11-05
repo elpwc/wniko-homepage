@@ -10,7 +10,7 @@
 
 @media (any-hover: hover) {
   .projectContainer:hover {
-    box-shadow: 0 0 5px 0 gray;
+    box-shadow: 0 0 4px 0 rgb(151, 84, 84);
   }
 }
 

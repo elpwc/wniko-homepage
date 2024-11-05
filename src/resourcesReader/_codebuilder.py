@@ -72,7 +72,34 @@ def readProjectIcon():
     # object
     fo.write('export const ProjectIcons = {\n')
     for name in iconNames:
-        fo.write("  i_" + name +" : " +  "project_icon_" + name+ ",\n")
+        fo.write("  i_" + name +": " +  "project_icon_" + name+ ",\n")
+
+    fo.write("};\n")
+
+    fo.write('\n')
+
+
+def readProjectImg():
+    dictName = 'project_img/'
+    root = rootRoute + dictName 
+    iconNames = [f.split('.')[0] for f in os.listdir(
+        pyRootRoute + dictName) if f.endswith('.png')]
+
+    fo = open(saveRootRoute + "projectImgReader.ts", "w", encoding="utf-8")
+    fo.seek(0)
+    tip(fo)
+
+    # import list
+    for name in iconNames:
+        fo.write("import project_img_" + name + " from '" +
+                 root + name + ".png';\n")
+
+    fo.write('\n')
+
+    # object
+    fo.write('export const ProjectImg = {\n')
+    for name in iconNames:
+        fo.write("  i_" + name +": " +  "project_img_" + name+ ",\n")
 
     fo.write("};\n")
 
@@ -82,6 +109,7 @@ def readProjectIcon():
 def main():
     readBgi()
     readProjectIcon()
+    readProjectImg()
 
 if __name__ == '__main__':
     main()

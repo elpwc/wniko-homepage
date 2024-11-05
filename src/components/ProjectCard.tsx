@@ -110,7 +110,13 @@ export default function ProjectCard(props: P) {
             <p className="desctext">{props.project.desc}</p>
           </article>
 
-          <img src={props.project.image} width={props.project.imageWidth} height="40%" />
+          {props.project.image !== '' ? (
+            <a href={props.project.image} target="_blank" style={{ width: props.project.imageWidth, height: '40%' }}>
+              <img src={props.project.image} width="100%" height="100%" />
+            </a>
+          ) : (
+            <></>
+          )}
         </div>
       </section>
     </>

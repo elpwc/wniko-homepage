@@ -8,9 +8,9 @@ import project_icon_maiweb from '../resource/project_icon/maiweb.png';
 import project_icon_wotagei from '../resource/project_icon/wotagei.png';
 
 export const ProjectIcons = {
-  i_elden : project_icon_elden,
-  i_kikaku : project_icon_kikaku,
-  i_maiweb : project_icon_maiweb,
-  i_wotagei : project_icon_wotagei,
+  i_elden: project_icon_elden,
+  i_kikaku: project_icon_kikaku,
+  i_maiweb: project_icon_maiweb,
+  i_wotagei: project_icon_wotagei,
 };
 

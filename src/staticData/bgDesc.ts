@@ -15,7 +15,7 @@ export const bgDesc = [
     location: '東京都八丈町',
   },
   {
-    title: '渡島半島',
+    title: '渡島半島に抱える函館市',
     date: '2024-3-27',
     location: 'GK801 東京(成田)→旭川',
   },
@@ -40,7 +40,7 @@ export const bgDesc = [
     location: '山東省青島市市南区',
   },
   {
-    title: '太白山登山道から仙台',
+    title: '太白山登山道から仙台市を眺望',
     date: '2024-3-18',
     location: '宮城県仙台市太白区',
   },
@@ -50,7 +50,7 @@ export const bgDesc = [
     location: '長崎県長崎市',
   },
   {
-    title: 'あわしまへヨーソロー＾',
+    title: '淡島へヨーソロー＾',
     date: '2024-9-10',
     location: '静岡県沼津市',
   },
@@ -80,12 +80,12 @@ export const bgDesc = [
     location: '山梨県身延町下部',
   },
   {
-    title: '本栖湖あさぎり',
+    title: '本栖湖朝',
     date: '2024-2-18',
     location: '山梨県身延町',
   },
   {
-    title: 'アリスちゃん、天童駅だよ',
+    title: '天童アリスちゃん、天童駅だよ',
     date: '2024-3-17',
     location: '山形県天童市',
   },

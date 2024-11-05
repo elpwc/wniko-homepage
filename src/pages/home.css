@@ -30,8 +30,13 @@
   font-size: 20px;
 }
 
-.contentText {
+.contentTextLarge {
   font-size: 18px;
+  padding: 5px 0;
+}
+
+.contentText {
+  font-size: 15px;
   padding: 5px 0;
 }
 
