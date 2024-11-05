@@ -6,6 +6,8 @@ import { AdminModeStorage, CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
 import { findAllBlog } from '../services/api/blog';
 import './Blogs.css';
+import { motion } from 'framer-motion';
+import { BeatLoader } from 'react-spinners';
 
 interface P {
   update: boolean;
@@ -22,11 +24,13 @@ const newBlogSubject = (name: string, sum: number = 1) => {
 };
 
 export default function Blogs(props: P) {
+  const [isLoading, setisLoading]: [boolean, any] = useState(false);
   const [blogs, setBlogs]: [API.Blog[], any] = useState([]);
   const [blogSubjects, setBlogSubjects]: [BlogSubject[], any] = useState([]);
   const [selectedSubjectKey, setselectedSubjectKey]: [string, any] = useState('0');
 
   const getBlogs = (subject: string = '', includeDraft: boolean = false, onReceive?: (e: any) => void) => {
+    setisLoading(true);
     findAllBlog({ params: { subject, includeDraft: includeDraft ? '1' : '0' } })
       .then((e: any) => {
         onReceive?.(e);
@@ -34,6 +38,7 @@ export default function Blogs(props: P) {
         const receivedBlogs = e.data;
         setBlogs(receivedBlogs as API.Blog[]);
 
+        setisLoading(false);
         props.setUpdate();
       })
       .catch(error => {});
@@ -104,8 +109,15 @@ export default function Blogs(props: P) {
           }}
         />
       </div>
-
-      <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+      {isLoading ? (
+        <div id="loaderContainer">
+          <BeatLoader color="#fdbb36" loading={isLoading} cssOverride={{ textAlign: 'center' }} size={15} aria-label="Loading Spinner" data-testid="loader" />
+        </div>
+      ) : (
+        <motion.div key={'bloglist'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
+          <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+        </motion.div>
+      )}
     </div>
   );
 }
