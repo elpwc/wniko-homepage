@@ -1,22 +1,6 @@
 import init_debug_data from '../staticData/initDebugData';
 import BlogSubject, { BlogSubjectUtils } from './blogSubject';
 
-export default interface Blog {
-  id: number;
-  title: string;
-  author: string;
-  viewCount: number;
-  subjectId: number;
-  lang: string;
-  location: string;
-  content: string;
-  headPageUrl: string;
-  access: 'public' | 'urasekai' | 'private';
-  createTime: string;
-  updateTime: string;
-  isDraft: boolean;
-}
-
 export class BlogUtils {
   static create(
     title: string,

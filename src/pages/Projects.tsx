@@ -30,7 +30,7 @@ export default function Projects(props: P) {
   const L = LangUtils.selectLang();
 
   const getProjectListByLang = () => {
-    console.log(LangStorage.value);
+    //console.log(LangStorage.value);
     switch (LangStorage.value) {
       case Lang.zh_cn:
         setProjects(static_projects_ja);

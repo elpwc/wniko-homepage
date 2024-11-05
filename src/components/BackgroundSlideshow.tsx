@@ -37,7 +37,7 @@ export default (props: P = { images: [], interval: 5000, fadeDuration: 1000 }) =
           return updatedIndex;
         });
 
-        console.log(currentImageIndex, nextImageIndex);
+        //console.log(currentImageIndex, nextImageIndex);
         setIsFading(false);
       }, props.fadeDuration);
     }, props.interval);

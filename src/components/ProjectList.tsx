@@ -1,5 +1,3 @@
-import React from 'react';
-import Project from '../utils/project';
 import ProjectCard from './ProjectCard';
 import { LangStorage } from '../dataStorage/storage';
 import { StaticProject } from '../utils/staticProject';

@@ -3,16 +3,14 @@ import ReactMarkdown from 'react-markdown';
 import { Navigate, useLocation, useParams } from 'react-router';
 import { CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
-import Blog, { BlogUtils } from '../utils/blog';
 import Page404 from './404';
 import { Link } from 'react-router-dom';
 import './blogView.css';
 import LangUtils from '../lang/langUtils';
 import axios from 'axios';
-import api from '../api';
 import { createBlog, updateBlog } from '../services/api/blog';
 import './BlogEdit.css';
-import { isNull } from 'util';
+import appconfig from '../appconfig';
 
 interface P {
   update: boolean;
@@ -40,7 +38,7 @@ export default function BlogEdit(props: P) {
   const getBlog = (id: number) => {
     axios({
       method: 'get',
-      url: api.url + api.blog + '/' + id,
+      url: appconfig.api.url + appconfig.api.blog + '/' + id,
     })
       .then(res => {
         setisEditMode(true);

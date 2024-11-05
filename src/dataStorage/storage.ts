@@ -1,6 +1,4 @@
 import { Lang } from '../lang/langUtils';
-import Blog from '../utils/blog';
-import Project from '../utils/project';
 
 // Provides a way to share data globally.
 class Storage<T> {

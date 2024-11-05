@@ -8,7 +8,7 @@ import appconfig from '../appconfig';
 axios.defaults.withCredentials = false;
 
 const service = axios.create({
-  baseURL: appconfig.serverApiUrl,
+  baseURL: appconfig.api.url,
   timeout: 5000,
   responseType: 'json',
   //withCredentials: true,

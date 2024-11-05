@@ -5,7 +5,6 @@ import Blogs from './pages/Blogs';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import { AdminModeStorage, DeviceStorage } from './dataStorage/storage';
-import { DevState, ProjectUtils } from './utils/project';
 import Illust from './pages/Illust';
 import LangUtils from './lang/langUtils';
 import Main from './Main';
@@ -45,11 +44,9 @@ function App() {
   // 判断设备
   const isMobile: boolean = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
   DeviceStorage.set(isMobile ? 1 : 0);
-  console.log('device: ', isMobile);
+  //console.log('device: ', isMobile);
 
-  useEffect(() => {
-    // 初始化数据
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="App">

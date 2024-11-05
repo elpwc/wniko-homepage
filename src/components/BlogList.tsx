@@ -1,7 +1,5 @@
-import React from 'react';
 import { LangStorage } from '../dataStorage/storage';
 import BlogCard from './BlogCard';
-import Blog from '../utils/blog';
 
 interface P {
   update: boolean;

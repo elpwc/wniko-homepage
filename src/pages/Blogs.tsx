@@ -34,7 +34,7 @@ export default function Blogs(props: P) {
     findAllBlog({ params: { subject, includeDraft: includeDraft ? '1' : '0' } })
       .then((e: any) => {
         onReceive?.(e);
-        console.log(e);
+        //console.log(e);
         const receivedBlogs = e.data;
         setBlogs(receivedBlogs as API.Blog[]);
 
@@ -53,7 +53,6 @@ export default function Blogs(props: P) {
         const index = blogSubjectsTemp.findIndex(blogSubject => {
           return blogSubject.name === blogItemSubject;
         });
-        console.log(index);
         if (index !== -1) {
           // 确保 sum 更新正确
           blogSubjectsTemp[index].sum++;

@@ -3,12 +3,11 @@ import ReactMarkdown from 'react-markdown';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router';
 import { AdminModeStorage, CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
-import Blog, { BlogUtils } from '../utils/blog';
-import Page404 from './404';
+import { BlogUtils } from '../utils/blog';
 import { Link, useSearchParams } from 'react-router-dom';
 import './blogView.css';
 import axios from 'axios';
-import api from '../api';
+import appconfig from '../appconfig';
 
 interface P {
   update: boolean;
@@ -31,7 +30,7 @@ export default function BlogView(props: P) {
   const getBlog = () => {
     axios({
       method: 'get',
-      url: api.url + api.blog + '/' + currentBlogid,
+      url: appconfig.api.url + appconfig.api.blog + '/' + currentBlogid,
     })
       .then(res => {
         if (res.data === '') {

@@ -1,4 +1,4 @@
-import Project, { DevState } from '../utils/project';
+import { DevState } from '../utils/project';
 import { LangStorage } from '../dataStorage/storage';
 import LangUtils from '../lang/langUtils';
 import './ProjectCard.css';
