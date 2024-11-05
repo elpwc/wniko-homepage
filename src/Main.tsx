@@ -51,6 +51,7 @@ function Main(props: P) {
     ['#ffb729', '#fff2d7', 'blogs'],
     ['#17df55', '#d9ffdd', 'illust'],
     ['#f87bff', '#fce8ff', 'contact'],
+    ['#f87bff', '#fce8ff', '404'],
   ];
 
   const menuItems = [
@@ -61,7 +62,7 @@ function Main(props: P) {
     /*{ key: 'contact', title: L.header.contact, route: './contact', focuscolor: themeColor[4][0] },*/
   ];
 
-  console.log(CurrentPageStorage.value);
+  //console.log(CurrentPageStorage.value);
 
   // 启动时更新主题
   useEffect(() => {
@@ -160,7 +161,7 @@ function Main(props: P) {
                     style={{
                       padding: '0 5px',
                       margin: '0 10px',
-                      color: 'black',
+                      color: 'white',
                     }}
                   >
                     ◇
