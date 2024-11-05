@@ -4,13 +4,14 @@ import './BlogCard.css';
 
 interface P {
   blog: API.Blog;
+  isFromHome?: boolean;
 }
 
 export default function BlogCard(props: P) {
   const L = LangUtils.selectLang();
 
   return (
-    <Link to={'./' + props.blog.id}>
+    <Link to={'/blogs/' + props.blog.id + (props.isFromHome ? '?from=home' : '')}>
       <div className="blogCardContainer">
         <div>
           {props.blog.isDraft ? <span>〈DRAFT〉</span> : <></>}

@@ -64,7 +64,7 @@ export default function Home(props: P) {
           </div>
         ) : (
           <motion.div key={'homebloglist'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
-            <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+            <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} isFromHome={true} />
           </motion.div>
         )}
       </div>
