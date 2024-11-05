@@ -24,7 +24,7 @@ export default function Page404(props: P) {
   return (
     <>
       <div style={{ backgroundColor: 'white', borderRadius: '5px', marginTop: '10px' }}>
-        <div style={{ padding: '60px 30px' }}>
+        <div style={{ padding: '60px 30px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p>
             <span style={{ fontSize: '50px', color: 'red' }}>404 </span>
             <span style={{ fontSize: '35px' }}>Page Not Exist</span>

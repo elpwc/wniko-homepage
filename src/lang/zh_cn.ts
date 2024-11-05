@@ -10,9 +10,9 @@ export default {
   projects: {},
   blogs: {},
   page404: {
-    tip1: '这个页面不存在',
-    tip2: '如果你确信网址没有问题，那大概是因为已经被删了或者改了位置了',
-    returnButton: '👉返回主页👈',
+    tip1: '訪問しようとするページは存在しません',
+    tip2: 'URLに間違いないと確信する場合は、多分削除または転移されたかもしれんわ',
+    returnButton: '👉ホームページ👈',
   },
 
   components: {
