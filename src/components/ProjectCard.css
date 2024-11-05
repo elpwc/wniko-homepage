@@ -3,7 +3,7 @@
   padding: 0.5em;
   margin: 0.5em 0;
   transition: all 0.3s;
-  min-height: 200px;
+  /*min-height: 200px;*/
   height: fit-content;
   background-color: #ffffff85;
 }
