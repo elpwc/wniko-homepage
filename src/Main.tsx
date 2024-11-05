@@ -128,7 +128,7 @@ function Main(props: P) {
                 />
               ) : (
                 <div style={{ width: '100%' }}>
-                  <UMenuItem key={-1} data={menuItems[currentPageIndex]} onClick={() => {}} />
+                  <UMenuItem key={-1} data={menuItems[currentPageIndex > 3 ? 0 : currentPageIndex]} onClick={() => {}} />
                 </div>
               )}
             </>
