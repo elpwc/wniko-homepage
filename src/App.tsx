@@ -121,6 +121,17 @@ function App() {
             }
           ></Route>
           <Route
+            path="blogs/new/:blogid"
+            element={
+              <BlogEdit
+                update={update}
+                setUpdate={() => {
+                  updateNow();
+                }}
+              />
+            }
+          ></Route>
+          <Route
             path="illust"
             element={
               <Illust

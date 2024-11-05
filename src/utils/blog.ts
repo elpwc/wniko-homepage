@@ -23,7 +23,7 @@ export class BlogUtils {
     content: string,
     author: string = 'wniko',
     id: number = 0,
-    subjectId: number = 0,
+    subject: string = '',
     lang: string = 'zh-cn',
     location: string = '',
     access: 'public' | 'urasekai' | 'private' = 'public',
@@ -35,7 +35,7 @@ export class BlogUtils {
       title: title,
       author: author,
       viewCount: 0,
-      subjectId: subjectId,
+      subject: subject,
       lang: lang,
       location: location,
       content: content,
@@ -44,6 +44,24 @@ export class BlogUtils {
       createTime: new Date().toUTCString(),
       updateTime: new Date().toUTCString(),
       isDraft: isDraft,
+    };
+  }
+
+  static initializeBlog(): API.Blog {
+    return {
+      id: 0,
+      title: '',
+      author: '',
+      viewCount: 0,
+      lang: '',
+      location: '',
+      content: '',
+      headPageUrl: '',
+      access: 'public',
+      isDraft: true,
+      subject: '',
+      createtime: new Date().toISOString(),
+      updatetime: new Date().toISOString(),
     };
   }
 

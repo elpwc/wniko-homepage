@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Navigate, useLocation, useParams } from 'react-router';
-import { CurrentPageStorage } from '../dataStorage/storage';
+import { AdminModeStorage, CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
 import Blog, { BlogUtils } from '../utils/blog';
 import Page404 from './404';
@@ -22,7 +22,7 @@ export default function BlogView(props: P) {
 
   let currentBlogid: number = Number(params.blogid);
 
-  const [blog, setBlog]: [Blog, any] = useState(BlogUtils.create('', ''));
+  const [blog, setBlog]: [API.Blog, any] = useState(BlogUtils.initializeBlog());
 
   const getBlog = () => {
     axios({
@@ -55,7 +55,17 @@ export default function BlogView(props: P) {
                 </svg>
               </button>
             </Link>
-            <h1>{blog.title}</h1>
+            {AdminModeStorage.value === 1 ? (
+              <Link to={'/blogs/new/' + blog.id}>
+                <button>编辑</button>
+              </Link>
+            ) : (
+              <></>
+            )}
+            <h1>
+              {blog.isDraft ? <span>〈DRAFT〉</span> : <></>}
+              {blog.title}
+            </h1>
           </div>
 
           <p className="bloginfo">
