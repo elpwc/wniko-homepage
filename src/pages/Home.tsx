@@ -8,6 +8,7 @@ import { Divider } from '../components/Divider';
 import { useDataContext } from '../utils/context';
 import { bgDesc } from '../staticData/bgDesc';
 import { motion } from 'framer-motion';
+import { BeatLoader, GridLoader } from 'react-spinners';
 
 interface P {
   update: boolean;
@@ -15,28 +16,31 @@ interface P {
 }
 
 export default function Home(props: P) {
-  useEffect(() => {
-    CurrentPageStorage.set('home');
-
-    getBlogs('', AdminModeStorage.value === 1 ? true : false, e => {});
-    props.setUpdate();
-  }, []);
-
+  const [isBlogLoading, setisBlogLoading]: [boolean, any] = useState(false);
+  const [isTwitterTimelineLoading, setisTwitterTimelineLoading]: [boolean, any] = useState(false);
   const [blogs, setBlogs]: [API.Blog[], any] = useState([]);
   const { bgIndex } = useDataContext();
 
   const getBlogs = (subject: string = '', includeDraft: boolean = false, onReceive?: (e: any) => void) => {
-    findAllBlog({ params: { subject, includeDraft: includeDraft ? '1' : '0', num: 3 } })
+    setisBlogLoading(true);
+    findAllBlog({ params: { subject, includeDraft: includeDraft ? '1' : '0', num: 5 } })
       .then((e: any) => {
         onReceive?.(e);
-        console.log(e);
         const receivedBlogs = e.data;
         setBlogs(receivedBlogs as API.Blog[]);
 
         props.setUpdate();
+        setisBlogLoading(false);
       })
       .catch(error => {});
   };
+
+  useEffect(() => {
+    CurrentPageStorage.set('home');
+    setisTwitterTimelineLoading(true);
+    getBlogs('', AdminModeStorage.value === 1 ? true : false, e => {});
+    props.setUpdate();
+  }, []);
 
   return (
     <div id="homeMainContainer">
@@ -47,11 +51,22 @@ export default function Home(props: P) {
           <p className="contentText">
             📢 中文<span className="welcomeContentTextLangname">(Native)</span>，日本語，English
           </p>
-          <p className="contentText">🌟 Tags: 地理，地図，創作地図，アプリ開発，TypeScript♡，言語，漢字，旅行，鉄道，駅メモ，アニメ，ラブライブ，ゆるキャン△，鉄道，デザイン，ヲタ芸，地下芸，音ゲ，maimaiDX，云々</p>
+          <p className="contentText">
+            🌟 Tags: 地理，地図，創作地図，アプリ開発，TypeScript♡，言語，漢字，旅行，鉄道，駅メモ，アニメ，ラブライブ，ゆるキャン△，鉄道，デザイン，ヲタ芸，地下芸，音ゲ，maimaiDX，云々
+          </p>
         </div>
         <Divider />
         <p className="headerText2">🐝Latest blogs</p>
-        <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+
+        {isBlogLoading ? (
+          <div id="loaderContainer">
+            <BeatLoader color="#a0a0a0" loading={isBlogLoading} cssOverride={{ textAlign: 'center' }} size={15} aria-label="Loading Spinner" data-testid="loader" />
+          </div>
+        ) : (
+          <motion.div key={'homebloglist'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
+            <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+          </motion.div>
+        )}
       </div>
       <div id="twitterContainer">
         <div className="ContactContainer">
@@ -102,7 +117,9 @@ export default function Home(props: P) {
           </motion.div>
         </div>
         <TwitterTimelineEmbed
-          onLoad={function noRefCheck() {}}
+          onLoad={function noRefCheck() {
+            setisTwitterTimelineLoading(true);
+          }}
           sourceType="profile"
           screenName="elpwc"
           options={{
@@ -113,7 +130,8 @@ export default function Home(props: P) {
           lang="ja"
           placeholder={
             <div className="twitterPlaceHolder" style={{ height: window.innerHeight * 0.6 + 'px' }}>
-              <p>Twitter timeline is loading...</p>
+              <p>Twitter Timeline Loading..</p>
+              <GridLoader color="#a0a0a0" loading={isTwitterTimelineLoading} cssOverride={{ textAlign: 'center', marginTop: '20px' }} size={15} aria-label="Loading Spinner" data-testid="loader" />
             </div>
           }
         />
