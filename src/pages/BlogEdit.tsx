@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Navigate, useLocation, useParams } from 'react-router';
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router';
 import { CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
 import Page404 from './404';
@@ -20,6 +20,7 @@ interface P {
 export default function BlogEdit(props: P) {
   const params = useParams();
   const mylocation = useLocation();
+  const navigate = useNavigate();
 
   const [markdownCode, setMarkdownCode]: [string, any] = useState('');
   const [title, setTitle]: [string, any] = useState('');
@@ -54,14 +55,14 @@ export default function BlogEdit(props: P) {
         setisDraft(currentBlog.isDraft);
       })
       .catch(error => {
-        return <Page404 title={<>你要找的博客不存在捏</>} returnText={<>返回博客列表</>} returnRoute={mylocation.pathname + '/..'} />;
+        navigate('/500');
       });
   };
 
   useEffect(() => {
     CurrentPageStorage.set('blogs');
-    setcurrentBlogid(Number(params.blogid));
-    if (!Number.isNaN(params.blogid)) {
+    if (params.blogid !== undefined) {
+      setcurrentBlogid(Number(params.blogid));
       getBlog(Number(params.blogid ?? '-1'));
     }
 

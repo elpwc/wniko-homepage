@@ -40,7 +40,7 @@ export default function BlogView(props: P) {
         }
       })
       .catch(error => {
-        alert('サーバー接続失敗');
+        navigate('/500');
       });
   };
 
