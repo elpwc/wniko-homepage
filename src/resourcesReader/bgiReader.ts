@@ -2,49 +2,26 @@
 // これは _codebuilder.py で自動的に生成されたファイルです。
 // 这个文件是由 _codebuilder.py 自动生成的。
 
-import bgi_0 from '../resource/bgi/0.jpg';
-import bgi_1 from '../resource/bgi/1.jpg';
-import bgi_2 from '../resource/bgi/2.jpg';
-import bgi_3 from '../resource/bgi/3.jpg';
-import bgi_4 from '../resource/bgi/4.jpg';
-import bgi_5 from '../resource/bgi/5.jpg';
-import bgi_6 from '../resource/bgi/6.jpg';
-import bgi_7 from '../resource/bgi/7.jpg';
-import bgi_8 from '../resource/bgi/8.jpg';
-import bgi_9 from '../resource/bgi/9.jpg';
-import bgi_10 from '../resource/bgi/10.jpg';
-import bgi_11 from '../resource/bgi/11.jpg';
-import bgi_12 from '../resource/bgi/12.jpg';
-import bgi_13 from '../resource/bgi/13.jpg';
-import bgi_14 from '../resource/bgi/14.jpg';
-import bgi_15 from '../resource/bgi/15.jpg';
-import bgi_16 from '../resource/bgi/16.jpg';
-import bgi_17 from '../resource/bgi/17.jpg';
-import bgi_18 from '../resource/bgi/18.jpg';
-import bgi_19 from '../resource/bgi/19.jpg';
-import bgi_20 from '../resource/bgi/20.jpg';
-
 export const BackgroundImages = [
-  bgi_0,
-  bgi_1,
-  bgi_2,
-  bgi_3,
-  bgi_4,
-  bgi_5,
-  bgi_6,
-  bgi_7,
-  bgi_8,
-  bgi_9,
-  bgi_10,
-  bgi_11,
-  bgi_12,
-  bgi_13,
-  bgi_14,
-  bgi_15,
-  bgi_16,
-  bgi_17,
-  bgi_18,
-  bgi_19,
-  bgi_20,
+  'https://www.elpwc.com/imagebank/homepagebgi/0.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/1.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/2.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/3.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/4.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/5.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/6.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/7.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/8.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/9.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/10.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/11.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/12.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/13.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/14.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/15.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/16.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/17.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/18.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/19.jpg',
+  'https://www.elpwc.com/imagebank/homepagebgi/20.jpg',
 ];
-
