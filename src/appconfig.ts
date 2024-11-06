@@ -1,6 +1,6 @@
 import { Lang } from './lang/langUtils';
 
-export const IS_DEBUG = true;
+export const IS_DEBUG = false;
 
 export default {
   usingLanguages: [Lang.en, Lang.ja, Lang.zh_cn, Lang.zh_tw],
