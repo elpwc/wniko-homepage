@@ -7,7 +7,7 @@ export default {
   api: {
     url: IS_DEBUG ? 'http://localhost:8002/api/v1' : 'https://www.elpwc.com/server/homepage/api/v1',
     project: '/projects',
-    blog: '/blogs',
+    blog: '/blog',
     blogsubject: '/blog-subjects',
   },
 };
