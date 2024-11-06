@@ -3,31 +3,24 @@ import { Link } from 'react-router-dom';
 import { CurrentPageStorage, LangStorage } from '../dataStorage/storage';
 import LangUtils from '../lang/langUtils';
 
-interface P {
-  title?: JSX.Element;
-  text?: JSX.Element;
-  returnText?: JSX.Element;
-  returnRoute?: string;
-}
-
-export default function Page404(props: P) {
+export default function Page500() {
   const L = LangUtils.selectLang();
 
   useEffect(() => {
-    CurrentPageStorage.set('404');
+    CurrentPageStorage.set('500');
   }, []);
-  let title = props.title ? props.title : <>{L.page404.tip1}</>;
-  let text = props.text ? props.text : <>{L.page404.tip2}</>;
-  let returnText = props.returnText ? props.returnText : <>{L.page404.returnButton}</>;
-  let returnRoute = props.returnRoute ? props.returnRoute : `/`;
+  let title = '鯖故障したぁ';
+  let text = 'どうすんだこりゃ...たまげたなあ';
+  let returnText = <>{L.page404.returnButton}</>;
+  let returnRoute = `/`;
 
   return (
     <>
       <div style={{ backgroundColor: 'white', borderRadius: '5px', marginTop: '10px' }}>
         <div style={{ padding: '60px 30px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p>
-            <span style={{ fontSize: '50px', color: 'red' }}>404 </span>
-            <span style={{ fontSize: '35px' }}>Page Not Exist</span>
+            <span style={{ fontSize: '50px', color: 'red' }}>500 </span>
+            <span style={{ fontSize: '35px' }}>Server ERROR</span>
           </p>
           <p>
             {title}

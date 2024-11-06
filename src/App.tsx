@@ -14,6 +14,7 @@ import BlogView from './pages/BlogView';
 import TestPage from './pages/test';
 import BlogEdit from './pages/BlogEdit';
 import 'animate.css';
+import Page500 from './pages/500';
 
 function App() {
   const [update, setUpdate]: [boolean, any] = useState(false);
@@ -151,6 +152,7 @@ function App() {
             }
           ></Route>
           <Route path="404" element={<Page404 />}></Route>
+          <Route path="500" element={<Page500 />}></Route>
           <Route path="*" element={<Page404 />}></Route>
         </Route>
       </Routes>

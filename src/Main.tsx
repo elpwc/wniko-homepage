@@ -52,6 +52,7 @@ function Main(props: P) {
     ['#17df55', '#d9ffdd', 'illust'],
     ['#f87bff', '#fce8ff', 'contact'],
     ['#f87bff', '#fce8ff', '404'],
+    ['#f87bff', '#fce8ff', '500'],
   ];
 
   const menuItems = [
