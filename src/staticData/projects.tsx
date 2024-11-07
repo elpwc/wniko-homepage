@@ -172,7 +172,7 @@ export const static_projects_ja: StaticProject[] = [
     name: 'Handwriting',
     url: '',
     github: '',
-    status: DevState.Developing,
+    status: DevState.Done,
     desc: '文章を手書き風に変換するデスクトップアプリ',
     image: ProjectImg.i_handwriting,
     imageWidth: '40%',

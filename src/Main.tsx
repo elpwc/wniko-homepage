@@ -219,7 +219,7 @@ function Main(props: P) {
         <div
           style={{
             position: 'fixed',
-            paddingTop: '60px',
+            paddingTop: '50px',
             zIndex: '-5',
             left: 0,
             right: 0,
