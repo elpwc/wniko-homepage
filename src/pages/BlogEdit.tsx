@@ -163,6 +163,7 @@ export default function BlogEdit(props: P) {
         isDraft: false,
       })
         .then(res => {
+          alert('suc');
           console.log(res);
         })
         .catch(error => {
