@@ -14,7 +14,7 @@ code {
   padding: 0;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -38,16 +38,20 @@ input {
   border-radius: 5px;
 }
 
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
 
-
-
-
-
-@media screen and (min-width: 1173px)  {
+@media screen and (min-width: 1173px) {
   main {
     margin: 0 20%;
   }
-  
+
   nav {
     gap: 15em;
   }
@@ -57,13 +61,10 @@ input {
   }
 }
 
-
-
-@media screen and (min-width: 768px) and (max-width: 1172px)  {
+@media screen and (min-width: 768px) and (max-width: 1172px) {
   main {
     margin: 0 10%;
   }
-
 }
 
 @media screen and (max-width: 767px) {

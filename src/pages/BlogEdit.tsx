@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router';
 import { CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
@@ -10,6 +14,8 @@ import LangUtils from '../lang/langUtils';
 import axios from 'axios';
 import { createBlog, updateBlog } from '../services/api/blog';
 import './BlogEdit.css';
+import './blogStyle.css';
+import 'highlight.js/styles/github.css';
 import appconfig from '../appconfig';
 
 interface P {
@@ -218,10 +224,10 @@ export default function BlogEdit(props: P) {
           className="editor"
           style={{
             border: 'solid 1px gray',
-            padding: '5px',
+            padding: '20px',
           }}
         >
-          <ReactMarkdown children={markdownCode} />
+          <Markdown className="markdown-body" rehypePlugins={[rehypeHighlight, rehypeRaw]} remarkPlugins={[remarkGfm]} children={markdownCode} />
         </div>
       </div>
     </div>

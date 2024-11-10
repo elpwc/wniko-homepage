@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router';
 import { AdminModeStorage, CurrentPageStorage } from '../dataStorage/storage';
 import init_debug_data from '../staticData/initDebugData';
 import { BlogUtils } from '../utils/blog';
 import { Link, useSearchParams } from 'react-router-dom';
 import './blogView.css';
+import './blogStyle.css';
+import 'highlight.js/styles/github.css';
 import axios from 'axios';
 import appconfig from '../appconfig';
 
@@ -89,7 +95,7 @@ export default function BlogView(props: P) {
 
         <div className="divideLine"></div>
         <div style={{ padding: '20px 50px' }}>
-          <ReactMarkdown children={blog.content} />
+          <Markdown className="markdown-body" rehypePlugins={[rehypeHighlight, rehypeRaw]} remarkPlugins={[remarkGfm]} children={blog.content} />
         </div>
       </article>
     </div>
