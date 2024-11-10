@@ -89,9 +89,9 @@ export default function Blogs(props: P) {
           items={blogSubjects.map((blogSubject, i) => {
             return {
               contents: (
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span>{blogSubject.name === '' ? 'Others' : blogSubject.name}</span>
-                  <span>{blogSubject.sum}</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', height: 'inherit', alignItems: 'center' }}>
+                  <span style={{ fontSize: '15px' }}>{blogSubject.name === '' ? 'Others' : blogSubject.name}</span>
+                  <span style={{ fontSize: '15px', color: 'gray' }}>{blogSubject.sum}</span>
                 </div>
               ),
               key: i.toString(),
