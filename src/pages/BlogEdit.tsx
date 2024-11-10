@@ -198,7 +198,7 @@ export default function BlogEdit(props: P) {
             setTitle(e.target.value);
           }}
           value={title}
-          style={{ fontWeight: 'bold', fontSize: '20px', borderBottom: 'solid 1px lightgray' }}
+          style={{ fontWeight: 'bold', fontSize: '20px', borderBottom: 'solid 1px lightgray', width: '100%' }}
         />
       </h1>
       <p className="bloginfo">
@@ -208,6 +208,7 @@ export default function BlogEdit(props: P) {
             setSubject(e.target.value);
           }}
           value={subject}
+          style={{ width: '100%' }}
         ></input>
       </p>
 

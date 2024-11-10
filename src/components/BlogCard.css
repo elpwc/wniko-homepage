@@ -1,6 +1,6 @@
 .blogtitle {
   color: black;
-  font-size: 20px;
+  font-size: 23px;
 }
 
 .bloginfo {
@@ -9,7 +9,7 @@
 }
 
 .blogdate {
-  min-width: 100px;
+  margin-right: 15px;
 }
 
 .blogCardContainer {
@@ -21,4 +21,9 @@
   .blogCardContainer:hover {
     background-color: rgba(255, 255, 255, 0.527);
   }
+}
+
+.blogPreview {
+  color: gray;
+  font-size: 15px;
 }
