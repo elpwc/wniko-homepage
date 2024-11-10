@@ -46,21 +46,30 @@ export default function Blogs(props: P) {
 
   const updateSubjects = (receivedBlogs: API.Blog[]) => {
     let blogSubjectsTemp: BlogSubject[] = [];
+    let noSubjectBlogCount = 0;
     (receivedBlogs as API.Blog[]).forEach(blogItem => {
-      const blogItemSubjects = blogItem.subject.split(',');
+      if (blogItem.subject.trimStart().trimEnd() === '') {
+        // 无主题
+        noSubjectBlogCount++;
+      } else {
+        const blogItemSubjects = blogItem.subject.split(',');
 
-      blogItemSubjects.forEach(blogItemSubject => {
-        const index = blogSubjectsTemp.findIndex(blogSubject => {
-          return blogSubject.name === blogItemSubject;
+        blogItemSubjects.forEach(blogItemSubject => {
+          const index = blogSubjectsTemp.findIndex(blogSubject => {
+            return blogSubject.name.trimStart().trimEnd().toLowerCase() === blogItemSubject.trimStart().trimEnd().toLowerCase();
+          });
+          if (index !== -1) {
+            // 确保 sum 更新正确
+            blogSubjectsTemp[index].sum++;
+          } else {
+            blogSubjectsTemp.push(newBlogSubject(blogItemSubject));
+          }
         });
-        if (index !== -1) {
-          // 确保 sum 更新正确
-          blogSubjectsTemp[index].sum++;
-        } else {
-          blogSubjectsTemp.push(newBlogSubject(blogItemSubject));
-        }
-      });
+      }
     });
+    if (noSubjectBlogCount > 0) {
+      blogSubjectsTemp.push(newBlogSubject('Others', noSubjectBlogCount));
+    }
     blogSubjectsTemp = [{ name: 'All', sum: receivedBlogs.length }, ...blogSubjectsTemp];
     setBlogSubjects(blogSubjectsTemp);
   };

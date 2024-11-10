@@ -150,7 +150,7 @@ export const static_projects_ja: StaticProject[] = [
     tags: 'React, TypeScript, Canvas',
   },
   {
-    name: 'react-maiweb',
+    name: 'react-maisim',
     url: '',
     github: '',
     status: DevState.Done,
