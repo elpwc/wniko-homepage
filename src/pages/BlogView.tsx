@@ -32,8 +32,10 @@ export default function BlogView(props: P) {
   const [blog, setBlog]: [API.Blog, any] = useState(BlogUtils.initializeBlog());
   /** 是否是从home跳转来的 */
   const [isFromHome, setisFromHome]: [boolean, any] = useState(false);
+  const [isloading, setisloading]: [boolean, any] = useState(true);
 
   const getBlog = () => {
+    setisloading(true);
     axios({
       method: 'get',
       url: appconfig.api.url + appconfig.api.blog + '/' + currentBlogid,
@@ -44,9 +46,13 @@ export default function BlogView(props: P) {
         } else {
           setBlog(res.data);
         }
+
+        setisloading(false);
       })
       .catch(error => {
         navigate('/500');
+
+        setisloading(false);
       });
   };
 
@@ -80,8 +86,16 @@ export default function BlogView(props: P) {
               <></>
             )}
             <h1>
-              {blog.isDraft ? <span>〈DRAFT〉</span> : <></>}
-              {blog.title}
+              {isloading ? (
+                'Loading...'
+              ) : blog.isDraft ? (
+                <>
+                  <span style={{ color: 'blue' }}>〈DRAFT〉</span>
+                  {blog.title}
+                </>
+              ) : (
+                blog.title
+              )}
             </h1>
           </div>
 
@@ -90,10 +104,11 @@ export default function BlogView(props: P) {
               // @ts-ignore
               new Date(blog.createtime).format('yyyy-MM-dd hh:mm:ss')
             }
+            &nbsp;&nbsp;&nbsp;
+            {blog.subject !== '' ? 'Tags: ' + blog.subject : ''}
           </p>
         </div>
 
-        <div className="divideLine"></div>
         <div style={{ padding: '20px 50px' }}>
           <Markdown className="markdown-body" rehypePlugins={[rehypeHighlight, rehypeRaw]} remarkPlugins={[remarkGfm]} children={blog.content} />
         </div>

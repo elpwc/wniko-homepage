@@ -184,10 +184,10 @@ export default function BlogEdit(props: P) {
             </svg>
           </button>
         </Link>
-        <button onClick={onHeadImageClick}>选择头图</button>
+        {/* <button onClick={onHeadImageClick}>选择头图</button> */}
         <button onClick={onDraftClick}>{isEditMode ? (isDraft ? '保存草稿' : '改为草稿') : '保存草稿'}</button>
         <button style={{ color: 'white', backgroundColor: 'blueviolet' }} onClick={onSaveClick}>
-          {isEditMode ? (isDraft ? '发布' : '保存发布') : '发布'}
+          {isEditMode ? (isDraft ? '发布' : '保存') : '发布'}
         </button>
       </div>
 

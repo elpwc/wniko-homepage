@@ -102,12 +102,12 @@ export default function Blogs(props: P) {
             setselectedSubjectKey(e);
             if (e === '0') {
               // all
-              getBlogs();
+              getBlogs('', AdminModeStorage.value === 1 ? true : false);
             } else if (e === (blogSubjects.length - 1).toString()) {
               // others
-              getBlogs('__%others');
+              getBlogs('__%others', AdminModeStorage.value === 1 ? true : false);
             } else {
-              getBlogs(blogSubjects[Number(e)].name);
+              getBlogs(blogSubjects[Number(e)].name, AdminModeStorage.value === 1 ? true : false);
             }
           }}
         />

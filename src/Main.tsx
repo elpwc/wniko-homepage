@@ -139,6 +139,7 @@ function Main(props: P) {
             <div style={{ alignContent: 'center' }}>
               {adminWinState === 2 ? (
                 <button
+                  style={{ margin: '3px', width: 'max-content' }}
                   onClick={() => {
                     sessionStorage.setItem('admin', 'false');
                     cookie.save('auto-admin', 'false', { path: '/' });
@@ -149,7 +150,7 @@ function Main(props: P) {
                     props.setUpdate();
                   }}
                 >
-                  退出adminMode
+                  退出
                 </button>
               ) : (
                 <>
