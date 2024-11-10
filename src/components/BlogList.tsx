@@ -16,7 +16,7 @@ export default function BlogList(props: P) {
           return new Date(b.createtime).getTime() - new Date(a.createtime).getTime();
         })
         .map((blog: API.Blog) => {
-          return <BlogCard blog={blog} key={blog.id} isFromHome={props.isFromHome} />;
+          return <BlogCard blog={blog} key={blog.id} isFromHome={props.isFromHome} showPreview={true} />;
         })}
     </div>
   );

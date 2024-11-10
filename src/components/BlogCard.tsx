@@ -30,13 +30,16 @@ export default function BlogCard(props: P) {
           </p>
           <p className="blogsubject">{props.blog.subject}</p>
         </div>
-
-        <div>
-          <p className="blogPreview">
-            {preview}
-            {preview !== '' ? (preview.length >= previewLength ? '...' : '') : ''}
-          </p>
-        </div>
+        {props.showPreview ? (
+          <div>
+            <p className="blogPreview">
+              {preview}
+              {preview !== '' ? (preview.length >= previewLength ? '...' : '') : ''}
+            </p>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </Link>
   );
