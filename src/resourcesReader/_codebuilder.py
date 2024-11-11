@@ -101,10 +101,40 @@ def readProjectImg():
     fo.write('\n')
 
 
+def readGalleryImg():
+    bgi_max_index = 111
+
+    dictName = 'homepageIllusts/'
+    root = siteRoute + dictName 
+    #filelist = sorted(os.listdir(pyRootRoute + dictName), key=lambda x: int(os.path.splitext(x)[0]) if os.path.splitext(x)[0].isdigit() else float('inf'))
+
+    #iconNames = [f.split('.')[0] for f in filelist if f.endswith('.jpg')]
+
+    fo = open(saveRootRoute + "illustReader.ts", "w", encoding="utf-8")
+    fo.seek(0)
+    tip(fo)
+
+    # object
+    fo.write('export const IllustImages = [\n')
+    for index in range(bgi_max_index+1):
+        fo.write( "  '" + root + "origin/" + str(index)  +".jpg',\n")
+
+    fo.write("];\n")
+
+    # object
+    fo.write('export const IllustImageThumbs = [\n')
+    for index in range(bgi_max_index+1):
+        fo.write( "  '" + root + "thumb/" + str(index)  +".jpg',\n")
+
+    fo.write("];\n")
+
+
+
 def main():
     readBgi()
     readProjectIcon()
     readProjectImg()
+    readGalleryImg()
 
 if __name__ == '__main__':
     main()

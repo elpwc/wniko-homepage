@@ -1,0 +1,37 @@
+.blogtitle {
+  color: black;
+  font-size: 23px;
+}
+
+.bloginfo {
+  color: gray;
+  font-size: small;
+}
+
+.blogdate {
+  margin-right: 15px;
+}
+
+.blogCardContainer {
+  padding: 5px 15px;
+  transition: all 0.2s;
+}
+
+@media (any-hover: hover) {
+  .blogCardContainer:hover {
+    background-color: rgba(255, 255, 255, 0.527);
+  }
+}
+
+.blogPreview {
+  color: gray;
+  font-size: 15px;
+}
+
+.imageTitle {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: nowrap;
+  font-size: 18px;
+}

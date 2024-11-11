@@ -1,34 +1,44 @@
-export default interface Illust {
-  id: number;
+export enum IllustType {
+  Default,
+  Illust,
+  Map,
+  Photo,
+  Meal,
+  Junrei,
+  None,
+}
+
+export default interface IllustObj {
   thumburl: string;
   url: string;
-  pixivurl: string;
+  pixivurl?: string;
   title: string;
-  description: string;
-  tags: string[];
-  access: 'public' | 'urasekai' | 'private';
+  description?: string;
+  nsfw?: boolean;
+  date?: string;
+  type: IllustType[];
 }
 
 export class IllustUtils {
   static create(
-    id: number,
     title: string,
     description: string = '',
-    access: 'public' | 'urasekai' | 'private' = 'public',
-    tags: string[] = [],
     url: string = '',
     thumburl: string = '',
-    pixivurl: string = ''
-  ) {
+    pixivurl: string = '',
+    type: IllustType[] = [IllustType.Default],
+    date: string = '',
+    nsfw: boolean = false
+  ): IllustObj {
     return {
-      id: id,
-      title: title,
-      tags: tags,
-      description: description,
-      thumburl: thumburl,
-      url: url,
-      pixivurl: pixivurl,
-      access: 'public',
+      title,
+      description,
+      thumburl,
+      url,
+      pixivurl,
+      type,
+      date,
+      nsfw,
     };
   }
 }

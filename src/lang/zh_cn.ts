@@ -3,7 +3,7 @@ export default {
     home: '✹Wniko',
     projects: '🦩Projects',
     blogs: '🐝Blog',
-    illust: '🦋Illust',
+    illust: '🦋Gallery',
     contact: '🪼Contact',
   },
   home: {},

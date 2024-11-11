@@ -49,7 +49,7 @@ function Main(props: P) {
     ['#686868', '#ffffff00', 'home'],
     ['#ff7875', '#ffdbdb', 'projects'],
     ['#ffb729', '#fff2d7', 'blogs'],
-    ['#17df55', '#d9ffdd', 'illust'],
+    ['#17df55', '#ffffff00', 'illust'],//'#d9ffdd'
     ['#f87bff', '#fce8ff', 'contact'],
     ['#f87bff', '#fce8ff', '404'],
     ['#f87bff', '#fce8ff', '500'],

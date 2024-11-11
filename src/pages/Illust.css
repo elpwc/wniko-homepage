@@ -11,3 +11,145 @@ header {
   padding: 10% 0;
   text-shadow: 0 0 10px rgb(36, 36, 36);
 }
+
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.imageCard {
+  background-color: #e7e7e796;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.imageContainer {
+  height: 150px;
+  text-align: center;
+}
+
+.imageContainer img {
+  height: 100%;
+}
+
+.imageDesc {
+  background-color: white;
+  padding: 8px;
+  border-radius: 0 0 10px 10px;
+}
+
+#imageSelector {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#imageSelector button {
+  width: 100px;
+  border: none;
+  border-radius: 0;
+  transition: all 0.2s;
+  color: black;
+}
+#imageSelector .left {
+  border-radius: 10px 0 0 10px;
+}
+#imageSelector .right {
+  border-radius: 0 10px 10px 0;
+}
+
+#imageSelector .select {
+  background-color: #101010;
+  color: white;
+}
+
+@media (any-hover: hover) {
+  #imageSelector button:hover {
+    background-color: #505050;
+    color: white;
+  }
+}
+
+#imageViewer {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.801);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  padding-top: 80px;
+  display: flex;
+}
+
+#imageViewerImg {
+  text-align: center;
+  padding: 0 10px 10px 10px;
+}
+
+#imageViewerImgDesc {
+  color: white;
+  padding: 0 10px;
+}
+
+#imageViewerImgDescCloseButton {
+  color: white;
+  background-color: #00000000;
+  border: none;
+  height: min-content;
+}
+
+#imageViewerImgDescType {
+  padding: 0 5px;
+  margin: 0 5px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  #imageViewer {
+    flex-direction: row;
+  }
+  #imageViewerImg {
+    width: 80%;
+  }
+  #imageViewerImgDesc {
+    width: 20%;
+    padding-top: 30px;
+  }
+
+  #imageViewerImg img {
+    height: 100%;
+  }
+
+  .imageList {
+    flex-direction: row;
+  }
+
+  .imageCard {
+    width: 23%;
+  }
+}
+@media screen and (max-width: 767px) {
+  #imageViewer {
+    flex-direction: column;
+  }
+  #imageViewerImg {
+    width: 100%;
+  }
+  #imageViewerImgDesc {
+    width: 100%;
+  }
+  #imageViewerImg img {
+    width: 100%;
+  }
+  .imageList {
+    flex-direction: row;
+  }
+
+  .imageCard {
+    width: 47%;
+  }
+}
