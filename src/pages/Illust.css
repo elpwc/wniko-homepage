@@ -18,26 +18,6 @@ header {
   gap: 10px;
 }
 
-.imageCard {
-  background-color: #e7e7e796;
-  cursor: pointer;
-  border-radius: 10px;
-}
-.imageContainer {
-  height: 150px;
-  text-align: center;
-}
-
-.imageContainer img {
-  height: 100%;
-}
-
-.imageDesc {
-  background-color: white;
-  padding: 8px;
-  border-radius: 0 0 10px 10px;
-}
-
 #imageSelector {
   display: flex;
   justify-content: center;
@@ -72,20 +52,19 @@ header {
 }
 
 #imageViewer {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.801);
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  overflow-y: scroll;
-  padding-top: 80px;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.89);
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  padding-top: 70px;
   display: flex;
+  z-index: 1;
 }
 
 #imageViewerImg {
   text-align: center;
-  padding: 0 10px 10px 10px;
 }
 
 #imageViewerImgDesc {
@@ -108,6 +87,12 @@ header {
   border-radius: 5px;
 }
 
+#imageViewerImg img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
 @media screen and (min-width: 768px) {
   #imageViewer {
     flex-direction: row;
@@ -120,16 +105,12 @@ header {
     padding-top: 30px;
   }
 
-  #imageViewerImg img {
-    height: 100%;
-  }
-
   .imageList {
     flex-direction: row;
   }
 
-  .imageCard {
-    width: 23%;
+  #imageViewerImg {
+    padding: 0 10px 10px 10px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -142,14 +123,11 @@ header {
   #imageViewerImgDesc {
     width: 100%;
   }
-  #imageViewerImg img {
-    width: 100%;
-  }
   .imageList {
     flex-direction: row;
   }
 
-  .imageCard {
-    width: 47%;
+  #imageViewerImg {
+    padding: 0;
   }
 }

@@ -49,7 +49,7 @@ function Main(props: P) {
     ['#686868', '#ffffff00', 'home'],
     ['#ff7875', '#ffdbdb', 'projects'],
     ['#ffb729', '#fff2d7', 'blogs'],
-    ['#17df55', '#ffffff00', 'illust'],//'#d9ffdd'
+    ['#17df55', '#ffffff00', 'illust'], //'#d9ffdd'
     ['#f87bff', '#fce8ff', 'contact'],
     ['#f87bff', '#fce8ff', '404'],
     ['#f87bff', '#fce8ff', '500'],
@@ -219,7 +219,7 @@ function Main(props: P) {
       >
         <div
           style={{
-            position: 'fixed',
+            position: 'absolute',
             paddingTop: '50px',
             zIndex: '-5',
             left: 0,
@@ -227,7 +227,6 @@ function Main(props: P) {
             top: 0,
             bottom: 0,
             backgroundColor: themeColor[currentPageIndex][1],
-            backdropFilter: 'blur(0px)',
             overflow: 'auto',
           }}
         >

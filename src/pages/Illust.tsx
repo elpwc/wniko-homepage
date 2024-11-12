@@ -42,7 +42,7 @@ export default function Illust(props: P) {
   }, []);
 
   return (
-    <div>
+    <>
       {isViewerOpen ? (
         <div id="imageViewer">
           <div id="imageViewerImg">
@@ -51,7 +51,7 @@ export default function Illust(props: P) {
             </a>
           </div>
           <div id="imageViewerImgDesc">
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '20px' }}>
                 {/* <span id="imageViewerImgDescType">{getTypeText(currentViewingIllust.type)}</span> */}
                 <span>{currentViewingIllust.title}</span>
@@ -76,85 +76,86 @@ export default function Illust(props: P) {
       ) : (
         <></>
       )}
-
-      <header>
-        <div id="imageSelector">
-          <button
-            className={'left ' + (currentSubject === 0 ? 'select' : '')}
-            onClick={() => {
-              setcurrentSubject(0);
-            }}
-          >
-            All
-          </button>
-          <button
-            className={currentSubject === 1 ? 'select' : ''}
-            onClick={() => {
-              setcurrentSubject(1);
-            }}
-          >
-            Illust
-          </button>
-          <button
-            className={currentSubject === 2 ? 'select' : ''}
-            onClick={() => {
-              setcurrentSubject(2);
-            }}
-          >
-            Maps
-          </button>
-          <button
-            className={currentSubject === 3 ? 'select' : ''}
-            onClick={() => {
-              setcurrentSubject(3);
-            }}
-          >
-            Photos
-          </button>
-          <button
-            className={currentSubject === 4 ? 'select' : ''}
-            onClick={() => {
-              setcurrentSubject(4);
-            }}
-          >
-            Meal
-          </button>
-          <button
-            className={'right ' + (currentSubject === 5 ? 'select' : '')}
-            onClick={() => {
-              setcurrentSubject(5);
-            }}
-          >
-            Junrei
-          </button>
+      <div>
+        <header>
+          <div id="imageSelector">
+            <button
+              className={'left ' + (currentSubject === 0 ? 'select' : '')}
+              onClick={() => {
+                setcurrentSubject(0);
+              }}
+            >
+              All
+            </button>
+            <button
+              className={currentSubject === 1 ? 'select' : ''}
+              onClick={() => {
+                setcurrentSubject(1);
+              }}
+            >
+              Illust
+            </button>
+            <button
+              className={currentSubject === 2 ? 'select' : ''}
+              onClick={() => {
+                setcurrentSubject(2);
+              }}
+            >
+              Maps
+            </button>
+            <button
+              className={currentSubject === 3 ? 'select' : ''}
+              onClick={() => {
+                setcurrentSubject(3);
+              }}
+            >
+              Photos
+            </button>
+            <button
+              className={currentSubject === 4 ? 'select' : ''}
+              onClick={() => {
+                setcurrentSubject(4);
+              }}
+            >
+              Meal
+            </button>
+            <button
+              className={'right ' + (currentSubject === 5 ? 'select' : '')}
+              onClick={() => {
+                setcurrentSubject(5);
+              }}
+            >
+              Junrei
+            </button>
+          </div>
+        </header>
+        <div className="imageList">
+          {illustDesc.map(illust => {
+            if (currentSubject === 0) {
+              return (
+                <IllustCard
+                  src={illust}
+                  onClick={() => {
+                    setcurrentViewingIllust(illust);
+                    setisViewerOpen(true);
+                  }}
+                />
+              );
+            }
+            if (illust.type.includes(currentSubject)) {
+              return (
+                <IllustCard
+                  src={illust}
+                  onClick={() => {
+                    setcurrentViewingIllust(illust);
+                    setisViewerOpen(true);
+                  }}
+                />
+              );
+            }
+          })}
         </div>
-      </header>
-      <div className="imageList">
-        {illustDesc.map(illust => {
-          if (currentSubject === 0) {
-            return (
-              <IllustCard
-                src={illust}
-                onClick={() => {
-                  setcurrentViewingIllust(illust);
-                  setisViewerOpen(true);
-                }}
-              />
-            );
-          }
-          if (illust.type.includes(currentSubject)) {
-            return (
-              <IllustCard
-                src={illust}
-                onClick={() => {
-                  setcurrentViewingIllust(illust);
-                  setisViewerOpen(true);
-                }}
-              />
-            );
-          }
-        })}
       </div>
-    </div>
+    </>
   );
 }

@@ -1,37 +1,44 @@
-.blogtitle {
-  color: black;
-  font-size: 23px;
-}
-
-.bloginfo {
-  color: gray;
-  font-size: small;
-}
-
-.blogdate {
-  margin-right: 15px;
-}
-
-.blogCardContainer {
-  padding: 5px 15px;
-  transition: all 0.2s;
-}
-
-@media (any-hover: hover) {
-  .blogCardContainer:hover {
-    background-color: rgba(255, 255, 255, 0.527);
-  }
-}
-
-.blogPreview {
-  color: gray;
-  font-size: 15px;
-}
-
 .imageTitle {
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-all;
   white-space: nowrap;
-  font-size: 18px;
+  font-size: 12px;
+}
+
+.imageCard {
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px #000000;
+}
+.imageContainer {
+  height: 150px;
+  text-align: center;
+  object-fit: cover;
+}
+
+.imageContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.imageDesc {
+  background-color: white;
+  padding: 8px;
+  border-radius: 0 0 10px 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .imageCard {
+    width: 23%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .imageCard {
+    width: 47%;
+  }
 }
