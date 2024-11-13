@@ -16,6 +16,8 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 50px;
 }
 
 #imageSelector {

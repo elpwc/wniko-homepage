@@ -130,10 +130,11 @@ export default function Illust(props: P) {
           </div>
         </header>
         <div className="imageList">
-          {illustDesc.map(illust => {
+          {illustDesc.map((illust, index) => {
             if (currentSubject === 0) {
               return (
                 <IllustCard
+                  key={index}
                   src={illust}
                   onClick={() => {
                     setcurrentViewingIllust(illust);
@@ -145,6 +146,7 @@ export default function Illust(props: P) {
             if (illust.type.includes(currentSubject)) {
               return (
                 <IllustCard
+                  key={index}
                   src={illust}
                   onClick={() => {
                     setcurrentViewingIllust(illust);

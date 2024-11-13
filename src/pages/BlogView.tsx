@@ -67,7 +67,7 @@ export default function BlogView(props: P) {
   }, []);
 
   return (
-    <div style={{ backgroundColor: 'white', borderRadius: '5px', marginTop: '8px', minHeight: window.innerHeight + 'px' }}>
+    <div style={{ backgroundColor: 'white', borderRadius: '5px', marginTop: '8px', marginBottom: '100px', minHeight: window.innerHeight + 'px' }}>
       <article>
         <div id="articleHeader" style={{ padding: '20px 50px' }}>
           <div style={{ display: 'flex', gap: '15px' }}>
@@ -105,11 +105,11 @@ export default function BlogView(props: P) {
               new Date(blog.createtime).format('yyyy-MM-dd hh:mm:ss')
             }
             &nbsp;&nbsp;&nbsp;
-            {blog.subject !== '' ? 'Tags: ' + blog.subject : ''}
+            {blog.subject !== '' ? blog.subject : ''}
           </p>
         </div>
 
-        <div style={{ padding: '20px 50px' }}>
+        <div style={{ padding: '20px 50px 100px 50px' }}>
           <Markdown className="markdown-body" rehypePlugins={[rehypeHighlight, rehypeRaw]} remarkPlugins={[remarkGfm]} children={blog.content} />
         </div>
       </article>

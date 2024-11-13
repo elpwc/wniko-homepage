@@ -220,7 +220,7 @@ function Main(props: P) {
         <div
           style={{
             position: 'absolute',
-            paddingTop: '50px',
+            paddingTop: '60px',
             zIndex: '-5',
             left: 0,
             right: 0,
