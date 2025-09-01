@@ -13,7 +13,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/'/**otogemap'**/>
       <DataProvider>
         <App />
       </DataProvider>
