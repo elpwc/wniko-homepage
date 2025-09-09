@@ -126,9 +126,11 @@ export default function Blogs(props: P) {
           <BeatLoader color="#fdbb36" loading={isLoading} cssOverride={{ textAlign: 'center' }} size={15} aria-label="Loading Spinner" data-testid="loader" />
         </div>
       ) : (
-        <motion.div key={'bloglist'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }} style={{ width: '-webkit-fill-available' }}>
-          <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
-        </motion.div>
+        <div className="blogPageBlogsContainer">
+          <motion.div key={'bloglist'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }} style={{ width: '-webkit-fill-available' }}>
+            <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} />
+          </motion.div>
+        </div>
       )}
     </div>
   );

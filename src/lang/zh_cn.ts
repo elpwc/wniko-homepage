@@ -1,17 +1,17 @@
 export default {
   header: {
-    home: '✹Wniko',
-    projects: '🦩Projects',
-    blogs: '🐝Blog',
-    illust: '🦋Gallery',
-    contact: '🪼Contact',
+    home: 'Wniko',
+    projects: 'Projects',
+    blogs: 'Blog',
+    illust: 'Gallery',
+    contact: 'Contact',
   },
   home: {},
   projects: {},
   blogs: {},
   page404: {
-    tip1: '訪問しようとするページは存在しません',
-    tip2: 'URLに間違いないと確信する場合は、多分削除または転移されたかもしれんわ',
+    tip1: '訪問しようとしているページは存在しません...',
+    tip2: 'URLが間違いないと確信する場合は、多分削除または転移されたかもしれないにゃ',
     returnButton: '👉ホームページ👈',
   },
 

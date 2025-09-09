@@ -9,7 +9,7 @@ export default function Page500() {
   useEffect(() => {
     CurrentPageStorage.set('500');
   }, []);
-  let title = '鯖故障したぁ';
+  let title = '鯖故障したぁ..!';
   let text = 'どうすんだこりゃ...たまげたなあ';
   let returnText = <>{L.page404.returnButton}</>;
   let returnRoute = `/`;

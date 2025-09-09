@@ -40,8 +40,9 @@ export default function FilterBar(props: P) {
                 setSelected(item.key);
                 props.onClick(item.key);
               }}
-              style={{ cursor: 'pointer', height: `${itemHeight}px` }}
+              style={{ cursor: 'pointer', height: `${itemHeight}px`, display: 'flex', alignItems: 'center', padding: '0 10px', gap: '2px' }}
             >
+              <span style={{ color: '#6c6c6c' }}>#</span>
               {item.contents}
             </div>
           );

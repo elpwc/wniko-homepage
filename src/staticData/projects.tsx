@@ -105,6 +105,28 @@ export const static_projects_zh_cn: StaticProject[] = [
 
 export const static_projects_ja: StaticProject[] = [
   {
+    name: 'My行脚記録',
+    url: 'http://www.elpwc.com/myangya',
+    github: 'https://github.com/elpwc/myAngyaRecord',
+    status: DevState.Developing,
+    desc: '前々から作りたかった市町村区行脚記録サイト',
+    image: '',
+    imageWidth: '',
+    tags: 'React, TypeScript',
+    icon: ProjectIcons.i_elden,
+  },
+  {
+    name: 'おとげまっぷ - 全国引誘地図',
+    url: 'http://www.elpwc.com/otogemap',
+    github: 'https://github.com/elpwc/otogemap',
+    status: DevState.Done,
+    desc: 'セガ系アーケード音ゲー地図',
+    image: '',
+    imageWidth: '',
+    tags: 'React, TypeScript',
+    icon: ProjectIcons.i_elden,
+  },
+  {
     name: 'OnlineEldenRingMap - 老头环地图',
     url: 'http://www.elpwc.com/eldenringmap',
     github: 'https://github.com/elpwc/EldenRingOnlineMap',
@@ -158,15 +180,6 @@ export const static_projects_ja: StaticProject[] = [
     image: '',
     imageWidth: '',
     tags: 'React, TypeScript, Canvas',
-  },
-  {
-    name: 'My行脚記録',
-    url: '',
-    github: 'https://github.com/elpwc/myAngyaRecord',
-    status: DevState.Developing,
-    desc: '前々から作りたかった市町村区行脚記録サイト',
-    image: '',
-    tags: 'leaflet',
   },
   {
     name: 'Handwriting',
@@ -265,6 +278,14 @@ export const static_projects_ja: StaticProject[] = [
   },
   {
     name: '漢文訓読オンライン組版',
+    url: '',
+    github: '',
+    status: DevState.Planning,
+    desc: '',
+    image: '',
+  },
+  {
+    name: '日本鉄道時系列マップ',
     url: '',
     github: '',
     status: DevState.Planning,

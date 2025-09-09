@@ -47,8 +47,8 @@ function Main(props: P) {
 
   const themeColor = [
     ['#686868', '#ffffff00', 'home'],
-    ['#ff7875', '#ffdbdb', 'projects'],
-    ['#ffb729', '#fff2d7', 'blogs'],
+    ['#ff7875', '#ffffff00', 'projects'],
+    ['#ffb729', '#ffffff00', 'blogs'],
     ['#17df55', '#ffffff00', 'illust'], //'#d9ffdd'
     ['#f87bff', '#fce8ff', 'contact'],
     ['#f87bff', '#fce8ff', '404'],

@@ -18,7 +18,7 @@ export default function IllustCard(props: P) {
       }}
     >
       <div className="imageContainer">
-        <img src={props.src.thumburl} alt={props.src.title} style={{ filter: props.src.nsfw ? 'blur(3px)' : '' }} />
+        <img src={props.src.thumburl} alt={props.src.title} style={{ filter: props.src.nsfw ? 'blur(10px)' : '' }} />
       </div>
       <div className="imageDesc">
         <p className="imageTitle">{props.src.title}</p>

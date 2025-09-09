@@ -1,6 +1,7 @@
 import ProjectCard from './ProjectCard';
 import { LangStorage } from '../dataStorage/storage';
 import { StaticProject } from '../utils/staticProject';
+import './ProjectCard.css';
 
 interface P {
   update: boolean;
@@ -11,7 +12,7 @@ interface P {
 
 export default function ProjectList(props: P) {
   return (
-    <div style={{ width: '-webkit-fill-available' }}>
+    <div className="projectListContainer" style={{ width: '-webkit-fill-available' }}>
       {props.projects.map((project: StaticProject) => {
         return <ProjectCard project={project} key={project.name} />;
       })}

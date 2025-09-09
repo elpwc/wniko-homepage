@@ -10,7 +10,7 @@ interface P {
 
 export default function BlogList(props: P) {
   return (
-    <div style={{ width: '-webkit-fill-available', marginTop: '5px' }}>
+    <div style={{ width: '-webkit-fill-available', marginTop: '5px', display: 'flex', flexDirection: 'column', gap: props.isFromHome ? '10px' : '24px' }}>
       {props.blogs
         ?.sort((a, b) => {
           return new Date(b.createtime).getTime() - new Date(a.createtime).getTime();

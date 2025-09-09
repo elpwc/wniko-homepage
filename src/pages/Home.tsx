@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { AdminModeStorage, CurrentPageStorage } from '../dataStorage/storage';
+import { AdminModeStorage, CurrentPageStorage, LangStorage } from '../dataStorage/storage';
 import './home.css';
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import { TwitterTimelineEmbed, TwitterTweetEmbed } from 'react-twitter-embed';
 import BlogList from '../components/BlogList';
 import { findAllBlog } from '../services/api/blog';
 import { Divider } from '../components/Divider';
@@ -9,6 +9,10 @@ import { useDataContext } from '../utils/context';
 import { bgDesc } from '../staticData/bgDesc';
 import { motion } from 'framer-motion';
 import { BeatLoader, GridLoader } from 'react-spinners';
+import ProjectList from '../components/ProjectList';
+import { StaticProject } from '../utils/staticProject';
+import LangUtils, { Lang } from '../lang/langUtils';
+import { static_projects_ja, static_projects_zh_cn } from '../staticData/projects';
 
 interface P {
   update: boolean;
@@ -16,6 +20,7 @@ interface P {
 }
 
 export default function Home(props: P) {
+  const [projects, setProjects]: [StaticProject[], any] = useState([]);
   const [isBlogLoading, setisBlogLoading]: [boolean, any] = useState(false);
   const [isTwitterTimelineLoading, setisTwitterTimelineLoading]: [boolean, any] = useState(false);
   const [blogs, setBlogs]: [API.Blog[], any] = useState([]);
@@ -42,6 +47,37 @@ export default function Home(props: P) {
     props.setUpdate();
   }, []);
 
+  const L = LangUtils.selectLang();
+
+  const getProjectListByLang = () => {
+    //console.log(LangStorage.value);
+    switch (LangStorage.value) {
+      case Lang.zh_cn:
+        setProjects(static_projects_ja);
+        break;
+      case Lang.ja:
+        setProjects(static_projects_ja);
+        break;
+      case Lang.zh_tw:
+        setProjects(static_projects_zh_cn);
+        break;
+      case Lang.en:
+        setProjects(static_projects_zh_cn);
+        break;
+      default:
+        setProjects(static_projects_zh_cn);
+        break;
+    }
+  };
+
+  useEffect(() => {
+    getProjectListByLang();
+  }, []);
+
+  useEffect(() => {
+    getProjectListByLang();
+  }, [LangStorage.value]);
+
   return (
     <div id="homeMainContainer">
       {/*<p className="headerText1">Wniko</p>*/}
@@ -52,21 +88,17 @@ export default function Home(props: P) {
             📢 中文<span className="welcomeContentTextLangname">(Native)</span>，日本語，English
           </p>
           <p className="contentText">
-            🌟 Tags: 地理，地図，創作地図，アプリ開発，TypeScript♡，言語，漢字，旅行，鉄道，駅メモ，アニメ，ラブライブ，ゆるキャン△，鉄道，デザイン，ヲタ芸，地下芸，音ゲ，maimaiDX，云々
+            🌟 Tags: 地理，地図，創作地図，アプリ開発，TypeScript♡，言語，漢字，旅行，鉄道，駅メモ，アニメ，ラブライブ，ゆるキャン△，鉄道，デザイン，ヲタ芸，地下芸，音ゲ，maimaiDX，etc.
           </p>
         </div>
         <Divider />
-        <p className="headerText2">🐝Latest blogs</p>
-
-        {isBlogLoading ? (
-          <div id="loaderContainer">
-            <BeatLoader color="#a0a0a0" loading={isBlogLoading} cssOverride={{ textAlign: 'center' }} size={15} aria-label="Loading Spinner" data-testid="loader" />
-          </div>
-        ) : (
-          <motion.div key={'homebloglist'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
-            <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} isFromHome={true} />
-          </motion.div>
-        )}
+        <ProjectList
+          update={props.update}
+          setUpdate={() => {
+            props.setUpdate();
+          }}
+          projects={projects}
+        />
       </div>
       <div id="twitterContainer">
         <div className="ContactContainer">
@@ -116,25 +148,22 @@ export default function Home(props: P) {
             </p>
           </motion.div>
         </div>
-        <TwitterTimelineEmbed
-          onLoad={function noRefCheck() {
-            setisTwitterTimelineLoading(true);
-          }}
-          sourceType="profile"
-          screenName="elpwc"
-          options={{
-            height: window.innerHeight * 0.6,
-            width: 'auto',
-          }}
-          tweetLimit={5}
-          lang="ja"
-          placeholder={
-            <div className="twitterPlaceHolder" style={{ height: window.innerHeight * 0.6 + 'px' }}>
-              <p>Twitter Timeline Loading..</p>
-              <GridLoader color="#a0a0a0" loading={isTwitterTimelineLoading} cssOverride={{ textAlign: 'center', marginTop: '20px' }} size={15} aria-label="Loading Spinner" data-testid="loader" />
+
+        <div className="blogsContainer">
+          <p className="headerText2">Latest blogs</p>
+
+          {isBlogLoading ? (
+            <div id="loaderContainer">
+              <BeatLoader color="#a0a0a0" loading={isBlogLoading} cssOverride={{ textAlign: 'center' }} size={15} aria-label="Loading Spinner" data-testid="loader" />
             </div>
-          }
-        />
+          ) : (
+            <motion.div key={'homebloglist'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
+              <BlogList update={props.update} setUpdate={props.setUpdate} blogs={blogs} isFromHome={true} />
+            </motion.div>
+          )}
+        </div>
+
+        <TwitterTweetEmbed tweetId={'1941055887369711859'} onLoad={() => setisTwitterTimelineLoading(false)} />
       </div>
     </div>
   );
